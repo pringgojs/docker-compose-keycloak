@@ -20,14 +20,20 @@ services:
       KC_DB_USERNAME: keycloak
       KC_DB_PASSWORD: password
 #pringgo
-      KEYCLOAK_PROXY: edge
-      KEYCLOAK_COOKIE_SAMESITE: none
-      KEYCLOAK_COOKIE_SECURE: true
+#      KC_PROXY: edge
+#      KC_COOKIE_SAMESITE: none
+#      KC_COOKIE_SECURE: true
 #end
-#      KC_HOSTNAME: login.ponorogo.go.id
-      KC_HOSTNAME: localhost
+      KC_HOSTNAME: login.ponorogo.go.id
       KC_HOSTNAME_STRICT: false
       KC_HOSTNAME_STRICT_HTTPS: false
+
+      # tambahan untuk mendukung Cloudfalre Flexible SSL
+      KC_PROXY: edge
+      KC_HTTP_ENABLED: true
+      KC_HTTP_RELATIVE_PATH: /
+
+      KC_PROXY_HEADERS: xforwarded
 
       KC_LOG_LEVEL: info
       KC_METRICS_ENABLED: true
