@@ -1,4 +1,4 @@
-version: '3.8'
+version: "3.8"
 
 services:
   postgres:
@@ -12,6 +12,8 @@ services:
       POSTGRES_PASSWORD: password
 
   keycloak_web:
+    build:
+      context: ./keycloak
     image: quay.io/keycloak/keycloak:24.0.3
     container_name: keycloak_web
     environment:
@@ -19,17 +21,17 @@ services:
       KC_DB_URL: jdbc:postgresql://postgres:5432/keycloak
       KC_DB_USERNAME: keycloak
       KC_DB_PASSWORD: password
-#pringgo
-#      KC_PROXY: edge
-#      KC_COOKIE_SAMESITE: none
-#      KC_COOKIE_SECURE: true
-#end
+      #pringgo
+      #      KC_PROXY: edge
+      #      KC_COOKIE_SAMESITE: none
+      #      KC_COOKIE_SECURE: true
+      #end
       KC_HOSTNAME: login.ponorogo.go.id
       KC_HOSTNAME_STRICT: false
       KC_HOSTNAME_STRICT_HTTPS: false
 
       # tambahan untuk mendukung Cloudfalre Flexible SSL
-      KC_PROXY: edge
+      # KC_PROXY: edge
       KC_HTTP_ENABLED: true
       KC_HTTP_RELATIVE_PATH: /
 
@@ -39,7 +41,7 @@ services:
       KC_METRICS_ENABLED: true
       KC_HEALTH_ENABLED: true
       KEYCLOAK_ADMIN: admin
-      KEYCLOAK_ADMIN_PASSWORD: admin
+      KEYCLOAK_ADMIN_PASSWORD: KodokBangkong!;#
     command: start-dev
     depends_on:
       - postgres
