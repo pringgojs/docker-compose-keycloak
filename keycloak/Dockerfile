@@ -1,5 +1,5 @@
 FROM quay.io/keycloak/keycloak:24.0.3
 
-COPY simashebat-authenticator-1.0.0.jar /opt/keycloak/providers/
+COPY simashebat-authenticator-final.jar /opt/keycloak/providers/
 
 RUN /opt/keycloak/bin/kc.sh build
