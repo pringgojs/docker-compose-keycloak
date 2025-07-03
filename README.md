@@ -53,3 +53,17 @@
 ---
 
 Jika ada error saat build Tailwind, pastikan Node.js dan npm sudah terinstall dan jalankan `npm install` sebelum build.
+
+## Panduan Instalasi Theme Modern di Keycloak
+
+1. Pastikan proses build Docker sudah selesai dan container Keycloak sudah berjalan.
+2. Theme custom akan otomatis ter-copy ke dalam image Keycloak melalui Dockerfile:
+   - Lokasi di dalam container: `/opt/keycloak/themes/modern`
+3. Untuk menggunakan theme ini:
+   - Login ke Keycloak Admin Console.
+   - Masuk ke menu **Realm Settings** > **Themes**.
+   - Pada bagian **Login Theme**, pilih `modern`.
+   - Klik **Save**.
+4. Logout dan akses halaman login Keycloak, tampilan akan menggunakan theme modern custom.
+
+Jika theme tidak muncul di daftar, pastikan build Docker sudah sukses dan tidak ada error pada struktur folder theme.
