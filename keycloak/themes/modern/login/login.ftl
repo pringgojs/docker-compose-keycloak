@@ -51,7 +51,7 @@
                             <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 6a3.75 3.75 0 1 1-7.5 0 3.75 3.75 0 0 1 7.5 0ZM4.501 20.118a7.5 7.5 0 0 1 14.998 0A17.933 17.933 0 0 1 12 21.75c-2.676 0-5.216-.584-7.499-1.632Z" />
                         </svg>
                     </span>
-                    <input tabindex="1" id="username" name="username" type="text" autofocus required autocomplete="username" class="pl-10 pr-3 py-2 w-full rounded-xl border border-gray-300 dark:border-neutral-700 focus:ring-2 focus:ring-green-400 focus:border-green-500 bg-white/80 dark:bg-neutral-800/80 text-gray-900 dark:text-white placeholder-gray-400 dark:placeholder-gray-500 shadow-sm transition-all duration-200 hover:border-green-400" placeholder="Username" value="${username!}" />
+                    <input tabindex="1" id="username" name="username" type="text" autofocus required autocomplete="username" class="pl-10 pr-3 py-2 w-full rounded-xl border border-gray-300 focus:ring-2 focus:ring-green-400 bg-white/80 text-gray-900 placeholder-gray-400 shadow-sm transition-all duration-200 hover:border-green-400" placeholder="Username" value="${username!}" />
                 </div>
             </div>
             <div>
@@ -63,7 +63,7 @@
                             <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 5.25a3 3 0 0 1 3 3m3 0a6 6 0 0 1-7.029 5.912c-.563-.097-1.159.026-1.563.43L10.5 17.25H8.25v2.25H6v2.25H2.25v-2.818c0-.597.237-1.17.659-1.591l6.499-6.499c.404-.404.527-1 .43-1.563A6 6 0 1 1 21.75 8.25Z" />
                         </svg>
                     </span>
-                    <input tabindex="2" id="password" name="password" type="password" required autocomplete="current-password" class="pl-10 pr-3 py-2 w-full rounded-xl border border-gray-300 dark:border-neutral-700 focus:ring-2 focus:ring-green-400 focus:border-green-500 bg-white/80 dark:bg-neutral-800/80 text-gray-900 dark:text-white placeholder-gray-400 dark:placeholder-gray-500 shadow-sm transition-all duration-200 hover:border-green-400" placeholder="Password" />
+                    <input tabindex="2" id="password" name="password" type="password" required autocomplete="current-password" class="pl-10 pr-3 py-2 w-full rounded-xl border border-gray-300 focus:ring-2 focus:ring-green-400 bg-white/80 text-gray-900 placeholder-gray-400 shadow-sm transition-all duration-200 hover:border-green-400" placeholder="Password" />
                 </div>
             </div>
             <div class="flex items-center justify-between">
