@@ -24,9 +24,9 @@
    ```
 
 5. **Build CSS Tailwind**
-   Jalankan perintah berikut di PowerShell dari root project:
+   Jalankan perintah berikut di PowerShell dari keycloak project:
    ```powershell
-   npx tailwindcss -i ./keycloak/themes/modern/resources/css/input.css -o ./keycloak/themes/modern/resources/css/tailwind.css --minify
+   npx tailwindcss -i ./themes/modern/login/resources/css/input.css -o ./themes/modern/login/resources/css/tailwind.css --minify
    ```
    File hasil build akan berada di `keycloak/themes/modern/resources/css/tailwind.css`.
 

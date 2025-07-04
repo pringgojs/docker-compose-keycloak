@@ -32,7 +32,7 @@
         <div class="flex flex-col items-center mb-8 relative z-10">
             <div class="mb-3 animate-fade-in">
                 <!-- Logo bisa diganti sesuai kebutuhan -->
-                <img src="${url.resourcesPath}/img/keycloak-icon.png" alt="Logo" class="w-20 h-20 drop-shadow-lg" />
+                <!-- <img src="${url.resourcesPath}/img/keycloak-icon.png" alt="Logo" class="w-20 h-20 drop-shadow-lg" /> -->
             </div>
             <h1 class="text-3xl font-extrabold text-green-700 dark:text-green-400 tracking-tight mb-1 animate-fade-in">Selamat Datang</h1>
             <p class="text-gray-500 dark:text-gray-300 text-base animate-fade-in-slow">Masuk ke <span class="font-semibold">Keycloak</span></p>
