@@ -1,7 +1,8 @@
 module.exports = {
   content: [
-    "./themes/modern/login/**/*.ftl",
-    "./themes/modern/resources/css/input.css",
+    "./themes/anomic/login/**/*.html",
+    "./themes/anomic/login/**/*.ftl",
+    "./themes/anomic/resources/css/input.css",
   ],
   theme: {
     extend: {},
