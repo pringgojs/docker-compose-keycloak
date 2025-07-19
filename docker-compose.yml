@@ -21,28 +21,37 @@ services:
       KC_DB_URL: jdbc:postgresql://postgres:5432/keycloak
       KC_DB_USERNAME: keycloak
       KC_DB_PASSWORD: password
-      #pringgo
-      #      KC_PROXY: edge
-      #      KC_COOKIE_SAMESITE: none
-      #      KC_COOKIE_SECURE: true
-      #end
 
-      #19 juli 2025
+      # Konfigurasi Proxy dan Hostname untuk Keycloak 24.0.3
+      # Ini adalah bagian paling penting untuk memastikan cookie SameSite=None berfungsi dengan benar
       KC_PROXY: edge
       KC_HOSTNAME: login.ponorogo.go.id
+      # KC_HOSTNAME_STRICT_HTTPS harus TRUE ketika menggunakan HTTPS eksternal
+      # dan KC_PROXY: edge. Ini memastikan Keycloak tahu bahwa koneksi asli adalah HTTPS.
       KC_HOSTNAME_STRICT_HTTPS: true
+      # KC_HOSTNAME_STRICT bisa tetap false jika Anda ingin lebih fleksibel,
+      # tetapi untuk kejelasan, kita bisa mengaturnya ke true jika hostname sudah spesifik.
+      # Untuk kasus Anda, biarkan false tidak masalah jika hanya ada satu hostname.
       KC_HOSTNAME_STRICT: false
 
+      # KC_COOKIE_SECURE harus TRUE agar SameSite=None berfungsi.
+      # Anda sudah mengaturnya dengan benar.
       KC_COOKIE_SECURE: true
+      # KC_COOKIE_DOMAIN sangat penting untuk memastikan cookie berlaku di domain yang benar.
+      # Anda sudah mengaturnya dengan benar.
       KC_COOKIE_DOMAIN: .ponorogo.go.id
-      KC_PROXY_HEADERS: xforwarded
-      #end
 
-      # tambahan untuk mendukung Cloudfalre Flexible SSL
-      # KC_PROXY: edge
+      # KC_PROXY_HEADERS: xforwarded adalah nilai yang benar untuk membaca header X-Forwarded-*
+      KC_PROXY_HEADERS: xforwarded
+
+      # KC_HTTP_ENABLED: true dan KC_HTTP_RELATIVE_PATH: /
+      # Ini adalah pengaturan internal Keycloak. Jika reverse proxy Anda terhubung ke Keycloak
+      # via HTTP internal (misalnya, ke port 8080), ini sudah benar.
+      # Keycloak akan menggunakan header X-Forwarded-Proto untuk mengetahui protokol eksternal.
       KC_HTTP_ENABLED: true
       KC_HTTP_RELATIVE_PATH: /
 
+      # Pengaturan log dan metrik lainnya
       KC_LOG_LEVEL: info
       KC_METRICS_ENABLED: true
       KC_HEALTH_ENABLED: true
