@@ -28,21 +28,20 @@ services:
       #end
 
       #19 juli 2025
-      KC_COOKIE_DOMAIN: .ponorogo.go.id
       KC_PROXY: edge
-      KC_COOKIE_SECURE: true
-      #end
-
       KC_HOSTNAME: login.ponorogo.go.id
+      KC_HOSTNAME_STRICT_HTTPS: true
       KC_HOSTNAME_STRICT: false
-      KC_HOSTNAME_STRICT_HTTPS: false
+
+      KC_COOKIE_SECURE: true
+      KC_COOKIE_DOMAIN: .ponorogo.go.id
+      KC_PROXY_HEADERS: xforwarded
+      #end
 
       # tambahan untuk mendukung Cloudfalre Flexible SSL
       # KC_PROXY: edge
       KC_HTTP_ENABLED: true
       KC_HTTP_RELATIVE_PATH: /
-
-      KC_PROXY_HEADERS: xforwarded
 
       KC_LOG_LEVEL: info
       KC_METRICS_ENABLED: true
