@@ -26,6 +26,13 @@ services:
       #      KC_COOKIE_SAMESITE: none
       #      KC_COOKIE_SECURE: true
       #end
+
+      #19 juli 2025
+      KC_COOKIE_DOMAIN: .ponorogo.go.id
+      KC_PROXY: edge
+      KC_COOKIE_SECURE: true
+      #end
+
       KC_HOSTNAME: login.ponorogo.go.id
       KC_HOSTNAME_STRICT: false
       KC_HOSTNAME_STRICT_HTTPS: false
