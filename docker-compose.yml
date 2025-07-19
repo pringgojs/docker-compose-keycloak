@@ -26,6 +26,8 @@ services:
       # Ini adalah bagian paling penting untuk memastikan cookie SameSite=None berfungsi dengan benar
       KC_PROXY: edge
       KC_HOSTNAME: login.ponorogo.go.id
+      # Tambahkan KC_HOSTNAME_URL sebagai praktik terbaik untuk memastikan Keycloak tahu URL lengkapnya.
+      KC_HOSTNAME_URL: https://login.ponorogo.go.id/
       # KC_HOSTNAME_STRICT_HTTPS harus TRUE ketika menggunakan HTTPS eksternal
       # dan KC_PROXY: edge. Ini memastikan Keycloak tahu bahwa koneksi asli adalah HTTPS.
       KC_HOSTNAME_STRICT_HTTPS: true
