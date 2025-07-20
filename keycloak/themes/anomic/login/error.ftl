@@ -29,7 +29,7 @@
       <h1 class="text-2xl font-bold text-red-600 mb-2">Oops! Terjadi Kesalahan</h1>
       <p class="text-sm text-gray-600 mb-6">
         <#if message?has_content>
-          ${message.summary}
+          ${(message.summary)!'Terjadi kesalahan yang tidak diketahui'}
         <#else>
           Terjadi kesalahan tak terduga. Silakan coba lagi nanti atau hubungi administrator.
         </#if>
