@@ -35,7 +35,7 @@ services:
 
       KC_HOSTNAME: login.ponorogo.go.id
       KC_HOSTNAME_STRICT: false
-      KC_HOSTNAME_STRICT_HTTPS: false
+      KC_HOSTNAME_STRICT_HTTPS: true
 
       # tambahan untuk mendukung Cloudfalre Flexible SSL
       # KC_PROXY: edge
