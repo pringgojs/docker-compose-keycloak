@@ -39,8 +39,8 @@
         </#if>
 
         <div>
-          <label for="totp" class="block text-sm font-medium text-gray-700">Kode OTP</label>
-          <input id="totp" name="totp" type="text" required autofocus
+          <label for="otp" class="block text-sm font-medium text-gray-700">Kode OTP</label>
+          <input id="otp" name="otp" type="text" required autofocus
                  class="mt-1 w-full px-4 py-2 border rounded-xl shadow-sm focus:ring-blue-500 focus:border-blue-500 border-gray-300"
                  placeholder="123 456" />
         </div>
