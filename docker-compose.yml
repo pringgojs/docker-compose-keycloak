@@ -44,7 +44,7 @@ services:
 
       KC_PROXY_HEADERS: xforwarded
 
-      KC_LOG_LEVEL: info
+      KC_LOG_LEVEL: debug
       KC_METRICS_ENABLED: true
       KC_HEALTH_ENABLED: true
       KEYCLOAK_ADMIN: ${KEYCLOAK_ADMIN}
