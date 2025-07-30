@@ -10,6 +10,8 @@ services:
       POSTGRES_DB: keycloak
       POSTGRES_USER: keycloak
       POSTGRES_PASSWORD: password
+    networks:
+      - internal-net
 
   keycloak_web:
     build:
@@ -54,6 +56,12 @@ services:
       - postgres
     ports:
       - 8080:8080
+    networks:
+      - internal-net
 
 volumes:
   postgres_data:
+
+networks:
+  internal-net:
+    driver: bridge
