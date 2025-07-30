@@ -12,6 +12,7 @@ services:
       POSTGRES_PASSWORD: password
     networks:
       - internal-net
+    restart: unless-stopped
 
   keycloak_web:
     build:
@@ -58,6 +59,7 @@ services:
       - 8080:8080
     networks:
       - internal-net
+    restart: unless-stopped
 
 volumes:
   postgres_data:
