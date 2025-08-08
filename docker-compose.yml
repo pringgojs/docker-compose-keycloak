@@ -36,7 +36,7 @@ services:
       KC_COOKIE_SECURE: true
       #end
 
-      KC_HOSTNAME: login.ponorogo.go.id
+      KC_HOSTNAME: kisara.ponorogo.go.id
       KC_HOSTNAME_STRICT: false
       KC_HOSTNAME_STRICT_HTTPS: true
 
