@@ -25,7 +25,7 @@
     <div class="max-w-md w-full bg-white shadow-2xl rounded-2xl p-8 relative z-10">
       <!-- Logo Pemerintah -->
       <div class="flex justify-center mb-4">
-        <img src="${url.resourcesPath}/img/logo.png" alt="Centralized Authentication System" class="w-auto h-16" />
+        <img src="${url.resourcesPath}/img/logo.png" alt="Centralized Authentication System" class="w-auto" style="height:6rem" />
       </div>
       <!-- Judul dan Tagline -->
       <div class="text-center mb-6">
