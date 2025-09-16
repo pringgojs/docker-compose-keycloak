@@ -24,11 +24,11 @@
    ```
 
 5. **Build CSS Tailwind**
-   Jalankan perintah berikut di PowerShell dari keycloak project:
+   Jalankan perintah berikut di PowerShell dari `/keycloak` project:
    ```powershell
-   npx tailwindcss -i ./themes/modern/login/resources/css/input.css -o ./themes/modern/login/resources/css/tailwind.css --minify
+   npx tailwindcss -i ./themes/anomic/login/resources/css/input.css -o ./themes/anomic/login/resources/css/tailwind.css --minify
    ```
-   File hasil build akan berada di `keycloak/themes/modern/resources/css/tailwind.css`.
+   File hasil build akan berada di `keycloak/themes/anomic/resources/css/tailwind.css`.
 
 ## Menjalankan Keycloak dengan Docker
 

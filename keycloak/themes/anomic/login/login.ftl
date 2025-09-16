@@ -32,6 +32,10 @@
         <h1 class="text-2xl font-bold text-gray-800">Masuk ke Akun Anda</h1>
         <p class="text-sm text-gray-500 mt-1">Satu Akun untuk Semua</p>
       </div>
+      <div id="api-status" class="mb-4 text-red-600 font-bold text-center" style="display:none;">
+        Sistem SSO sedang mengalami gangguan koneksi ke Simas Hebat.<br>
+        Login kemungkinan gagal. Silakan coba beberapa saat lagi.
+      </div>
       <!-- Form Login -->
       <form id="kc-form-login" method="post" action="${url.loginAction}" class="space-y-4">
         <input type="hidden" name="credentialId" value="${credentialId!}"/>
@@ -99,6 +103,18 @@
         },
         retina_detect: true,
       });
+    </script>
+
+    <script>
+      fetch('https://sidalev.ponorogo.go.id', { method: 'GET' })
+        .then(response => {
+          if (!response.ok) {
+            document.getElementById('api-status').style.display = 'block';
+          }
+        })
+        .catch(() => {
+          document.getElementById('api-status').style.display = 'block';
+        });
     </script>
   </body>
 </html>
