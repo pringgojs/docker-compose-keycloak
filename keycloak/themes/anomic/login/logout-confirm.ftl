@@ -18,19 +18,20 @@
     }
   </style>
 </head>
-<body class="min-h-screen bg-gray-100 flex items-center justify-center px-4">
+<body class="min-h-screen bg-gray-100 dark:bg-gray-900 flex items-center justify-center px-4">
   <div id="particles-js"></div>
-  <div class="max-w-md w-full bg-white shadow-2xl rounded-2xl p-8 relative z-10">
+  <div class="max-w-md w-full bg-white dark:bg-gray-800 shadow-2xl rounded-2xl p-8 relative z-10">
     <div class="flex justify-center mb-4">
-      <img src="${url.resourcesPath}/img/logo.png" alt="Logo" class="w-auto h-16" />
+      <img src="${url.resourcesPath}/img/logo.png" alt="Centralized Authentication System" class="w-auto block dark:hidden" style="height:6rem" />
+      <img src="${url.resourcesPath}/img/logo-dark-mode.png" alt="Centralized Authentication System" class="w-auto hidden dark:block" style="height:6rem" />
     </div>
     <div class="text-center mb-6">
-      <h1 class="text-2xl font-bold text-gray-800">Anda sudah logout</h1>
-      <p class="text-sm text-gray-500 mt-1">Terima kasih telah menggunakan SSO Ponorogo</p>
+      <h1 class="text-2xl font-bold text-gray-800 dark:text-gray-100">Anda sudah logout</h1>
+      <p class="text-sm text-gray-500 dark:text-gray-400 mt-1">Terima kasih telah menggunakan SSO Ponorogo</p>
     </div>
-    <a href="${url.loginUrl}" class="w-full bg-blue-600 text-white font-semibold py-2 px-4 rounded-xl hover:bg-blue-700 transition duration-200 block text-center">Login kembali</a>
+    <a href="${url.loginUrl}" class="w-full bg-blue-600 dark:bg-blue-700 text-white font-semibold py-2 px-4 rounded-xl hover:bg-blue-700 dark:hover:bg-blue-800 transition duration-200 block text-center">Login kembali</a>
     <div class="mt-8">
-      <p class="text-center text-gray-500 text-sm mb-2">Terintegrasi dengan:</p>
+      <p class="text-center text-gray-500 dark:text-gray-400 text-sm mb-2">Terintegrasi dengan:</p>
       <div class="flex justify-center gap-4 flex-wrap">
         <img src="${url.resourcesPath}/img/simas.png" alt="Simashebat" class="w-10 h-10" title="Simas Hebat" />
         <img src="${url.resourcesPath}/img/jathilan.png" alt="Jathilan" class="w-auto h-10" title="Presensi Online Jathilan" />

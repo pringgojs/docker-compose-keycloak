@@ -18,40 +18,41 @@
       }
     </style>
   </head>
-  <body class="min-h-screen bg-gray-100 flex items-center justify-center px-4">
+  <body class="min-h-screen bg-gray-100 dark:bg-gray-900 flex items-center justify-center px-4">
     <!-- Particles Background -->
     <div id="particles-js"></div>
-    <div class="max-w-md w-full bg-white shadow-2xl rounded-2xl p-8 relative z-10">
+    <div class="max-w-md w-full bg-white dark:bg-gray-800 shadow-2xl rounded-2xl p-8 relative z-10">
       <!-- Logo -->
       <div class="flex justify-center mb-4">
-        <img src="${url.resourcesPath}/img/logo.png" alt="Centralized Authentication System" class="w-auto h-16" />
+        <img src="${url.resourcesPath}/img/logo.png" alt="Centralized Authentication System" class="w-auto block dark:hidden" style="height:6rem" />
+        <img src="${url.resourcesPath}/img/logo-dark-mode.png" alt="Centralized Authentication System" class="w-auto hidden dark:block" style="height:6rem" />
       </div>
       <!-- Judul -->
       <div class="text-center mb-6">
-        <h1 class="text-2xl font-bold text-gray-800">Verifikasi OTP</h1>
-        <p class="text-sm text-gray-500 mt-1">Masukkan kode dari aplikasi Authenticator Anda</p>
+        <h1 class="text-2xl font-bold text-gray-800 dark:text-gray-100">Verifikasi OTP</h1>
+        <p class="text-sm text-gray-500 dark:text-gray-400 mt-1">Masukkan kode dari aplikasi Authenticator Anda</p>
       </div>
 
       <!-- Form OTP -->
       <form id="kc-totp-login-form" method="post" action="${url.loginAction}" class="space-y-4">
         <#if message?has_content>
-          <div class="mb-4 text-red-600 font-medium text-sm">${message.summary}</div>
+          <div class="mb-4 text-red-600 dark:text-red-400 font-medium text-sm">${message.summary}</div>
         </#if>
 
         <div>
-          <label for="otp" class="block text-sm font-medium text-gray-700">Kode OTP</label>
+          <label for="otp" class="block text-sm font-medium text-gray-700 dark:text-gray-200">Kode OTP</label>
           <input id="otp" name="otp" type="text" required autofocus
-                 class="mt-1 w-full px-4 py-2 border rounded-xl shadow-sm focus:ring-blue-500 focus:border-blue-500 border-gray-300"
-                 placeholder="123 456" />
+            class="mt-1 w-full px-4 py-2 border rounded-xl shadow-sm focus:ring-blue-500 focus:border-blue-500 border-gray-300 dark:border-gray-700 dark:bg-gray-900 dark:text-gray-100"
+            placeholder="123 456" />
         </div>
 
         <button type="submit"
-                class="w-full bg-blue-600 text-white font-semibold py-2 px-4 rounded-xl hover:bg-blue-700 transition duration-200 flex items-center justify-center gap-2">
+          class="w-full bg-blue-600 dark:bg-blue-700 text-white font-semibold py-2 px-4 rounded-xl hover:bg-blue-700 dark:hover:bg-blue-800 transition duration-200 flex items-center justify-center gap-2">
           Verifikasi
         </button>
       </form>
 
-      <div class="mt-6 text-center text-sm text-gray-500">
+      <div class="mt-6 text-center text-sm text-gray-500 dark:text-gray-400">
         Bermasalah dengan OTP? Hubungi administrator.
       </div>
 

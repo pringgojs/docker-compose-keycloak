@@ -18,28 +18,29 @@
       }
     </style>
   </head>
-  <body class="min-h-screen bg-gray-100 flex items-center justify-center px-4">
+  <body class="min-h-screen bg-gray-100 dark:bg-gray-900 flex items-center justify-center px-4">
     <!-- Particles Background -->
     <div id="particles-js"></div>
-    <div class="max-w-md w-full bg-white shadow-2xl rounded-2xl p-8 relative z-10 text-center">
-      <!-- Logo -->
-      <div class="flex justify-center mb-4">
-        <img src="${url.resourcesPath}/img/logo.png" alt="SSO" class="w-auto h-16" />
-      </div>
-      <h1 class="text-2xl font-bold text-blue-600 mb-2">Informasi</h1>
-      <p class="text-sm text-gray-600 mb-6">
-        <#if message?has_content>
-          ${(message.summary)!'Ada informasi penting terkait SSO Anda.'}
-        <#else>
-          Ada informasi terkait proses login atau akun Anda. Silakan cek detail di atas atau hubungi administrator jika perlu bantuan.
-        </#if>
-      </p>
+    <div class="max-w-md w-full bg-white dark:bg-gray-800 shadow-2xl rounded-2xl p-8 relative z-10 text-center">
+        <!-- Logo -->
+        <div class="flex justify-center mb-4">
+            <img src="${url.resourcesPath}/img/logo.png" alt="Centralized Authentication System" class="w-auto block dark:hidden" style="height:6rem" />
+            <img src="${url.resourcesPath}/img/logo-dark-mode.png" alt="Centralized Authentication System" class="w-auto hidden dark:block" style="height:6rem" />
+        </div>
+        <h1 class="text-2xl font-bold text-blue-600 dark:text-blue-400 mb-2">Informasi</h1>
+        <p class="text-sm text-gray-600 dark:text-gray-400 mb-6">
+            <#if message?has_content>
+            ${(message.summary)!'Ada informasi penting terkait SSO Anda.'}
+            <#else>
+            Ada informasi terkait proses login atau akun Anda. Silakan cek detail di atas atau hubungi administrator jika perlu bantuan.
+            </#if>
+        </p>
 
-      <a href="${url.loginUrl}" class="inline-block mt-4 bg-blue-600 text-white py-2 px-4 rounded-xl hover:bg-blue-700 transition">
-        Kembali ke Halaman Login
-      </a>
+        <a href="${url.loginUrl}" class="inline-block mt-4 bg-blue-600 dark:bg-blue-700 text-white py-2 px-4 rounded-xl hover:bg-blue-700 dark:hover:bg-blue-800 transition">
+            Kembali ke Halaman Login
+        </a>
 
-      <div class="mt-6 text-xs text-gray-400">SSO Pemerintah Kabupaten Ponorogo</div>
+        <div class="mt-6 text-xs text-gray-400 dark:text-gray-500">SSO Pemerintah Kabupaten Ponorogo</div>
     </div>
 
     <!-- Particles Config -->

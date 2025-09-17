@@ -18,63 +18,64 @@
       }
     </style>
   </head>
-  <body class="min-h-screen bg-gray-100 flex items-center justify-center px-4">
+  <body class="min-h-screen bg-gray-100 dark:bg-gray-900 flex items-center justify-center px-4">
     <!-- Background -->
     <div id="particles-js"></div>
 
-    <div class="max-w-md w-full bg-white shadow-2xl rounded-2xl p-8 relative z-10">
-      <div class="flex justify-center mb-4">
-        <img src="${url.resourcesPath}/img/logo.png" alt="Logo" class="w-auto h-16" />
-      </div>
-
-      <div class="text-center mb-6">
-        <h1 class="text-2xl font-bold text-gray-800">Aktivasi OTP</h1>
-        <p class="text-sm text-gray-500 mt-1">Pindai QR code & masukkan kode OTP Anda</p>
-      </div>
-
-      <form id="kc-totp-settings-form" action="${url.loginAction}" method="post" class="space-y-4">
-        <#if message?has_content>
-          <div class="text-red-600 font-medium text-sm">${message.summary}</div>
-        </#if>
-
-        <input type="hidden" id="totpSecret" name="totpSecret" value="${totp.totpSecret}" />
-
+    <div class="max-w-md w-full bg-white dark:bg-gray-800 shadow-2xl rounded-2xl p-8 relative z-10">
         <div class="flex justify-center mb-4">
-          <img src="data:image/png;base64,${totp.totpSecretQrCode}" alt="QR Code" class="w-40 h-40" />
+            <img src="${url.resourcesPath}/img/logo.png" alt="Centralized Authentication System" class="w-auto block dark:hidden" style="height:6rem" />
+            <img src="${url.resourcesPath}/img/logo-dark-mode.png" alt="Centralized Authentication System" class="w-auto hidden dark:block" style="height:6rem" />
         </div>
 
-        <div class="text-sm text-center text-gray-600 mb-4">
-          <p>Atau masukkan manual:</p>
-          <code class="block text-gray-800 mt-1 font-semibold">${totp.totpSecret}</code>
+        <div class="text-center mb-6">
+          <h1 class="text-2xl font-bold text-gray-800 dark:text-gray-100">Aktivasi OTP</h1>
+          <p class="text-sm text-gray-500 dark:text-gray-400 mt-1">Pindai QR code & masukkan kode OTP Anda</p>
         </div>
 
-        <div>
-          <label for="totp" class="block text-sm font-medium text-gray-700">Kode OTP</label>
-          <input type="text" id="totp" name="totp" autocomplete="off"
-            class="mt-1 w-full px-4 py-2 border rounded-xl shadow-sm focus:ring-blue-500 focus:border-blue-500 border-gray-300"
-            placeholder="123456" required />
+        <form id="kc-totp-settings-form" action="${url.loginAction}" method="post" class="space-y-4">
+          <#if message?has_content>
+            <div class="text-red-600 font-medium text-sm">${message.summary}</div>
+          </#if>
+
+          <input type="hidden" id="totpSecret" name="totpSecret" value="${totp.totpSecret}" />
+
+          <div class="flex justify-center mb-4">
+            <img src="data:image/png;base64,${totp.totpSecretQrCode}" alt="QR Code" class="w-40 h-40" />
+          </div>
+
+          <div class="text-sm text-center text-gray-600 dark:text-gray-400 mb-4">
+            <p>Atau masukkan manual:</p>
+            <code class="block text-gray-800 dark:text-gray-100 mt-1 font-semibold">${totp.totpSecret}</code>
+          </div>
+
+          <div>
+            <label for="totp" class="block text-sm font-medium text-gray-700 dark:text-gray-200">Kode OTP</label>
+            <input type="text" id="totp" name="totp" autocomplete="off"
+              class="mt-1 w-full px-4 py-2 border rounded-xl shadow-sm focus:ring-blue-500 focus:border-blue-500 border-gray-300 dark:border-gray-700 dark:bg-gray-900 dark:text-gray-100"
+              placeholder="123456" required />
+          </div>
+
+          <div>
+            <label for="userLabel" class="block text-sm font-medium text-gray-700 dark:text-gray-200">Nama Perangkat</label>
+            <input type="text" id="userLabel" name="userLabel"
+              class="mt-1 w-full px-4 py-2 border rounded-xl shadow-sm focus:ring-blue-500 focus:border-blue-500 border-gray-300 dark:border-gray-700 dark:bg-gray-900 dark:text-gray-100"
+              placeholder="Misal: HP Kantor atau HP Pribadi" />
+          </div>
+
+          <div class="flex items-center">
+            <input type="checkbox" id="totpPeriod" name="totpPeriod" class="mr-2" />
+            <label for="totpPeriod" class="text-sm text-gray-700 dark:text-gray-200">Gunakan TOTP berbasis waktu</label>
+          </div>
+
+          <button type="submit" class="w-full bg-blue-600 dark:bg-blue-700 text-white font-semibold py-2 px-4 rounded-xl hover:bg-blue-700 dark:hover:bg-blue-800 transition duration-200">
+            Aktifkan OTP
+          </button>
+        </form>
+
+        <div class="mt-6 text-center text-sm text-gray-500 dark:text-gray-400">
+          Jika Anda kesulitan, hubungi administrator.
         </div>
-
-        <div>
-          <label for="userLabel" class="block text-sm font-medium text-gray-700">Nama Perangkat</label>
-          <input type="text" id="userLabel" name="userLabel"
-            class="mt-1 w-full px-4 py-2 border rounded-xl shadow-sm focus:ring-blue-500 focus:border-blue-500 border-gray-300"
-            placeholder="Misal: HP Kantor atau HP Pribadi" />
-        </div>
-
-        <div class="flex items-center">
-          <input type="checkbox" id="totpPeriod" name="totpPeriod" class="mr-2" />
-          <label for="totpPeriod" class="text-sm text-gray-700">Gunakan TOTP berbasis waktu</label>
-        </div>
-
-        <button type="submit" class="w-full bg-blue-600 text-white font-semibold py-2 px-4 rounded-xl hover:bg-blue-700 transition duration-200">
-          Aktifkan OTP
-        </button>
-      </form>
-
-      <div class="mt-6 text-center text-sm text-gray-500">
-        Jika Anda kesulitan, hubungi administrator.
-      </div>
     </div>
 
     <!-- Particles Config -->
