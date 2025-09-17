@@ -25,14 +25,25 @@
     <div class="max-w-md w-full bg-white dark:bg-gray-800 shadow-2xl rounded-2xl p-8 relative z-10">
       <!-- Logo Pemerintah -->
       <div class="flex justify-center mb-4">
-        <img src="${url.resourcesPath}/img/logo.png" alt="Centralized Authentication System" class="w-auto" style="height:6rem" />
+        <img
+          src="resources/img/logo.png"
+          alt="Centralized Authentication System"
+          class="w-auto block dark:hidden"
+          style="height: 6rem"
+        />
+        <img
+          src="resources/img/logo-dark-mode.png"
+          alt="Centralized Authentication System"
+          class="w-auto hidden dark:block"
+          style="height: 6rem"
+        />
       </div>
       <!-- Judul dan Tagline -->
       <div class="text-center mb-6">
         <h1 class="text-2xl font-bold text-gray-800 dark:text-gray-100">Masuk ke Akun Anda</h1>
         <p class="text-sm text-gray-500 dark:text-gray-400 mt-1">Satu Akun untuk Semua</p>
       </div>
-      
+
       <#if message?has_content>
         <div
           class="bg-yellow-50 dark:bg-yellow-900 mb-2 border-yellow-200 dark:border-yellow-700 text-sm text-yellow-800 dark:text-yellow-200 rounded-lg p-4"
@@ -63,7 +74,7 @@
             </div>
             <div class="ms-4">
               <h3 class="text-sm font-semibold">
-                Error.
+                Error
               </h3>
               <div class="mt-1 text-sm text-yellow-700 dark:text-yellow-200">
                 ${message.summary}.
