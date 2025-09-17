@@ -32,13 +32,47 @@
         <h1 class="text-2xl font-bold text-gray-800 dark:text-gray-100">Verifikasi OTP</h1>
         <p class="text-sm text-gray-500 dark:text-gray-400 mt-1">Masukkan kode dari aplikasi Authenticator Anda</p>
       </div>
-
+      <#if message?has_content>
+        <div
+          class="bg-yellow-50 dark:bg-yellow-900 mb-2 border-yellow-200 dark:border-yellow-700 text-sm text-yellow-800 dark:text-yellow-200 rounded-lg p-4"
+          role="alert"
+          tabindex="-1"
+          aria-labelledby="hs-with-description-label"
+        >
+          <div class="flex">
+            <div class="shrink-0">
+              <svg
+                class="shrink-0 size-4 mt-0.5"
+                xmlns="http://www.w3.org/2000/svg"
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <path
+                  d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3Z"
+                ></path>
+                <path d="M12 9v4"></path>
+                <path d="M12 17h.01"></path>
+              </svg>
+            </div>
+            <div class="ms-4">
+              <h3 class="text-sm font-semibold">
+                Error.
+              </h3>
+              <div class="mt-1 text-sm text-yellow-700 dark:text-yellow-200">
+                ${message.summary}.
+              </div>
+            </div>
+          </div>
+        </div>
+      </#if>
       <!-- Form OTP -->
       <form id="kc-totp-login-form" method="post" action="${url.loginAction}" class="space-y-4">
-        <#if message?has_content>
-          <div class="mb-4 text-red-600 dark:text-red-400 font-medium text-sm">${message.summary}</div>
-        </#if>
-
         <div>
           <label for="otp" class="block text-sm font-medium text-gray-700 dark:text-gray-200">Kode OTP</label>
           <input id="otp" name="otp" type="text" required autofocus

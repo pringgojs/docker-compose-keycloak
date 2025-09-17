@@ -29,16 +29,16 @@
       </div>
       <h1 class="text-2xl font-bold text-red-600 dark:text-red-400 mb-2">Oops! Terjadi Kesalahan</h1>
       <p class="text-sm text-gray-600 dark:text-gray-400 mb-6">
-          <#if message?has_content>
-            ${(message.summary)!'Terjadi kesalahan yang tidak diketahui'}
-          <#else>
-            Terjadi kesalahan tak terduga. Silakan coba lagi nanti atau hubungi administrator.
-          </#if>
-        </p>
+        <#if message?has_content>
+          ${(message.summary)!'Terjadi kesalahan yang tidak diketahui'}
+        <#else>
+          Terjadi kesalahan tak terduga. Silakan coba lagi nanti atau hubungi administrator.
+        </#if>
+      </p>
 
       <a href="${url.loginUrl}" class="inline-block mt-4 bg-blue-600 dark:bg-blue-700 text-white py-2 px-4 rounded-xl hover:bg-blue-700 dark:hover:bg-blue-800 transition">
-            Kembali ke Halaman Login
-          </a>
+        Kembali ke Halaman Login
+      </a>
 
       <div class="mt-6 text-xs text-gray-400 dark:text-gray-500">SSO Pemerintah Kabupaten Ponorogo</div>
     </div>
