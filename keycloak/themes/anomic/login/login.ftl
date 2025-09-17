@@ -34,7 +34,7 @@
         <img
           src="resources/img/logo-dark-mode.png"
           alt="Centralized Authentication System"
-          class="w-auto hidden dark:block"
+          class="w-auto dark:block"
           style="height: 6rem"
         />
       </div>
