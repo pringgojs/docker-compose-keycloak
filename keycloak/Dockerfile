@@ -5,6 +5,7 @@ RUN rm -rf /opt/keycloak/providers/*
 COPY simashebat-authenticator-1.0.1.jar /opt/keycloak/providers/
 COPY themes/modern /opt/keycloak/themes/modern
 COPY themes/anomic /opt/keycloak/themes/anomic
+COPY themes/asn /opt/keycloak/themes/asn
 
 # Pastikan folder resources/css sudah ada dan tailwind.css berada di dalamnya
 # Jika perlu, tambahkan perintah berikut sebelum build:
