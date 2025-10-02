@@ -22,6 +22,63 @@
   <body class="min-h-screen bg-gray-100 dark:bg-gray-900 flex items-center justify-center px-4">
     <!-- Particles Background -->
     <div id="particles-js"></div>
+     <div class="grid lg:grid-cols-2 gap-x-20">
+           <div class="max-w-md w-full bg-white dark:bg-gray-800 shadow-2xl rounded-t-xl lg:rounded-2xl relative overflow-hidden z-10">
+        <div class="h-20 flex gap-x-2 items-center w-full p-2 bg-white rounded-t-xl dark:bg-gradient-to-r dark:from-gray-800 dark:via-gray-700 dark:to-gray-600">
+          <img src="${url.resourcesPath}/img/logo_warna.png" alt="Logo" class="block dark:hidden w-auto h-16" />
+          <img src="${url.resourcesPath}/img/logo_hitam-putih.png" alt="Logo Dark" class="hidden dark:block w-auto h-16" />
+          <div class="font-bold">
+            <h1 class="text-xl lg:text-xl dark:text-gray-300">Single Sign-On ASN</h1>
+            <p class="text-sm dark:text-gray-300 lg:text-lg">Kabupaten Ponorogo</p>
+          </div>
+        </div>
+        <div class="bg-[#fdf1f1] dark:bg-transparent lg:px-2 flex flex-col items-center">
+          <div class="flex lg:gap-x-2 lg:pt-3 px-2 mt-4 items-center">
+            <img src="${url.resourcesPath}/img/korpri_warna.png" alt="Logo" class="block dark:hidden w-auto h-36 lg:h-42" />
+            <img src="${url.resourcesPath}/img/korpri_hitam.png" alt="Logo Dark" class="hidden dark:block w-auto h-36 lg:h-42" />
+
+            <div class="px-5">
+              <div class="lg:text-lg font-bold text-[#8e4137] dark:text-gray-300">Selamat Datang</div>
+              <div class="lg:text-base font-bold text-[#8e4137] dark:text-gray-300">di Portal Single <br />Sign-On (SSO) ASN</div>
+              <div class="text-xs lg:text-xs mt-2 text-gray-700 dark:text-gray-300">Satu akun untuk semua layanan aplikasi ASN Kabupaten Ponorogo</div>
+            </div>
+          </div>
+          <div class="hidden lg:block">
+            <div class="flex flex-row gap-x-5 items-center p-4 my-4">
+              <div>
+                <div class="flex justify-center gap-x-2 items-center">
+                  <i class="fa-solid fa-lock text-2xl text-red-800 dark:text-gray-500"></i>
+                  <div class="text-sm font-semibold text-red-800 leading-4 dark:text-gray-300">Aman & Terpusat</div>
+                </div>
+                <div class="mt-1 text-xs leading-3.5 dark:text-gray-300">Satu Akun Untuk Semua Aplikasi</div>
+              </div>
+              <div>
+                <div class="flex justify-center gap-x-2 items-center">
+                  <i class="fa-solid fa-bolt-lightning text-2xl text-red-800 dark:text-gray-500"></i>
+                  <div class="text-sm font-semibold text-red-800 leading-4 dark:text-gray-300">Cepat & Efisien</div>
+                </div>
+                <div class="mt-1 text-xs leading-3.5 dark:text-gray-300">Sekali login, langsung akses semua layanan</div>
+              </div>
+              <div>
+                <div class="flex justify-center gap-x-2 items-center">
+                  <i class="fas fa-landmark text-2xl text-red-800 dark:text-gray-500"></i>
+                  <div class="text-sm font-semibold text-red-800 leading-4 dark:text-gray-300">Resmi Untuk ASN</div>
+                </div>
+                <div class="mt-1 text-xs leading-3.5 dark:text-gray-300">Hanya untuk ASN Kabupaten Ponorogo</div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="hidden lg:block">
+          <div class="bg-[#bd4137] dark:bg-gray-600 h-1 w-full">&nbsp;</div>
+          <div class="mt-1">
+            <div class="flex flex-col justify-center items-center gap-4 p-2">
+              <span class="text-xs dark:text-gray-300"> © 2025 Pemerintah Kabupaten Ponorogo <br />Dinas Komunikasi Informatika dan Statistik </span>
+            </div>
+          </div>
+        </div>
+      </div>
+     </div>
     <div class="max-w-md w-full bg-white dark:bg-gray-800 shadow-2xl rounded-2xl p-8 relative z-10">
       <!-- Logo Pemerintah -->
       <div class="flex justify-center mb-4">
