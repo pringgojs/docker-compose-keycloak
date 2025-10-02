@@ -103,7 +103,7 @@
             </div>
           </div>
           </#if>
-          <div class="lg:border-1 shadow-lg border-2 border-gray-200 dark:border-gray-700 px-4 rounded-xl bg-white dark:bg-transparent lg:bg-transparent">
+          <div class="lg:border-0 shadow-lg border-2 border-gray-200 dark:border-gray-700 px-4 rounded-xl bg-white dark:bg-transparent lg:bg-transparent">
             <form id="kc-form-login" method="post" action="${url.loginAction}" class="space-y-4">
               <input type="hidden" name="credentialId" value="${credentialId!}" />
               <div>
