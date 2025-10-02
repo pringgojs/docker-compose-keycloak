@@ -1,9 +1,8 @@
 /** @type {import('tailwindcss').Config} */
-module.exports = {
-  content: [],
+export default {
+  content: ['./keycloak/**/*.{html,js,ftl}'],
   theme: {
     extend: {},
   },
   plugins: [],
-}
-
+};

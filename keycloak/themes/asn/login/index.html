@@ -1,11 +1,11 @@
-<#-- Custom Keycloak login page dengan layout dan style seperti themes/anomic/login/login.html
+<!-- <#-- Custom Keycloak login page dengan layout dan style seperti themes/anomic/login/login.html -->
 <!DOCTYPE html>
 <html lang="id">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Login SSO - Satu Akun untuk Semua</title>
-    <link rel="stylesheet" href="resources/css/tailwind.css" />
+    <link href="resources/css/tailwind.css" rel="stylesheet" />
     <script src="resources/js/particles.min.js"></script>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet" />
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css" rel="stylesheet" />
@@ -88,7 +88,6 @@
           </div>
         </div>
         <div class="px-8 py-4 lg:py-0 lg:pb-8">
-          <#if message?has_content>
           <div class="bg-yellow-50 mb-4 lg:mb-3 dark:bg-yellow-900 border-yellow-200 dark:border-yellow-700 text-sm text-yellow-800 dark:text-yellow-200 rounded-lg p-1" role="alert" tabindex="-1" aria-labelledby="hs-with-description-label">
             <div class="flex">
               <div class="shrink-0">
@@ -104,8 +103,7 @@
               </div>
             </div>
           </div>
-          </#if>
-          <div class="lg:border-1 shadow-lg border-2 border-gray-200 dark:border-gray-700 px-4 rounded-xl bg-white dark:bg-transparent lg:bg-transparent">
+          <div class="lg:border-0 shadow-lg border-2 border-gray-200 dark:border-gray-700 px-4 rounded-xl bg-white dark:bg-transparent lg:bg-transparent">
             <form id="kc-form-login" method="post" action="${url.loginAction}" class="space-y-4">
               <input type="hidden" name="credentialId" value="${credentialId!}" />
               <div>
@@ -162,8 +160,7 @@
         </div>
       </div>
     </div>
-    <!-- Particles Config -->
-    <script src="${url.resourcesPath}/js/particles.min.js"></script>
+    <script src="/resources/js/particles.min.js"></script>
     <script>
       particlesJS &&
         particlesJS('particles-js', {
@@ -198,18 +195,6 @@
             },
           },
           retina_detect: true,
-        });
-    </script>
-
-    <script>
-      fetch('https://sidalev.ponorogo.go.id', { method: 'GET' })
-        .then((response) => {
-          if (!response.ok) {
-            document.getElementById('api-status').style.display = 'block';
-          }
-        })
-        .catch(() => {
-          document.getElementById('api-status').style.display = 'block';
         });
     </script>
   </body>

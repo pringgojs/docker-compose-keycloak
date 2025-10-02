@@ -26,7 +26,7 @@
 5. **Build CSS Tailwind**
    Jalankan perintah berikut di PowerShell dari `/keycloak` project:
    ```powershell
-   npx tailwindcss -i ./themes/anomic/login/resources/css/input.css -o ./themes/anomic/login/resources/css/tailwind.css --minify
+   npx tailwindcss -i ./themes/asn/login/resources/css/input.css -o ./themes/asn/login/resources/css/tailwind.css --minify
    ```
    File hasil build akan berada di `keycloak/themes/anomic/resources/css/tailwind.css`.
 
