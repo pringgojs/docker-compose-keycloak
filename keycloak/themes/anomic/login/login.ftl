@@ -144,17 +144,5 @@
         retina_detect: true,
       });
     </script>
-
-    <script>
-      fetch('https://sidalev.ponorogo.go.id', { method: 'GET' })
-        .then(response => {
-          if (!response.ok) {
-            document.getElementById('api-status').style.display = 'block';
-          }
-        })
-        .catch(() => {
-          document.getElementById('api-status').style.display = 'block';
-        });
-    </script>
   </body>
 </html>
