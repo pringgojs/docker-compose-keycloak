@@ -103,8 +103,22 @@
             </div>
           </div>
           </#if>
+
+
+          <div class="hidden lg:block mt-4 text-gray-600 dark:text-gray-300">
+            <ul>
+              <li class="text-xs italic">Username dan Password Menggunakan yang ada di SIMAS HEBAT</li>
+            </ul>
+          </div>          
         </div>
-     
+        <div class="lg:hidden">
+          <div class="bg-[#bd4137] dark:bg-gray-600 h-1 w-full">&nbsp;</div>
+          <div class="mt-1 bg-white dark:bg-transparent lg:bg-transparent">
+            <div class="flex flex-col justify-center items-center gap-4 p-2">
+              <span class="text-xs dark:text-gray-300"> © 2025 Pemerintah Kabupaten Ponorogo <br />Dinas Komunikasi Informatika dan Statistik </span>
+            </div>
+          </div>
+        </div>     
      
      
       </div>
