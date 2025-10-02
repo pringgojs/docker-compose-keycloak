@@ -104,7 +104,42 @@
           </div>
           </#if>
           <div class="lg:border-1 shadow-lg border-2 border-gray-200 dark:border-gray-700 px-4 rounded-xl bg-white dark:bg-transparent lg:bg-transparent">
-          
+            <form id="kc-form-login" method="post" action="${url.loginAction}" class="space-y-4">
+              <input type="hidden" name="credentialId" value="${credentialId!}" />
+              <div>
+                <label for="username" class="block text-sm font-medium text-gray-700 dark:text-gray-200">Nomer Induk Pegawai ( NIP )</label>
+                <input
+                  id="username"
+                  name="username"
+                  type="text"
+                  required
+                  autofocus
+                  autocomplete="username"
+                  class="mt-1 w-full px-4 py-2 text-sm border rounded-lg shadow-sm focus:ring-blue-500 focus:border-blue-500 border-gray-300 dark:border-gray-700 dark:bg-gray-900 dark:text-gray-300"
+                  placeholder="Username"
+                  value="${username!}"
+                />
+              </div>
+              <div>
+                <label for="password" class="block text-sm font-medium text-gray-700 dark:text-gray-200">Password</label>
+                <input
+                  id="password"
+                  name="password"
+                  type="password"
+                  required
+                  autocomplete="current-password"
+                  class="mt-1 w-full px-4 py-2 text-sm border rounded-lg shadow-sm focus:ring-blue-500 focus:border-blue-500 border-gray-300 dark:border-gray-700 dark:bg-gray-900 dark:text-gray-300"
+                  placeholder="Password"
+                />
+              </div>
+              <button
+                tabindex="3"
+                type="submit"
+                class="w-full cursor-pointer bg-red-600 dark:bg-red-900 text-white font-semibold p-2 px-4 rounded-xl hover:bg-red-700 dark:hover:bg-red-800 transition duration-200 flex items-center justify-center gap-2 mb-1.5"
+              >
+                Masuk
+              </button>
+            </form>          
             <div class="flex justify-end items-center py-2">
               <a href="https://simashebat.ponorogo.go.id/reset-password/" target="_blank" rel="noopener noreferrer" class="text-xs italic dark:text-gray-300 hover:underline">Reset Password</a>
             </div>          
