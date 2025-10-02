@@ -7,6 +7,7 @@
     <title>Login SSO - Satu Akun untuk Semua</title>
     <link rel="stylesheet" href="${url.resourcesPath}/css/tailwind.css" />
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css" rel="stylesheet" />
     <style>
       body { font-family: "Inter", sans-serif; }
       #particles-js {
