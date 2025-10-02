@@ -5,8 +5,8 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Login SSO - Satu Akun untuk Semua</title>
-    <link rel="stylesheet" href="resources/css/tailwind.css" />
-    <script src="resources/js/particles.min.js"></script>
+    <link rel="stylesheet" href="${url.resourcesPath}/css/tailwind.css" />
+    <script src="${url.resourcesPath}/js/particles.min.js"></script>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet" />
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css" rel="stylesheet" />
     <style>
@@ -28,8 +28,8 @@
     <div class="grid lg:grid-cols-2 gap-x-20">
       <div class="max-w-md w-full bg-white dark:bg-gray-800 shadow-2xl rounded-t-xl lg:rounded-2xl relative overflow-hidden z-10">
         <div class="h-20 flex gap-x-2 items-center w-full p-2 bg-white rounded-t-xl dark:bg-gradient-to-r dark:from-gray-800 dark:via-gray-700 dark:to-gray-600">
-          <img src="resources/img/logo_warna.png" alt="Logo" class="block dark:hidden w-auto h-16" />
-          <img src="resources/img/logo_hitam-putih.png" alt="Logo Dark" class="hidden dark:block w-auto h-16" />
+          <img src="${url.resourcesPath}/img/logo_warna.png" alt="Logo" class="block dark:hidden w-auto h-16" />
+          <img src="${url.resourcesPath}/img/logo_hitam-putih.png" alt="Logo Dark" class="hidden dark:block w-auto h-16" />
           <div class="font-bold">
             <h1 class="text-xl lg:text-xl dark:text-gray-300">Single Sign-On ASN</h1>
             <p class="text-sm dark:text-gray-300 lg:text-lg">Kabupaten Ponorogo</p>
@@ -37,8 +37,8 @@
         </div>
         <div class="bg-[#fdf1f1] dark:bg-transparent lg:px-2 flex flex-col items-center">
           <div class="flex lg:gap-x-2 lg:pt-3 px-2 mt-4 items-center">
-            <img src="resources/img/korpri_warna.png" alt="Logo" class="block dark:hidden w-auto h-36 lg:h-42" />
-            <img src="resources/img/korpri_hitam.png" alt="Logo Dark" class="hidden dark:block w-auto h-36 lg:h-42" />
+            <img src="${url.resourcesPath}/img/korpri_warna.png" alt="Logo" class="block dark:hidden w-auto h-36 lg:h-42" />
+            <img src="${url.resourcesPath}/img/korpri_hitam.png" alt="Logo Dark" class="hidden dark:block w-auto h-36 lg:h-42" />
 
             <div class="px-5">
               <div class="lg:text-lg font-bold text-[#8e4137] dark:text-gray-300">Selamat Datang</div>
