@@ -103,8 +103,12 @@
             </div>
           </div>
           </#if>
-
-
+          <div class="lg:border-1 shadow-lg border-2 border-gray-200 dark:border-gray-700 px-4 rounded-xl bg-white dark:bg-transparent lg:bg-transparent">
+          
+            <div class="flex justify-end items-center py-2">
+              <a href="https://simashebat.ponorogo.go.id/reset-password/" target="_blank" rel="noopener noreferrer" class="text-xs italic dark:text-gray-300 hover:underline">Reset Password</a>
+            </div>          
+          </dev>
           <div class="hidden lg:block mt-4 text-gray-600 dark:text-gray-300">
             <ul>
               <li class="text-xs italic">Username dan Password Menggunakan yang ada di SIMAS HEBAT</li>
