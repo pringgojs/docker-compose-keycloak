@@ -24,7 +24,7 @@
     <!-- Particles Background -->
     <div id="particles-js"></div>
      <div class="grid lg:grid-cols-2 gap-x-20">
-           <div class="max-w-md w-full bg-white dark:bg-gray-800 shadow-2xl rounded-t-xl lg:rounded-2xl relative overflow-hidden z-10">
+      <div class="max-w-md w-full bg-white dark:bg-gray-800 shadow-2xl rounded-t-xl lg:rounded-2xl relative overflow-hidden z-10">
         <div class="h-20 flex gap-x-2 items-center w-full p-2 bg-white rounded-t-xl dark:bg-gradient-to-r dark:from-gray-800 dark:via-gray-700 dark:to-gray-600">
           <img src="${url.resourcesPath}/img/logo_warna.png" alt="Logo" class="block dark:hidden w-auto h-16" />
           <img src="${url.resourcesPath}/img/logo_hitam-putih.png" alt="Logo Dark" class="hidden dark:block w-auto h-16" />
@@ -79,7 +79,36 @@
           </div>
         </div>
       </div>
-     </div>
+      <div class="max-w-md w-full bg-[#fdf1f1] lg:bg-white dark:bg-gray-800 shadow-2xl rounded-b-xl lg:rounded-2xl relative overflow-hidden z-10">
+        <div class="bg-white rounded-t-2xl dark:bg-transparent px-3 hidden lg:block">
+          <div class="h-20 flex gap-x-2 items-center w-full justify-center mt-2 font-bold">
+            <h1 class="lg:text-xl dark:text-gray-300">Masuk ke Akun Anda</h1>
+          </div>
+        </div>
+        <div class="px-8 py-4 lg:py-0 lg:pb-8">
+          <#if message?has_content>
+          <div class="bg-yellow-50 mb-4 lg:mb-3 dark:bg-yellow-900 border-yellow-200 dark:border-yellow-700 text-sm text-yellow-800 dark:text-yellow-200 rounded-lg p-1" role="alert" tabindex="-1" aria-labelledby="hs-with-description-label">
+            <div class="flex">
+              <div class="shrink-0">
+                <svg class="shrink-0 size-4 mt-0.5" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3Z"></path>
+                  <path d="M12 9v4"></path>
+                  <path d="M12 17h.01"></path>
+                </svg>
+              </div>
+              <div class="ms-4">
+                <h3 class="text-sm font-semibold">Error.</h3>
+                <div class="mt-1 text-sm text-yellow-700 dark:text-yellow-200">${message.summary}.</div>
+              </div>
+            </div>
+          </div>
+          </#if>
+        </div>
+     
+     
+     
+      </div>
+    </div>
     <div class="max-w-md w-full bg-white dark:bg-gray-800 shadow-2xl rounded-2xl p-8 relative z-10">
       <!-- Logo Pemerintah -->
       <div class="flex justify-center mb-4">
