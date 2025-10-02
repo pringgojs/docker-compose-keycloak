@@ -143,10 +143,10 @@
             <div class="flex justify-end items-center py-2">
               <a href="https://simashebat.ponorogo.go.id/reset-password/" target="_blank" rel="noopener noreferrer" class="text-xs italic dark:text-gray-300 hover:underline">Reset Password</a>
             </div>          
-          </dev>
+          </div>
           <div class="hidden lg:block mt-4 text-gray-600 dark:text-gray-300">
             <ul>
-              <li class="text-xs italic">Username & Password Menggunakan User SIMASHEBAT</li>
+              <li class="text-xs italic">Username dan Password Menggunakan yang ada di SIMASHEBAT</li>
             </ul>
           </div>          
         </div>
