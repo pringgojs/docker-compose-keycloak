@@ -107,7 +107,7 @@
             <form id="kc-form-login" method="post" action="${url.loginAction}" class="space-y-4">
               <input type="hidden" name="credentialId" value="${credentialId!}" />
               <div>
-                <label for="username" class="block text-sm font-medium text-gray-700 dark:text-gray-200">Nomer Induk Pegawai ( NIP )</label>
+                <label for="username" class="block text-sm font-medium text-gray-700 dark:text-gray-200">Nomor Induk Pegawai ( NIP )</label>
                 <input
                   id="username"
                   name="username"
