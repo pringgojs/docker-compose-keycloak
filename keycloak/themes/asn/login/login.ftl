@@ -146,7 +146,7 @@
           </dev>
           <div class="hidden lg:block mt-4 text-gray-600 dark:text-gray-300">
             <ul>
-              <li class="text-xs italic">Username dan Password Menggunakan yang ada di SIMAS HEBAT</li>
+              <li class="text-xs italic">Username & Password Menggunakan User SIMASHEBAT</li>
             </ul>
           </div>          
         </div>
