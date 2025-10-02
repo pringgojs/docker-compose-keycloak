@@ -20,7 +20,7 @@
       }
     </style>
   </head>
-  <body class="min-h-screen bg-gray-100 dark:bg-gray-900 flex items-center justify-center px-4">
+  <body class="min-h-screen bg-gray-300 dark:bg-gray-900 flex items-center justify-center p-2">
     <!-- Particles Background -->
     <div id="particles-js"></div>
      <div class="grid lg:grid-cols-2 gap-x-20">
