@@ -66,7 +66,11 @@
                   Error.
                 </h3>
                 <div class="mt-1 text-sm text-yellow-700 dark:text-yellow-200">
-                  ${message.summary}.
+                  <#if message.summary == "invalidTotpMessage">
+                    token OTP tidak valid, silakan coba lagi
+                  <#else>
+                    ${message.summary}.
+                  </#if>
                 </div>
               </div>
             </div>
