@@ -1,4 +1,4 @@
-<#-- Custom Keycloak login page dengan layout dan style seperti themes/anomic/login/login.html -->
+<!-- <#-- Custom Keycloak login page dengan layout dan style seperti themes/anomic/login/login.html -->
 <!DOCTYPE html>
 <html lang="id">
   <head>
@@ -26,8 +26,8 @@
      <div class="grid lg:grid-cols-2 gap-x-20">
       <div class="max-w-md w-full bg-white dark:bg-gray-800/80 shadow-2xl rounded-t-xl lg:rounded-2xl relative overflow-hidden z-10">
         <div class="h-20 flex gap-x-2 items-center w-full p-2 bg-white rounded-t-xl dark:bg-gradient-to-r dark:from-gray-800 dark:via-gray-700 dark:to-gray-600">
-          <img src="${url.resourcesPath}/img/logo_warna.png" alt="Logo" class="block dark:hidden w-auto h-16" />
-          <img src="${url.resourcesPath}/img/logo_hitam-putih.png" alt="Logo Dark" class="hidden dark:block w-auto h-16" />
+          <img src="resources/img/logo_warna.png" alt="Logo" class="block dark:hidden w-auto h-16" />
+          <img src="resources/img/logo_hitam-putih.png" alt="Logo Dark" class="hidden dark:block w-auto h-16" />
           <div class="font-bold">
             <h1 class="text-xl lg:text-xl dark:text-gray-300">Single Sign-On ASN</h1>
             <p class="text-sm dark:text-gray-300 lg:text-lg">Kabupaten Ponorogo</p>
@@ -35,8 +35,8 @@
         </div>
         <div class="bg-[#fdf1f1] dark:bg-transparent lg:px-2 flex flex-col items-center">
           <div class="flex lg:gap-x-2 lg:pt-3 px-2 mt-4 items-center">
-            <img src="${url.resourcesPath}/img/korpri_warna.png" alt="Logo" class="block dark:hidden w-auto h-36 lg:h-42" />
-            <img src="${url.resourcesPath}/img/korpri_hitam.png" alt="Logo Dark" class="hidden dark:block w-auto h-36 lg:h-42" />
+            <img src="resources/img/korpri_warna.png" alt="Logo" class="block dark:hidden w-auto h-36 lg:h-42" />
+            <img src="resources/img/korpri_hitam.png" alt="Logo Dark" class="hidden dark:block w-auto h-36 lg:h-42" />
 
             <div class="px-5">
               <div class="lg:text-lg font-bold text-[#8e4137] dark:text-gray-300">Selamat Datang</div>
@@ -107,7 +107,7 @@
             <form id="kc-form-login" method="post" action="${url.loginAction}" class="space-y-4">
               <input type="hidden" name="credentialId" value="${credentialId!}" />
               <div>
-                <label for="username" class="block text-sm font-medium text-gray-700 dark:text-gray-200">Nomer Induk Pegawai ( NIP )</label>
+                <label for="username" class="block text-sm font-medium text-gray-700 dark:text-gray-200">Nomor Induk Pegawai ( NIP )</label>
                 <input
                   id="username"
                   name="username"
@@ -146,7 +146,10 @@
           </div>
           <div class="hidden lg:block mt-4 text-gray-600 dark:text-gray-300">
             <ul>
-              <li class="text-xs italic">Username dan Password Menggunakan yang ada di SIMASHEBAT</li>
+              <li class="text-xs italic">Username dan Password Menggunakan yang ada di SIMASHEBAT,</li>
+              <li class="text-xs italic pt-2">jika kesulitan hubungi 
+                <a href="https://rakaca.ponorogo.go.id/bantuan" target="_blank" rel="noopener noreferrer" class="py-1 px-2 cursor-pointer bg-red-600 dark:bg-red-900 text-white font-semibold  rounded-md hover:bg-red-700 dark:hover:bg-red-800 transition duration-200 "> Klik disini</a>
+              </li>
             </ul>
           </div>          
         </div>
