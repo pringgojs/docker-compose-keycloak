@@ -147,6 +147,9 @@
           <div class="hidden lg:block mt-4 text-gray-600 dark:text-gray-300">
             <ul>
               <li class="text-xs italic">Username dan Password Menggunakan yang ada di SIMASHEBAT</li>
+              <li class="text-xs italic pt-2">jika kesulitan hubungi 
+                <a href="https://rakaca.ponorogo.go.id/bantuan" target="_blank" rel="noopener noreferrer" class="py-1 px-2 cursor-pointer bg-red-600 dark:bg-red-900 text-white font-semibold  rounded-md hover:bg-red-700 dark:hover:bg-red-800 transition duration-200 "> Klik disini</a>
+              </li>           
             </ul>
           </div>          
         </div>
