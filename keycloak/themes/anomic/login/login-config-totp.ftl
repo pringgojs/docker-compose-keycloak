@@ -33,7 +33,7 @@
           <p class="text-sm text-gray-500 dark:text-gray-400 mt-1">Pindai QR code & masukkan kode OTP Anda</p>
         </div>
 
-        <#if message?has_content>
+        <#if message?has_content && message.summary != "configureTotpMessage">
           <div
             class="bg-yellow-50 dark:bg-yellow-900 mb-2 border-yellow-200 dark:border-yellow-700 text-sm text-yellow-800 dark:text-yellow-200 rounded-lg p-4"
             role="alert"
@@ -66,7 +66,11 @@
                   Error.
                 </h3>
                 <div class="mt-1 text-sm text-yellow-700 dark:text-yellow-200">
-                  ${message.summary}.
+                  <#if message.summary == "invalidTotpMessage">
+                    token OTP tidak valid, silakan coba lagi
+                  <#else>
+                    ${message.summary}.
+                  </#if>               
                 </div>
               </div>
             </div>
