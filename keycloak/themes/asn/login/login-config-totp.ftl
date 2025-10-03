@@ -96,25 +96,25 @@
               placeholder="123456" required />
           </div>
 
-          <div>
+          <div class="hidden">
             <label for="userLabel" class="block text-sm font-medium text-gray-700 dark:text-gray-200">Nama Perangkat</label>
             <input type="text" id="userLabel" name="userLabel"
               class="mt-1 w-full px-4 py-2 border rounded-xl shadow-sm focus:ring-blue-500 focus:border-blue-500 border-gray-300 dark:border-gray-700 dark:bg-gray-900 dark:text-gray-100"
               placeholder="Misal: HP Kantor atau HP Pribadi" />
           </div>
-
-          <div class="flex items-center">
-            <input type="checkbox" id="totpPeriod" name="totpPeriod" class="mr-2" />
-            <label for="totpPeriod" class="text-sm text-gray-700 dark:text-gray-200">Gunakan TOTP berbasis waktu</label>
+          <div class="hidden"> 
+            <div class="flex items-center">
+              <input type="checkbox" id="totpPeriod" name="totpPeriod" class="mr-2" />
+              <label for="totpPeriod" class="text-sm text-gray-700 dark:text-gray-200">Gunakan TOTP berbasis waktu</label>
+            </div>
           </div>
-
           <button type="submit" class="w-full bg-blue-600 dark:bg-blue-700 text-white font-semibold py-2 px-4 rounded-xl hover:bg-blue-700 dark:hover:bg-blue-800 transition duration-200">
             Aktifkan OTP
           </button>
         </form>
 
         <div class="mt-6 text-center text-sm text-gray-500 dark:text-gray-400">
-          Jika Anda kesulitan, hubungi administrator.
+        Bermasalah dengan OTP? Layanan Bantuan <a href="https://rakaca.ponorogo.go.id/bantuan" target="_blank" rel="noopener noreferrer" class="py-1 px-2 cursor-pointer bg-red-600 dark:bg-red-900 text-white font-semibold  rounded-md hover:bg-red-700 dark:hover:bg-red-800 transition duration-200 "> Klik disini</a>.
         </div>
     </div>
 
