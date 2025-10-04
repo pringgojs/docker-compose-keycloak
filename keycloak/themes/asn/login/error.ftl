@@ -36,8 +36,8 @@
         </#if>
       </p>
 
-      <a href="${url.loginUrl}" class="inline-block mt-4 bg-blue-600 dark:bg-blue-700 text-white py-2 px-4 rounded-xl hover:bg-blue-700 dark:hover:bg-blue-800 transition">
-        Kembali ke Halaman Login
+      <a href="https://asn.ponorogo.go.id" class="inline-block mt-4 bg-blue-600 dark:bg-blue-700 text-white py-2 px-4 rounded-xl hover:bg-blue-700 dark:hover:bg-blue-800 transition">
+        Kembali ke Portal ASN Ponorogo
       </a>
 
       <div class="mt-6 text-xs text-gray-400 dark:text-gray-500">SSO Pemerintah Kabupaten Ponorogo</div>
