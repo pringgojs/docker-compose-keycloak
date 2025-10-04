@@ -86,7 +86,7 @@
         </button>
       </form>
 
-      <#assign encryptedUsername = authenticationSession.getAuthNote("encryptedUsername")>
+      <#assign encryptedUsername = auth.session.getAuthNote("encryptedUsername")>
       <div class="mt-6 text-center text-sm text-gray-500 dark:text-gray-400">
         Username terenkripsi: ${encryptedUsername}
         Bermasalah dengan OTP? Hubungi administrator.
