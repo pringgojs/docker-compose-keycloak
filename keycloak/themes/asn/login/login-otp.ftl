@@ -87,7 +87,7 @@
       </form>
 
       <div class="mt-6 text-center text-sm text-gray-500 dark:text-gray-400">
-        Bermasalah dengan OTP? Layanan Bantuan <a href="https://rakaca.ponorogo.go.id/bantuan" target="_blank" rel="noopener noreferrer" class="py-1 px-2 cursor-pointer bg-red-600 dark:bg-red-900 text-white font-semibold  rounded-md hover:bg-red-700 dark:hover:bg-red-800 transition duration-200 "> Klik disini: ${encryptedUsername}
+        Bermasalah dengan OTP? Layanan Bantuan <a href="https://rakaca.ponorogo.go.id/bantuan" target="_blank" rel="noopener noreferrer" class="py-1 px-2 cursor-pointer bg-red-600 dark:bg-red-900 text-white font-semibold  rounded-md hover:bg-red-700 dark:hover:bg-red-800 transition duration-200 "> Klik disini
 </a>.
       </div>
 
