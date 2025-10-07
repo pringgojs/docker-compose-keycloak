@@ -30,7 +30,7 @@
 
         <div class="text-center mb-6">
           <h1 class="text-2xl font-bold text-gray-800 dark:text-gray-100">Aktivasi OTP</h1>
-          <p class="text-sm text-gray-500 dark:text-gray-400 mt-1">Pindai QR code & masukkan kode OTP Anda</p>
+          <p class="text-sm text-gray-500 dark:text-gray-400  mt-1">Pindai QR code dengan <span class="font-semibold text-red-600  uppercase">aplikasi google authenticator </span> & masukkan kode OTP Anda dari Aplikasi tersebut</p>
         </div>
 
         <#if message?has_content && message.summary != "configureTotpMessage">
@@ -90,7 +90,7 @@
           </div>
 
           <div>
-            <label for="totp" class="block text-sm font-medium text-gray-700 dark:text-gray-200">Kode OTP</label>
+            <label for="totp" class="block text-sm font-medium text-gray-700 dark:text-gray-200">Kode OTP dari <span class="font-semibold text-red-600 uppercase">aplikasi google authenticator </span></label>
             <input type="text" id="totp" name="totp" autocomplete="off"
               class="mt-1 w-full px-4 py-2 border rounded-xl shadow-sm focus:ring-blue-500 focus:border-blue-500 border-gray-300 dark:border-gray-700 dark:bg-gray-900 dark:text-gray-100"
               placeholder="123456" required />
