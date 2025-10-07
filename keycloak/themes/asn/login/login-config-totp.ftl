@@ -90,7 +90,7 @@
           </div>
 
           <div>
-            <label for="totp" class="block text-sm font-medium text-gray-700 dark:text-gray-200">Kode OTP dari <span class="font-semibold text-red-600 uppercase">aplikasi google authenticator </span></label>
+            <label for="totp" class="block text-sm font-medium text-gray-700 dark:text-gray-200">Kode OTP dari <br> <span class="font-semibold text-yellow-500 uppercase">aplikasi google authenticator   </span><br> dengan nama Kisara ASN Ponorogo</label>
             <input type="text" id="totp" name="totp" autocomplete="off"
               class="mt-1 w-full px-4 py-2 border rounded-xl shadow-sm focus:ring-blue-500 focus:border-blue-500 border-gray-300 dark:border-gray-700 dark:bg-gray-900 dark:text-gray-100"
               placeholder="123456" required />
