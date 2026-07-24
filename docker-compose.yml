@@ -17,7 +17,7 @@ services:
   keycloak_web:
     build:
       context: ./keycloak
-    image: login-ponorogo:26.4.3
+    image: login-ponorogo:26.7.0
     container_name: keycloak_web
     environment:
       KC_DB: postgres
