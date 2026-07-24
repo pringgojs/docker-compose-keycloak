@@ -14,6 +14,8 @@ RUN rm -rf /opt/keycloak/providers/*
 COPY simashebat-authenticator-2.0.0.jar /opt/keycloak/providers/
 COPY themes/modern /opt/keycloak/themes/modern
 COPY themes/anomic /opt/keycloak/themes/anomic
-COPY themes/asn /opt/keycloak/themes/asn
+# Theme 'asn' TIDAK di-copy: tidak ada di branch feat/passkey (turunan dev),
+# dan cek DB dev menunjukkan tidak ada realm yang memakainya (login_theme
+# dev = keycloak/anomic/kosong). asn-v2 dipakai di PROD, branch berbeda.
 
 RUN /opt/keycloak/bin/kc.sh build
