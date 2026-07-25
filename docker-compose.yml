@@ -17,41 +17,46 @@ services:
   keycloak_web:
     build:
       context: ./keycloak
-    image: login-ponorogo:24.0.3
+    image: login-ponorogo:26.7.0
     container_name: keycloak_web
     environment:
       KC_DB: postgres
       KC_DB_URL: jdbc:postgresql://postgres:5432/keycloak
       KC_DB_USERNAME: keycloak
       KC_DB_PASSWORD: password
-      #pringgo
-      #      KC_PROXY: edge
-      #      KC_COOKIE_SAMESITE: none
-      #      KC_COOKIE_SECURE: true
-      #end
 
-      #19 juli 2025
       KC_COOKIE_DOMAIN: .ponorogo.go.id
-      KC_PROXY: edge
       KC_COOKIE_SECURE: true
-      #end
+
+      # Keycloak 26: KC_PROXY (edge) DIHAPUS. Ganti dengan KC_PROXY_HEADERS.
+      # Di belakang Cloudflare/reverse-proxy → 'xforwarded'.
+      KC_PROXY_HEADERS: xforwarded
 
       KC_HOSTNAME: ${KEYCLOAK_HOSTNAME}
-      KC_HOSTNAME_STRICT: false
+      # STRICT wajib true: dengan strict=false Keycloak menentukan issuer dari
+      # header Host request → issuer "melayang" (http://host:8080 via internal,
+      # https://host via Cloudflare). Token diterbitkan lewat CF (iss=https://..)
+      # tapi introspect/validasi me-resolve issuer beda → Keycloak balas
+      # active:false → portal introspect gagal → auto-logout tepat setelah login
+      # passkey. strict=true memaksa semua URL (termasuk issuer) selalu
+      # https://${KEYCLOAK_HOSTNAME}, konsisten di semua jalur.
+      KC_HOSTNAME_STRICT: true
       KC_HOSTNAME_STRICT_HTTPS: true
 
-      # tambahan untuk mendukung Cloudfalre Flexible SSL
-      # KC_PROXY: edge
       KC_HTTP_ENABLED: true
       KC_HTTP_RELATIVE_PATH: /
-
-      KC_PROXY_HEADERS: xforwarded
 
       KC_LOG_LEVEL: info
       KC_METRICS_ENABLED: false
       KC_HEALTH_ENABLED: true
-      KEYCLOAK_ADMIN: ${KEYCLOAK_ADMIN}
-      KEYCLOAK_ADMIN_PASSWORD: ${KEYCLOAK_ADMIN_PASSWORD}
+
+      # Keycloak 26: KEYCLOAK_ADMIN/PASSWORD (untuk bootstrap admin awal)
+      # di-rename → KC_BOOTSTRAP_ADMIN_USERNAME/PASSWORD. Yang lama masih
+      # jalan dengan warning; pakai nama baru supaya bersih. Hanya dipakai
+      # saat DB kosong (bootstrap pertama) — DB dev sudah punya admin, jadi
+      # ini efektif no-op tapi aman untuk fresh start.
+      KC_BOOTSTRAP_ADMIN_USERNAME: ${KEYCLOAK_ADMIN}
+      KC_BOOTSTRAP_ADMIN_PASSWORD: ${KEYCLOAK_ADMIN_PASSWORD}
     command: start-dev
     depends_on:
       - postgres

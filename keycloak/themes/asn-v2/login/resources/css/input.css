@@ -1,0 +1,68 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ===== Custom component styles theme asn-v2 ===== */
+@layer components {
+  /* Password input group: input + tombol mata di kanan */
+  .asn-input-group {
+    position: relative;
+  }
+  .asn-input-group .asn-input {
+    padding-right: 2.75rem; /* ruang untuk tombol eye */
+  }
+
+  /* Segmented OTP input (kotak-kotak) */
+  .asn-otp {
+    display: flex;
+    gap: 0.5rem;
+    justify-content: center;
+  }
+  .asn-otp-cell {
+    width: 2.75rem;
+    height: 3.25rem;
+    text-align: center;
+    font-size: 1.25rem;
+    font-weight: 600;
+    border-radius: 0.625rem;
+    border: 1px solid rgb(209 213 219); /* gray-300 */
+    background-color: #fff;
+    color: rgb(31 41 55); /* gray-800 */
+    box-shadow: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+    transition: border-color 0.15s, box-shadow 0.15s;
+  }
+  .asn-otp-cell:focus {
+    outline: none;
+    border-color: rgb(239 68 68); /* red-500 */
+    box-shadow: 0 0 0 2px rgb(239 68 68 / 0.4);
+  }
+  .dark .asn-otp-cell {
+    border-color: rgb(55 65 81); /* gray-700 */
+    background-color: rgb(17 24 39); /* gray-900 */
+    color: rgb(243 244 246); /* gray-100 */
+  }
+  @media (max-width: 360px) {
+    .asn-otp-cell {
+      width: 2.25rem;
+      height: 2.75rem;
+      font-size: 1rem;
+    }
+    .asn-otp {
+      gap: 0.35rem;
+    }
+  }
+
+  /* OTP credential radio list: sembunyikan radio bawaan, pakai border state */
+  .asn-otp-item:has(.asn-otp-radio:checked) {
+    border-color: #dc2626; /* red-600 */
+    background-color: rgb(254 242 242); /* red-50 */
+  }
+  .dark .asn-otp-item:has(.asn-otp-radio:checked) {
+    background-color: rgb(127 29 29 / 0.3);
+  }
+}
+
+/* Locale dropdown: tampil saat tidak .hidden (toggle via JS template.ftl) */
+#language-switch1:not(.hidden) {
+  display: block;
+}

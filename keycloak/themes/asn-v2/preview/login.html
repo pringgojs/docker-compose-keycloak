@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html class="h-full" lang="id">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Masuk ke Akun Anda — preview asn-v2</title>
+    <link href="../login/resources/css/styles.css" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css" rel="stylesheet" />
+    <style>body{font-family:"Inter",sans-serif}</style>
+  </head>
+  <body class="asn-body min-h-screen bg-gray-300 dark:bg-gray-900 flex items-center justify-center p-2">
+    <button onclick="document.documentElement.classList.toggle('dark')"
+      class="fixed top-3 right-3 z-50 px-3 py-1.5 text-xs rounded-lg bg-white dark:bg-gray-800 border border-gray-300 dark:border-gray-600 text-gray-700 dark:text-gray-200 shadow">
+      <i class="fa-solid fa-circle-half-stroke"></i> Toggle dark
+    </button>
+    <div class="w-full flex items-center justify-center">
+      <div class="asn-card relative z-10 w-full max-w-md bg-white dark:bg-gray-800/90 shadow-2xl rounded-2xl overflow-hidden">
+        <div class="asn-brand bg-white dark:bg-gradient-to-r dark:from-gray-800 dark:via-gray-700 dark:to-gray-600 px-6 pt-5 pb-4 flex items-center gap-3 border-b border-gray-100 dark:border-gray-700">
+          <img src="../login/resources/img/logo_warna.png" alt="Logo" class="block dark:hidden w-auto h-14" />
+          <img src="../login/resources/img/logo_hitam-putih.png" alt="Logo" class="hidden dark:block w-auto h-14" />
+          <div class="leading-tight">
+            <h1 class="text-lg font-bold text-gray-800 dark:text-gray-100">Single Sign-On ASN</h1>
+            <p class="text-xs text-gray-500 dark:text-gray-300">Kabupaten Ponorogo</p>
+          </div>
+        </div>
+        <header class="asn-card-header px-8 pt-6 pb-2 text-center">
+          <h1 class="text-xl font-bold text-gray-800 dark:text-gray-100">Masuk ke Akun Anda</h1>
+          
+          
+        </header>
+        <div class="px-8 pb-6 pt-2">
+          <div><div class="asn-alert flex items-start gap-3 rounded-lg p-3 mb-4 text-sm border bg-amber-50 dark:bg-amber-900/30 border-amber-200 dark:border-amber-800 text-amber-800 dark:text-amber-200">
+    <span class="shrink-0 mt-0.5"><i class="fa-solid fa-triangle-exclamation"></i></span>
+    <span class="leading-snug">NIP atau Password salah.</span>
+  </div>
+    <form class="space-y-4">
+      <div class="mb-4">
+        <label class="block text-sm font-medium text-gray-700 dark:text-gray-200">Nomor Induk Pegawai ( NIP )</label>
+        <input class="asn-input mt-1 w-full px-4 py-2 text-sm border rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-red-500 focus:border-red-500 border-gray-300 dark:border-gray-700 bg-white dark:bg-gray-900 text-gray-800 dark:text-gray-100 placeholder-gray-400" placeholder="NIP" />
+      </div>
+      <div class="mb-4">
+        <label class="block text-sm font-medium text-gray-700 dark:text-gray-200">Password</label>
+        <div class="asn-input-group relative flex items-stretch">
+          <input type="password" class="asn-input mt-1 w-full px-4 py-2 text-sm border rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-red-500 focus:border-red-500 border-gray-300 dark:border-gray-700 bg-white dark:bg-gray-900 text-gray-800 dark:text-gray-100 placeholder-gray-400" placeholder="Password" />
+          <button type="button" class="asn-pw-toggle absolute inset-y-0 right-0 flex items-center px-3 text-gray-500 dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-200"><i class="fa-solid fa-eye"></i></button>
+        </div>
+      </div>
+      <button type="button" class="asn-btn inline-flex items-center justify-center gap-2 font-semibold rounded-xl transition duration-200 cursor-pointer bg-red-600 dark:bg-red-800 text-white hover:bg-red-700 dark:hover:bg-red-700 w-full py-2 px-4 text-sm">Masuk</button>
+    </form>
+    <div class="flex justify-end items-center pt-2"><a class="text-xs italic text-gray-500 dark:text-gray-300 hover:underline" href="#">Lupa Password?</a></div>
+    <div class="mt-4 text-gray-600 dark:text-gray-300"><ul class="space-y-2">
+      <li class="text-xs italic">Username dan Password menggunakan yang ada di SIMASHEBAT</li>
+      <li class="text-xs italic">jika kesulitan hubungi <a href="#" class="py-1 px-2 bg-red-600 dark:bg-red-900 text-white font-semibold rounded-md">Klik disini</a></li>
+    </ul></div></div>
+        </div>
+        <div class="asn-footer">
+          <div class="bg-[#bd4137] dark:bg-gray-600 h-1 w-full">&nbsp;</div>
+          <div class="px-6 py-3 text-center">
+            <p class="text-[11px] leading-tight text-gray-500 dark:text-gray-400">© 2025 Pemerintah Kabupaten Ponorogo<br />Dinas Komunikasi Informatika dan Statistik</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script src="../login/resources/js/otp-input.js"></script>
+  </body>
+</html>
