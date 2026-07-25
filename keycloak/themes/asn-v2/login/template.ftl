@@ -33,6 +33,18 @@
       </#list>
     </#if>
 
+    <#-- Import map WAJIB di KC 26: JS passkey base (webauthnAuthenticate.js) meng-import
+         bare specifier "rfc4648". Tanpa blok ini browser gagal resolve module →
+         "Failed to resolve module specifier rfc4648" → tombol passkey mati.
+         Di-port dari base 26.7 template.ftl. -->
+    <script type="importmap">
+        {
+            "imports": {
+                "rfc4648": "${url.resourcesCommonPath}/vendor/rfc4648/rfc4648.js"
+            }
+        }
+    </script>
+
     <style>
       body { font-family: "Inter", sans-serif; }
       #particles-js {
@@ -45,14 +57,26 @@
       }
     </style>
 
+    <#-- KC 26.7: authChecker.js meng-export startSessionPolling + checkAuthSession
+         (BUKAN checkCookiesAndSetTimer seperti KC24). Signature di-port dari base
+         26.7 template.ftl. Salah nama export = "does not provide an export named
+         checkCookiesAndSetTimer" → seluruh module gagal, ikut mematikan passkey. -->
+    <script type="module">
+        <#outputformat "JavaScript">
+        import { startSessionPolling } from ${(url.resourcesPath + "/js/authChecker.js")?c};
+        startSessionPolling(
+            ${url.ssoLoginInOtherTabsUrl?c}
+        );
+        </#outputformat>
+    </script>
     <#if authenticationSession??>
       <script type="module">
-        import { checkCookiesAndSetTimer } from "${url.resourcesPath}/js/authChecker.js";
-        checkCookiesAndSetTimer(
-          "${authenticationSession.authSessionId}",
-          "${authenticationSession.tabId}",
-          "${url.ssoLoginInOtherTabsUrl?no_esc}"
+        <#outputformat "JavaScript">
+        import { checkAuthSession } from ${(url.resourcesPath + "/js/authChecker.js")?c};
+        checkAuthSession(
+            ${authenticationSession.authSessionIdHash?c}
         );
+        </#outputformat>
       </script>
     </#if>
   </head>
