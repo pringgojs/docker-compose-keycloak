@@ -14,8 +14,10 @@ RUN rm -rf /opt/keycloak/providers/*
 COPY simashebat-authenticator-2.0.0.jar /opt/keycloak/providers/
 COPY themes/modern /opt/keycloak/themes/modern
 COPY themes/anomic /opt/keycloak/themes/anomic
-# Theme 'asn' TIDAK di-copy: tidak ada di branch feat/passkey (turunan dev),
-# dan cek DB dev menunjukkan tidak ada realm yang memakainya (login_theme
-# dev = keycloak/anomic/kosong). asn-v2 dipakai di PROD, branch berbeda.
+# asn-v2: theme login PROD, di-port ke branch ini (dari feat/theme-asn-v2) untuk
+# Fase 4 passkey — tambah tombol "Login dengan Passkey" + conditional UI autofill
+# di atas base 26.7 (parent=keycloak). Ini juga memvalidasi asn-v2 di KC 26.7
+# sebelum upgrade prod.
+COPY themes/asn-v2 /opt/keycloak/themes/asn-v2
 
 RUN /opt/keycloak/bin/kc.sh build
