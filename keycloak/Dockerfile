@@ -12,7 +12,7 @@ FROM quay.io/keycloak/keycloak:26.7.0
 
 RUN rm -rf /opt/keycloak/providers/*
 
-COPY simashebat-authenticator-2.3.0.jar /opt/keycloak/providers/
+COPY simashebat-authenticator-2.3.1.jar /opt/keycloak/providers/
 COPY themes/modern /opt/keycloak/themes/modern
 COPY themes/anomic /opt/keycloak/themes/anomic
 # asn-v2: theme login PROD, di-port untuk Fase 4 passkey — tambah tombol "Login
