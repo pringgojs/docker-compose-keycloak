@@ -33,7 +33,14 @@ services:
       KC_PROXY_HEADERS: xforwarded
 
       KC_HOSTNAME: ${KEYCLOAK_HOSTNAME}
-      KC_HOSTNAME_STRICT: false
+      # STRICT wajib true: dengan strict=false Keycloak menentukan issuer dari
+      # header Host request → issuer "melayang" (http://host:8080 via internal,
+      # https://host via Cloudflare). Token diterbitkan lewat CF (iss=https://..)
+      # tapi introspect/validasi me-resolve issuer beda → Keycloak balas
+      # active:false → portal introspect gagal → auto-logout tepat setelah login
+      # passkey. strict=true memaksa semua URL (termasuk issuer) selalu
+      # https://${KEYCLOAK_HOSTNAME}, konsisten di semua jalur.
+      KC_HOSTNAME_STRICT: true
       KC_HOSTNAME_STRICT_HTTPS: true
 
       KC_HTTP_ENABLED: true
