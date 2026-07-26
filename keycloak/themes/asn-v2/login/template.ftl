@@ -161,14 +161,9 @@
             <#-- FORM body dari masing-masing page -->
             <#nested "form">
 
-            <#-- Try another way (multi-authenticator) -->
-            <#if auth?has_content && auth.showTryAnotherWayLink()>
-              <form id="kc-select-try-another-way-form" action="${url.loginAction}" method="post" class="mt-3 text-center">
-                <input type="hidden" name="tryAnotherWay" value="on" />
-                <a href="#" id="try-another-way" class="text-sm text-red-600 dark:text-red-400 hover:underline"
-                   onclick="document.forms['kc-select-try-another-way-form'].submit();return false;">${msg("doTryAnotherWay")}</a>
-              </form>
-            </#if>
+            <#-- "Coba cara lain" (tryAnotherWay) sengaja DIHILANGKAN: pilihan
+                 passkey sudah tersedia lewat tombol "Login dengan Passkey" di form,
+                 jadi link ini redundan & membingungkan. -->
 
             <#nested "socialProviders">
 
