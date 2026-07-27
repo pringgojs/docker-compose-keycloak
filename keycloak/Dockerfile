@@ -19,5 +19,9 @@ COPY themes/anomic /opt/keycloak/themes/anomic
 # dengan Passkey" + conditional UI autofill di atas base 26.7 (parent=keycloak).
 # Menggantikan theme "asn" lama (KC24-era) yang di-drop di feat/passkey.
 COPY themes/asn-v2 /opt/keycloak/themes/asn-v2
+# agustusan-2026: theme EVENT kemerdekaan HUT RI ke-81 (dipakai sementara periode
+# Agustus, toggle via realm loginTheme). parent=keycloak, CSS sendiri + auto dark
+# mode + passkey (importmap/authChecker sama asn-v2).
+COPY themes/agustusan-2026/login /opt/keycloak/themes/agustusan-2026/login
 
 RUN /opt/keycloak/bin/kc.sh build
