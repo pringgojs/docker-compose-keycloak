@@ -1,0 +1,459 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* =============================================================================
+   Theme agustusan-2026 — HUT RI ke-81 · Kisara SSO
+   Sebagian besar styling pakai utility Tailwind langsung di .ftl.
+   Di sini HANYA komponen yang tak praktis jadi utility: pola hero, umbul-umbul
+   zigzag, animasi sapu tombol, dan ikon dalam field.
+   Dark mode = "media" (ikut sistem) — lihat tailwind.config.js.
+   ============================================================================= */
+
+@layer components {
+  /* --- Hero: pola bintik halus di atas gradient merah --- */
+  .hero-pattern::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background-image: radial-gradient(rgba(255, 255, 255, 0.1) 1.5px, transparent 1.5px);
+    background-size: 18px 18px;
+    opacity: 0.45;
+  }
+
+  /* ===========================================================================
+     KEMBANG API di hero (varian C3 — 4 letupan + 2 roket naik)
+     Murni CSS: hanya transform + opacity, jadi dipercepat GPU dan TIDAK butuh
+     JavaScript sama sekali (aman dari Rocket Loader / CSP).
+     Struktur markup:
+       <div class="letup" style="left:..;top:..;--dur:..;--jauh:..">
+         <u></u>                              kilau di titik pusat
+         <i style="--r:0deg;animation-delay:.."></i>   percikan garis
+         <b style="--r:15deg;animation-delay:.."></b>  pecahan melayang
+       </div>
+       <div class="roket" style="left:..;--tinggi:..;animation-delay:.."></div>
+     Variabel: --dur durasi 1 siklus, --jauh jarak lontar, --r sudut,
+               --h panjang percikan, --tinggi ketinggian roket.
+     =========================================================================== */
+  .letup {
+    position: absolute;
+    width: 100px;
+    height: 100px;
+    pointer-events: none;
+  }
+
+  /* percikan garis memancar dari pusat */
+  .letup i {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    width: var(--w, 1.5px);
+    height: var(--h, 26px);
+    background: linear-gradient(to top, rgba(255, 255, 255, 0), rgba(255, 255, 255, 0.95));
+    transform-origin: bottom center;
+    border-radius: 2px;
+    /* opacity:0 + fill-mode backwards WAJIB: tanpa ini, selama masa tunggu
+       animation-delay elemen memakai gaya dasarnya (tampak penuh & diam) —
+       muncul sebagai "percikan beku" saat halaman baru dimuat. */
+    opacity: 0;
+    animation: letup var(--dur, 3.8s) ease-out infinite backwards;
+  }
+  @keyframes letup {
+    0% {
+      transform: rotate(var(--r)) translateY(0) scaleY(0.15);
+      opacity: 0;
+    }
+    12% {
+      opacity: 1;
+    }
+    38% {
+      opacity: 0.95;
+    }
+    72%,
+    100% {
+      transform: rotate(var(--r)) translateY(var(--jauh, -36px)) scaleY(1);
+      opacity: 0;
+    }
+  }
+
+  /* pecahan: titik kecil yang terlempar lebih jauh lalu memudar */
+  .letup b {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    width: 3px;
+    height: 3px;
+    border-radius: 50%;
+    background: #fff;
+    transform-origin: center;
+    opacity: 0;
+    animation: pecah var(--dur, 3.8s) ease-out infinite backwards;
+  }
+  @keyframes pecah {
+    0% {
+      transform: rotate(var(--r)) translateY(0) scale(0.4);
+      opacity: 0;
+    }
+    18% {
+      opacity: 1;
+    }
+    60% {
+      opacity: 0.85;
+    }
+    100% {
+      transform: rotate(var(--r)) translateY(calc(var(--jauh, -36px) * 1.35)) translateX(2px) scale(0.5);
+      opacity: 0;
+    }
+  }
+
+  /* kilau lingkaran sekejap tepat di titik letupan */
+  .letup u {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    width: 8px;
+    height: 8px;
+    margin: -4px 0 0 -4px;
+    border-radius: 50%;
+    background: radial-gradient(circle, #fff 0%, rgba(255, 255, 255, 0) 70%);
+    opacity: 0;
+    animation: kilau var(--dur, 3.8s) ease-out infinite backwards;
+  }
+  @keyframes kilau {
+    0% {
+      transform: scale(0);
+      opacity: 0;
+    }
+    10% {
+      transform: scale(3.2);
+      opacity: 0.9;
+    }
+    30%,
+    100% {
+      transform: scale(5);
+      opacity: 0;
+    }
+  }
+
+  /* roket: garis tipis naik dari kaki hero sebelum letupan menyusul */
+  .roket {
+    position: absolute;
+    bottom: -6px;
+    width: 1.5px;
+    height: 22px;
+    border-radius: 2px;
+    background: linear-gradient(to top, rgba(255, 255, 255, 0), rgba(255, 255, 255, 0.85));
+    opacity: 0;
+    animation: naik var(--dur, 3.8s) ease-in infinite backwards;
+  }
+  @keyframes naik {
+    0% {
+      transform: translateY(0) scaleY(0.4);
+      opacity: 0;
+    }
+    8% {
+      opacity: 0.9;
+    }
+    30% {
+      transform: translateY(var(--tinggi, -70px)) scaleY(1);
+      opacity: 0.9;
+    }
+    34%,
+    100% {
+      transform: translateY(var(--tinggi, -70px)) scaleY(0);
+      opacity: 0;
+    }
+  }
+
+  /* Aksesibilitas: hentikan seluruh animasi kembang api bila pengguna
+     menyetel "gerak minimal" di sistem operasinya. */
+  @media (prefers-reduced-motion: reduce) {
+    .letup i,
+    .letup b,
+    .letup u {
+      animation: none;
+      opacity: 0.3;
+    }
+    .roket {
+      animation: none;
+      opacity: 0;
+    }
+  }
+
+  /* --- Umbul-umbul zigzag merah-putih di kaki kartu --- */
+  .umbul {
+    height: 12px;
+    background: repeating-linear-gradient(-45deg, #c8102e 0 12px, #ffffff 12px 24px);
+  }
+
+  /* --- Bendera mini di judul --- */
+  .bendera-mini {
+    display: inline-block;
+    width: 16px;
+    height: 11px;
+    border-radius: 2px;
+    background: linear-gradient(180deg, #c8102e 50%, #ffffff 50%);
+    box-shadow: 0 0 0 1px rgb(226 232 240);
+  }
+
+  /* --- Ikon di dalam field (kiri) --- */
+  .field-ikon {
+    position: absolute;
+    left: 14px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: rgb(148 163 184);
+    pointer-events: none;
+    transition: color 0.2s;
+  }
+  .field-wrap:focus-within .field-ikon {
+    color: #c8102e;
+  }
+
+  /* --- Animasi "sapu" berkilau pada tombol utama --- */
+  .btn-sapu {
+    position: relative;
+    overflow: hidden;
+  }
+  .btn-sapu::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 35%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.5), transparent);
+    animation: sapu 3.4s ease-in-out infinite;
+  }
+  @keyframes sapu {
+    0% {
+      transform: translateX(-130%) skewX(-18deg);
+    }
+    55%,
+    100% {
+      transform: translateX(280%) skewX(-18deg);
+    }
+  }
+
+  /* ===========================================================================
+     TOMBOL PASSKEY IKON-SAJA (sebaris di kanan tombol "Masuk")
+     ---------------------------------------------------------------------------
+     Kendala: markup tombol passkey TIDAK kita kendalikan. Macro base
+     passkeys.ftl (KC 26.7) merender, secara berurutan:
+       1. <form id="webauth">      berisi 6 input hidden
+       2. <form id="authn_select"> (opsional, saat authenticators tersedia)
+       3. <script type="module">   pemasang event listener
+       4. <a id="authenticateWebAuthnButton"
+             class="{kcButtonSecondaryClass} {kcButtonBlockClass} {kcMarginTopClass}">
+             teks label
+          </a>
+     Di login.ftl keempatnya kita bungkus dalam .aksi-masuk (flex) bersama tombol
+     "Masuk". Semua penataan di bawah ini MURNI CSS — tanpa JavaScript sama
+     sekali — karena Cloudflare Rocket Loader pernah merusak JS passkey.
+
+     Catatan aksesibilitas: base TIDAK menyediakan title/aria-label pada <a>
+     tersebut dan kita tidak boleh menambahkannya tanpa JS. Karena itu teks
+     label ${msg("webauthn-doAuthenticate")} TIDAK dihapus dari DOM, hanya
+     disembunyikan secara visual dengan teknik clip-rect (bukan font-size:0 atau
+     display:none) sehingga tetap terbaca pembaca layar sebagai nama aksesibel
+     tombol. Ikon sidik jari ditampilkan lewat ::before + mask-image data-URI
+     (SVG Lucide "fingerprint" yang sama dengan preview), sehingga warnanya
+     mengikuti currentColor dan tidak mengganggu teks tersembunyi.
+     =========================================================================== */
+  .aksi-masuk {
+    display: flex;
+    align-items: stretch;
+    gap: 10px;
+  }
+
+  /* Anak-anak non-tombol dari macro passkeys (form hidden + script) tidak boleh
+     ikut jadi flex item — kalau tidak, muncul kolom kosong di antara tombol. */
+  .aksi-masuk > form#webauth,
+  .aksi-masuk > form#authn_select,
+  .aksi-masuk > script {
+    display: none;
+  }
+
+  /* Kotak ikon 52px. Selector memakai .aksi-masuk + #id agar spesifisitasnya
+     mengalahkan utility w-full / mt-3 yang datang dari kcButtonBlockClass dan
+     kcMarginTopClass (dua properti itu dipakai halaman lain, jadi nilainya di
+     theme.properties sengaja TIDAK diubah). */
+  .aksi-masuk #authenticateWebAuthnButton {
+    position: relative;
+    flex: 0 0 auto;
+    width: 52px;
+    min-width: 52px;
+    margin-top: 0;
+    padding: 0;
+    border: 0;
+    border-radius: 13px;
+    color: #fff;
+    text-decoration: none;
+    background-image: linear-gradient(to right, #9e0b23, #c8102e, #e5405a);
+    box-shadow:
+      0 10px 15px -3px rgb(200 16 46 / 0.3),
+      0 4px 6px -4px rgb(200 16 46 / 0.3);
+    transition:
+      transform 0.15s,
+      filter 0.15s;
+    /* Sembunyikan teks label secara visual TANPA melepasnya dari accessibility
+       tree — inilah nama aksesibel tombol. */
+    overflow: hidden;
+    text-indent: -9999px;
+    white-space: nowrap;
+  }
+
+  .aksi-masuk #authenticateWebAuthnButton:hover {
+    transform: translateY(-2px);
+    filter: brightness(1.05);
+  }
+  .aksi-masuk #authenticateWebAuthnButton:active {
+    transform: translateY(0);
+  }
+  .aksi-masuk #authenticateWebAuthnButton:focus-visible {
+    outline: 2px solid #fff;
+    outline-offset: 2px;
+  }
+
+  /* Ikon sidik jari (lucide: fingerprint) — data-URI SVG dipakai sebagai mask
+     agar bisa diwarnai currentColor dan tidak terpengaruh text-indent. */
+  .aksi-masuk #authenticateWebAuthnButton::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    margin: auto;
+    width: 22px;
+    height: 22px;
+    text-indent: 0;
+    background-color: currentColor;
+    -webkit-mask-image: var(--ikon-sidik-jari);
+    mask-image: var(--ikon-sidik-jari);
+    -webkit-mask-repeat: no-repeat;
+    mask-repeat: no-repeat;
+    -webkit-mask-position: center;
+    mask-position: center;
+    -webkit-mask-size: contain;
+    mask-size: contain;
+  }
+
+  /* --- Ikon mata untuk tombol tampil/sembunyi kata sandi ---
+     passwordVisibility.js menukar class .ikon-mata <-> .ikon-mata-coret pada
+     elemen <i>; keduanya digambar lewat mask-image sehingga tidak butuh
+     FontAwesome. Nilai class-nya berasal dari kcFormPasswordVisibilityIconShow
+     / ...IconHide di theme.properties. */
+  .ikon-mata,
+  .ikon-mata-coret {
+    display: inline-block;
+    width: 18px;
+    height: 18px;
+    background-color: currentColor;
+    -webkit-mask-repeat: no-repeat;
+    mask-repeat: no-repeat;
+    -webkit-mask-position: center;
+    mask-position: center;
+    -webkit-mask-size: contain;
+    mask-size: contain;
+  }
+  .ikon-mata {
+    -webkit-mask-image: var(--ikon-mata);
+    mask-image: var(--ikon-mata);
+  }
+  .ikon-mata-coret {
+    -webkit-mask-image: var(--ikon-mata-coret);
+    mask-image: var(--ikon-mata-coret);
+  }
+
+  /* --- Ikon generik berbasis mask untuk properti kc*Icon lain ---
+     Dipakai oleh template BASE Keycloak yang tidak kita override (alert
+     feedback, daftar OTP, select-authenticator, dsb.) — lihat komentar di
+     theme.properties. Semua memakai SVG Lucide yang identik dengan preview. */
+  .ikon-mask {
+    display: inline-block;
+    width: 1em;
+    height: 1em;
+    background-color: currentColor;
+    -webkit-mask-repeat: no-repeat;
+    mask-repeat: no-repeat;
+    -webkit-mask-position: center;
+    mask-position: center;
+    -webkit-mask-size: contain;
+    mask-size: contain;
+    vertical-align: -0.125em;
+  }
+  .ikon-info {
+    -webkit-mask-image: var(--ikon-info);
+    mask-image: var(--ikon-info);
+  }
+  .ikon-peringatan {
+    -webkit-mask-image: var(--ikon-peringatan);
+    mask-image: var(--ikon-peringatan);
+  }
+  .ikon-galat {
+    -webkit-mask-image: var(--ikon-galat);
+    mask-image: var(--ikon-galat);
+  }
+  .ikon-sukses {
+    -webkit-mask-image: var(--ikon-sukses);
+    mask-image: var(--ikon-sukses);
+  }
+  .ikon-muter {
+    -webkit-mask-image: var(--ikon-muter);
+    mask-image: var(--ikon-muter);
+  }
+  .ikon-ponsel {
+    -webkit-mask-image: var(--ikon-ponsel);
+    mask-image: var(--ikon-ponsel);
+  }
+  .ikon-kunci {
+    -webkit-mask-image: var(--ikon-kunci);
+    mask-image: var(--ikon-kunci);
+  }
+  .ikon-sidik-jari {
+    -webkit-mask-image: var(--ikon-sidik-jari);
+    mask-image: var(--ikon-sidik-jari);
+  }
+  .ikon-panah-kanan {
+    -webkit-mask-image: var(--ikon-panah-kanan);
+    mask-image: var(--ikon-panah-kanan);
+  }
+  .ikon-daftar-centang {
+    -webkit-mask-image: var(--ikon-daftar-centang);
+    mask-image: var(--ikon-daftar-centang);
+  }
+}
+
+/* =============================================================================
+   PUSTAKA IKON — SVG Lucide sebagai data-URI, dipakai lewat mask-image.
+   Sumber path SVG = objek ICON di preview/build-preview.js (identik dengan
+   preview). Disimpan sebagai custom property di :root supaya satu ikon bisa
+   dipakai berulang tanpa menduplikasi data-URI yang panjang.
+   Catatan: '#' pada warna tidak dipakai di sini (semua stroke='currentColor'
+   diganti '%23fff' agar aman di data-URI; pewarnaan asli datang dari
+   background-color + mask).
+   ============================================================================= */
+:root {
+  --ikon-sidik-jari: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23fff' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M2 12C2 6.5 6.5 2 12 2a10 10 0 0 1 8 4'/%3E%3Cpath d='M5 19.5C5.5 18 6 15 6 12a6 6 0 0 1 .34-2'/%3E%3Cpath d='M17.29 21.02c.12-.6.43-2.3.5-3.02'/%3E%3Cpath d='M12 10a2 2 0 0 0-2 2c0 1.02-.1 2.51-.26 4'/%3E%3Cpath d='M8.65 22c.21-.66.45-1.32.57-2'/%3E%3Cpath d='M14 13.12c0 2.38 0 6.38-1 8.88'/%3E%3Cpath d='M2 16h.01'/%3E%3Cpath d='M21.8 16c.2-2 .131-5.354 0-6'/%3E%3Cpath d='M9 6.8a6 6 0 0 1 9 5.2c0 .47 0 1.17-.02 2'/%3E%3C/svg%3E");
+
+  --ikon-mata: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23fff' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M2.062 12.348a1 1 0 0 1 0-.696 10.75 10.75 0 0 1 19.876 0 1 1 0 0 1 0 .696 10.75 10.75 0 0 1-19.876 0'/%3E%3Ccircle cx='12' cy='12' r='3'/%3E%3C/svg%3E");
+
+  /* lucide: eye-off */
+  --ikon-mata-coret: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23fff' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M10.733 5.076a10.744 10.744 0 0 1 11.205 6.575 1 1 0 0 1 0 .696 10.747 10.747 0 0 1-1.444 2.49'/%3E%3Cpath d='M14.084 14.158a3 3 0 0 1-4.242-4.242'/%3E%3Cpath d='M17.479 17.499a10.75 10.75 0 0 1-15.417-5.151 1 1 0 0 1 0-.696 10.75 10.75 0 0 1 4.446-5.143'/%3E%3Cpath d='m2 2 20 20'/%3E%3C/svg%3E");
+
+  --ikon-info: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23fff' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Ccircle cx='12' cy='12' r='10'/%3E%3Cpath d='M12 16v-4'/%3E%3Cpath d='M12 8h.01'/%3E%3C/svg%3E");
+
+  --ikon-peringatan: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23fff' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3'/%3E%3Cpath d='M12 9v4'/%3E%3Cpath d='M12 17h.01'/%3E%3C/svg%3E");
+
+  --ikon-galat: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23fff' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Ccircle cx='12' cy='12' r='10'/%3E%3Cpath d='M12 8v4'/%3E%3Cpath d='M12 16h.01'/%3E%3C/svg%3E");
+
+  --ikon-sukses: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23fff' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Ccircle cx='12' cy='12' r='10'/%3E%3Cpath d='m9 12 2 2 4-4'/%3E%3C/svg%3E");
+
+  --ikon-muter: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23fff' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M3 12a9 9 0 0 1 9-9 9.75 9.75 0 0 1 6.74 2.74L21 8'/%3E%3Cpath d='M21 3v5h-5'/%3E%3Cpath d='M21 12a9 9 0 0 1-9 9 9.75 9.75 0 0 1-6.74-2.74L3 16'/%3E%3Cpath d='M8 16H3v5'/%3E%3C/svg%3E");
+
+  --ikon-ponsel: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23fff' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Crect x='5' y='2' width='14' height='20' rx='2'/%3E%3Cpath d='M12 18h.01'/%3E%3C/svg%3E");
+
+  --ikon-kunci: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23fff' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m15.5 7.5 2.3 2.3a1 1 0 0 0 1.4 0l2.1-2.1a1 1 0 0 0 0-1.4L19 4'/%3E%3Cpath d='m21 2-9.6 9.6'/%3E%3Ccircle cx='7.5' cy='15.5' r='5.5'/%3E%3C/svg%3E");
+
+  --ikon-panah-kanan: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23fff' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m9 18 6-6-6-6'/%3E%3C/svg%3E");
+
+  --ikon-daftar-centang: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23fff' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m3 17 2 2 4-4'/%3E%3Cpath d='m3 7 2 2 4-4'/%3E%3Cpath d='M13 6h8'/%3E%3Cpath d='M13 12h8'/%3E%3Cpath d='M13 18h8'/%3E%3C/svg%3E");
+}

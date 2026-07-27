@@ -8,7 +8,13 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build:asn-v2": "tailwindcss -c keycloak/themes/asn-v2/tailwind.config.js -i keycloak/themes/asn-v2/login/resources/css/input.css -o keycloak/themes/asn-v2/login/resources/css/styles.css --minify",
+    "watch:asn-v2": "tailwindcss -c keycloak/themes/asn-v2/tailwind.config.js -i keycloak/themes/asn-v2/login/resources/css/input.css -o keycloak/themes/asn-v2/login/resources/css/styles.css --watch",
+    "build:agustusan": "tailwindcss -c keycloak/themes/agustusan-2026/tailwind.config.js -i keycloak/themes/agustusan-2026/login/resources/css/input.css -o keycloak/themes/agustusan-2026/login/resources/css/styles.css --minify",
+    "watch:agustusan": "tailwindcss -c keycloak/themes/agustusan-2026/tailwind.config.js -i keycloak/themes/agustusan-2026/login/resources/css/input.css -o keycloak/themes/agustusan-2026/login/resources/css/styles.css --watch",
+    "preview:agustusan": "node keycloak/themes/agustusan-2026/preview/build-preview.js",
+    "build": "npm run build:asn-v2 && npm run build:agustusan"
   },
   "repository": {
     "type": "git",

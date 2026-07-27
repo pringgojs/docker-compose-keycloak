@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<!--
+  PREVIEW STATIS — theme agustusan-2026 · HUT RI ke-81 · Kisara SSO
+  Dibuat otomatis oleh preview/build-preview.js. Jangan diedit manual.
+  Dark mode AUTO ikut sistem (darkMode:'media') — tidak ada tombol toggle.
+-->
+<html lang="id" class="h-full">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Perbarui Informasi Akun — preview agustusan-2026</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+  tailwind.config = {
+    darkMode: 'media',
+    theme: { extend: { colors: { merah: { DEFAULT:'#c8102e', tua:'#9e0b23', muda:'#e5405a' } } } }
+  };
+</script>
+<style>
+  /* Komponen yg tak praktis jadi utility (sama dgn input.css theme) */
+  .hero-pattern::before{content:"";position:absolute;inset:0;background-image:radial-gradient(rgba(255,255,255,.10) 1.5px,transparent 1.5px);background-size:18px 18px;opacity:.45}
+
+  /* --- Kembang api hero (varian C3): murni CSS, tanpa JavaScript ---
+     opacity:0 + fill-mode "backwards" WAJIB di tiap elemen ber-animation-delay.
+     Tanpa itu, selama masa tunggu delay elemen memakai gaya dasarnya (tampak
+     penuh & DIAM) — gejalanya "roket beku menggantung" saat fresh reload. */
+  .letup{position:absolute;width:100px;height:100px;pointer-events:none}
+  .letup i{position:absolute;left:50%;top:50%;width:var(--w,1.5px);height:var(--h,26px);background:linear-gradient(to top,rgba(255,255,255,0),rgba(255,255,255,.95));transform-origin:bottom center;border-radius:2px;opacity:0;animation:letup var(--dur,3.8s) ease-out infinite backwards}
+  @keyframes letup{0%{transform:rotate(var(--r)) translateY(0) scaleY(.15);opacity:0}12%{opacity:1}38%{opacity:.95}72%,100%{transform:rotate(var(--r)) translateY(var(--jauh,-36px)) scaleY(1);opacity:0}}
+  .letup b{position:absolute;left:50%;top:50%;width:3px;height:3px;border-radius:50%;background:#fff;transform-origin:center;opacity:0;animation:pecah var(--dur,3.8s) ease-out infinite backwards}
+  @keyframes pecah{0%{transform:rotate(var(--r)) translateY(0) scale(.4);opacity:0}18%{opacity:1}60%{opacity:.85}100%{transform:rotate(var(--r)) translateY(calc(var(--jauh,-36px) * 1.35)) translateX(2px) scale(.5);opacity:0}}
+  .letup u{position:absolute;left:50%;top:50%;width:8px;height:8px;margin:-4px 0 0 -4px;border-radius:50%;background:radial-gradient(circle,#fff 0%,rgba(255,255,255,0) 70%);opacity:0;animation:kilau var(--dur,3.8s) ease-out infinite backwards}
+  @keyframes kilau{0%{transform:scale(0);opacity:0}10%{transform:scale(3.2);opacity:.9}30%,100%{transform:scale(5);opacity:0}}
+  .roket{position:absolute;bottom:-6px;width:1.5px;height:22px;border-radius:2px;background:linear-gradient(to top,rgba(255,255,255,0),rgba(255,255,255,.85));opacity:0;animation:naik var(--dur,3.8s) ease-in infinite backwards}
+  @keyframes naik{0%{transform:translateY(0) scaleY(.4);opacity:0}8%{opacity:.9}30%{transform:translateY(var(--tinggi,-70px)) scaleY(1);opacity:.9}34%,100%{transform:translateY(var(--tinggi,-70px)) scaleY(0);opacity:0}}
+  @media (prefers-reduced-motion: reduce){.letup i,.letup b,.letup u{animation:none;opacity:.3}.roket{animation:none;opacity:0}}
+
+  .umbul{height:12px;background:repeating-linear-gradient(-45deg,#c8102e 0 12px,#fff 12px 24px)}
+  .bendera-mini{display:inline-block;width:16px;height:11px;border-radius:2px;background:linear-gradient(180deg,#c8102e 50%,#fff 50%);box-shadow:0 0 0 1px rgb(226 232 240)}
+  .field-ikon{position:absolute;left:14px;top:50%;transform:translateY(-50%);color:rgb(148 163 184);pointer-events:none;transition:color .2s}
+  .field-wrap:focus-within .field-ikon{color:#c8102e}
+  .btn-sapu{position:relative;overflow:hidden}
+  .btn-sapu::after{content:"";position:absolute;top:0;left:0;width:35%;height:100%;background:linear-gradient(90deg,transparent,rgba(255,255,255,.5),transparent);animation:sapu 3.4s ease-in-out infinite}
+  @keyframes sapu{0%{transform:translateX(-130%) skewX(-18deg)}55%,100%{transform:translateX(280%) skewX(-18deg)}}
+</style>
+</head>
+<body class="min-h-screen bg-gradient-to-b from-rose-50 to-slate-50 dark:from-[#1a0508] dark:to-neutral-950 text-slate-800 dark:text-neutral-100 flex items-center justify-center py-8 px-4">
+    <div class="w-full max-w-md bg-white dark:bg-neutral-900 rounded-[22px] shadow-[0_20px_50px_-20px_rgba(158,11,35,.35)] ring-1 ring-slate-100 dark:ring-white/10 overflow-hidden">
+
+      <!-- hero -->
+      <div class="hero-pattern relative px-6 pt-6 pb-9 text-center text-white bg-gradient-to-br from-merah-tua via-merah to-merah-muda overflow-hidden">
+        <div class="roket" style="left:18%;--tinggi:-64px;animation-delay:0s"></div>
+        <div class="letup" style="left:calc(18% - 50px);top:14px;--jauh:-42px">
+          <u style="animation-delay:1.15s"></u>
+          <i style="--r:0deg;animation-delay:1.15s"></i>
+          <i style="--r:30deg;animation-delay:1.18s"></i>
+          <i style="--r:60deg;animation-delay:1.21s"></i>
+          <i style="--r:90deg;animation-delay:1.24s"></i>
+          <i style="--r:120deg;animation-delay:1.27s"></i>
+          <i style="--r:150deg;animation-delay:1.30s"></i>
+          <i style="--r:180deg;animation-delay:1.33s"></i>
+          <i style="--r:210deg;animation-delay:1.36s"></i>
+          <i style="--r:240deg;animation-delay:1.39s"></i>
+          <i style="--r:270deg;animation-delay:1.42s"></i>
+          <i style="--r:300deg;animation-delay:1.45s"></i>
+          <i style="--r:330deg;animation-delay:1.48s"></i>
+          <b style="--r:45deg;animation-delay:1.25s"></b>
+          <b style="--r:135deg;animation-delay:1.31s"></b>
+          <b style="--r:225deg;animation-delay:1.37s"></b>
+          <b style="--r:315deg;animation-delay:1.43s"></b>
+        </div>
+        <div class="roket" style="right:22%;--tinggi:-56px;animation-delay:1.7s"></div>
+        <div class="letup" style="right:calc(22% - 50px);top:26px;--jauh:-34px">
+          <u style="animation-delay:2.85s"></u>
+          <i style="--r:0deg;animation-delay:2.85s"></i>
+          <i style="--r:36deg;animation-delay:2.88s"></i>
+          <i style="--r:72deg;animation-delay:2.91s"></i>
+          <i style="--r:108deg;animation-delay:2.94s"></i>
+          <i style="--r:144deg;animation-delay:2.97s"></i>
+          <i style="--r:180deg;animation-delay:3.00s"></i>
+          <i style="--r:216deg;animation-delay:3.03s"></i>
+          <i style="--r:252deg;animation-delay:3.06s"></i>
+          <i style="--r:288deg;animation-delay:3.09s"></i>
+          <i style="--r:324deg;animation-delay:3.12s"></i>
+          <b style="--r:90deg;animation-delay:2.95s"></b>
+          <b style="--r:270deg;animation-delay:3.01s"></b>
+        </div>
+        <div class="letup" style="left:-28px;bottom:-24px;--jauh:-30px">
+          <i style="--r:0deg;--h:20px;animation-delay:0.60s"></i>
+          <i style="--r:51deg;--h:20px;animation-delay:0.63s"></i>
+          <i style="--r:103deg;--h:20px;animation-delay:0.66s"></i>
+          <i style="--r:154deg;--h:20px;animation-delay:0.69s"></i>
+          <i style="--r:206deg;--h:20px;animation-delay:0.72s"></i>
+          <i style="--r:257deg;--h:20px;animation-delay:0.75s"></i>
+          <i style="--r:309deg;--h:20px;animation-delay:0.78s"></i>
+        </div>
+        <div class="letup" style="right:-26px;top:-26px;--jauh:-28px">
+          <i style="--r:0deg;--h:18px;animation-delay:2.20s"></i>
+          <i style="--r:51deg;--h:18px;animation-delay:2.23s"></i>
+          <i style="--r:103deg;--h:18px;animation-delay:2.26s"></i>
+          <i style="--r:154deg;--h:18px;animation-delay:2.29s"></i>
+          <i style="--r:206deg;--h:18px;animation-delay:2.32s"></i>
+          <i style="--r:257deg;--h:18px;animation-delay:2.35s"></i>
+          <i style="--r:309deg;--h:18px;animation-delay:2.38s"></i>
+        </div>
+        <span class="relative z-10 inline-block bg-white rounded-2xl px-3 py-2 shadow-lg">
+          <img src="../login/resources/img/hut-ri-81.png" alt="HUT RI ke-81" class="h-14 w-auto block" />
+        </span>
+        <h1 class="relative z-10 mt-3 mb-0.5 text-[17px] font-extrabold">Kisara SSO</h1>
+        <p class="relative z-10 text-[11px] text-white/85">Kabupaten Ponorogo</p>
+      </div>
+
+      <!-- body -->
+      <div class="relative z-20 -mt-3.5 rounded-t-[20px] bg-white dark:bg-neutral-900 p-6">
+        <div class="text-[17px] font-bold text-slate-900 dark:text-white text-center">Perbarui Informasi Akun</div>
+        <p class="text-xs text-slate-400 dark:text-neutral-500 text-center mt-1 mb-4">Lengkapi data berikut sebelum melanjutkan. Tanda <span class="text-merah font-bold">*</span> wajib diisi.</p>
+
+        <label class="block text-[13px] font-semibold text-slate-700 dark:text-neutral-300 mb-1.5">Email <span class="text-merah">*</span></label>
+          <div class="field-wrap relative mb-4">
+            <input type="email" placeholder="nama@ponorogo.go.id" value="pegawai@ponorogo.go.id" class="w-full py-3 pl-[42px] pr-3.5 text-sm rounded-xl border-[1.5px] border-slate-200 dark:border-neutral-700 bg-slate-50 dark:bg-neutral-950 text-slate-800 dark:text-neutral-100 placeholder-slate-300 dark:placeholder-neutral-600 focus:outline-none focus:border-merah focus:bg-white dark:focus:bg-neutral-900 focus:ring-4 focus:ring-merah/10 transition" />
+            <svg class="field-ikon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+            
+          </div>
+
+        <label class="block text-[13px] font-semibold text-slate-700 dark:text-neutral-300 mb-1.5">Nama Depan <span class="text-merah">*</span></label>
+          <div class="field-wrap relative mb-4">
+            <input type="text" placeholder="Nama depan" value="Budi" class="w-full py-3 pl-[42px] pr-3.5 text-sm rounded-xl border-[1.5px] border-slate-200 dark:border-neutral-700 bg-slate-50 dark:bg-neutral-950 text-slate-800 dark:text-neutral-100 placeholder-slate-300 dark:placeholder-neutral-600 focus:outline-none focus:border-merah focus:bg-white dark:focus:bg-neutral-900 focus:ring-4 focus:ring-merah/10 transition" />
+            <svg class="field-ikon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+            
+          </div>
+
+        <label class="block text-[13px] font-semibold text-slate-700 dark:text-neutral-300 mb-1.5">Nama Belakang <span class="text-merah">*</span></label>
+          <div class="field-wrap relative mb-4">
+            <input type="text" placeholder="Nama belakang" value="Santoso" class="w-full py-3 pl-[42px] pr-3.5 text-sm rounded-xl border-[1.5px] border-slate-200 dark:border-neutral-700 bg-slate-50 dark:bg-neutral-950 text-slate-800 dark:text-neutral-100 placeholder-slate-300 dark:placeholder-neutral-600 focus:outline-none focus:border-merah focus:bg-white dark:focus:bg-neutral-900 focus:ring-4 focus:ring-merah/10 transition" />
+            <svg class="field-ikon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+            
+          </div>
+
+        <button type="button" class="btn-sapu w-full inline-flex items-center justify-center gap-2 py-3 rounded-[13px] text-[15px] font-bold text-white bg-gradient-to-r from-merah-tua via-merah to-merah-muda shadow-lg shadow-merah/30 hover:-translate-y-0.5 transition">Simpan &amp; Lanjutkan
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button>
+      </div>
+
+      <div class="umbul"></div>
+    </div>
+</body>
+</html>
