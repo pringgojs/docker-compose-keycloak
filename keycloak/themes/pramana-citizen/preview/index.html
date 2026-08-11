@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="id" class="h-full">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Preview theme PRAMANA — realm warga</title>
+<link rel="stylesheet" href="../login/resources/css/styles.css">
+</head>
+<body class="min-h-screen font-sans bg-slate-50 dark:bg-neutral-950 text-slate-800 dark:text-neutral-100 py-10 px-4">
+  <div class="max-w-3xl mx-auto">
+    <h1 class="text-2xl font-extrabold tracking-tight">Preview theme <span class="text-marun-700 dark:text-marun-400">pramana-citizen</span></h1>
+    <p class="mt-1.5 text-[13px] text-slate-500 dark:text-neutral-400 leading-relaxed">
+      Halaman masuk &amp; daftar warga · realm <code class="font-mono text-marun-700 dark:text-marun-400">ponorogo-citizen</code>.
+      Replika visual statis — belum ada yang ter-deploy ke Keycloak.
+    </p>
+    <div class="mt-3 flex items-start gap-2.5 rounded-xl border-[1.5px] border-amber-200 dark:border-amber-500/30 bg-amber-50 dark:bg-amber-500/10 p-3 text-xs text-amber-700 dark:text-amber-300 leading-relaxed">
+      <span class="shrink-0 mt-px"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3"/><path d="M12 9v4"/><path d="M12 17h.01"/></svg></span>
+      <span><b>Mode gelap mengikuti pengaturan sistem operasi.</b> Ubah tema terang/gelap di pengaturan perangkat untuk melihat keduanya — tidak ada tombol toggle, karena warga tidak akan mencarinya di halaman login.</span>
+    </div>
+    <div class="mt-6 grid gap-3 sm:grid-cols-2">
+      <a href="login.html" class="block p-4 rounded-2xl border-[1.5px] border-slate-200 dark:border-neutral-700 bg-white dark:bg-neutral-900 hover:border-marun-700 hover:-translate-y-0.5 transition no-underline">
+        <div class="text-sm font-bold text-slate-800 dark:text-neutral-100">Masuk</div>
+        <div class="mt-1 text-[12px] text-slate-500 dark:text-neutral-400 leading-relaxed">Google, email + kata sandi, dan sidik jari (passkey)</div>
+        <div class="mt-2 text-[11px] font-mono text-marun-700 dark:text-marun-400">login.html</div>
+      </a>
+      <a href="register.html" class="block p-4 rounded-2xl border-[1.5px] border-slate-200 dark:border-neutral-700 bg-white dark:bg-neutral-900 hover:border-marun-700 hover:-translate-y-0.5 transition no-underline">
+        <div class="text-sm font-bold text-slate-800 dark:text-neutral-100">Daftar</div>
+        <div class="mt-1 text-[12px] text-slate-500 dark:text-neutral-400 leading-relaxed">Registrasi mandiri — form dirender Keycloak, bukan aplikasi</div>
+        <div class="mt-2 text-[11px] font-mono text-marun-700 dark:text-marun-400">register.html</div>
+      </a>
+      <a href="login-error.html" class="block p-4 rounded-2xl border-[1.5px] border-slate-200 dark:border-neutral-700 bg-white dark:bg-neutral-900 hover:border-marun-700 hover:-translate-y-0.5 transition no-underline">
+        <div class="text-sm font-bold text-slate-800 dark:text-neutral-100">Masuk gagal</div>
+        <div class="mt-1 text-[12px] text-slate-500 dark:text-neutral-400 leading-relaxed">Pesan galat Bahasa Indonesia — bukan "Invalid username or password"</div>
+        <div class="mt-2 text-[11px] font-mono text-marun-700 dark:text-marun-400">login-error.html</div>
+      </a>
+      <a href="login-reset-password.html" class="block p-4 rounded-2xl border-[1.5px] border-slate-200 dark:border-neutral-700 bg-white dark:bg-neutral-900 hover:border-marun-700 hover:-translate-y-0.5 transition no-underline">
+        <div class="text-sm font-bold text-slate-800 dark:text-neutral-100">Lupa kata sandi</div>
+        <div class="mt-1 text-[12px] text-slate-500 dark:text-neutral-400 leading-relaxed">Jalur pemulihan akun</div>
+        <div class="mt-2 text-[11px] font-mono text-marun-700 dark:text-marun-400">login-reset-password.html</div>
+      </a>
+      <a href="login-verify-email.html" class="block p-4 rounded-2xl border-[1.5px] border-slate-200 dark:border-neutral-700 bg-white dark:bg-neutral-900 hover:border-marun-700 hover:-translate-y-0.5 transition no-underline">
+        <div class="text-sm font-bold text-slate-800 dark:text-neutral-100">Verifikasi email</div>
+        <div class="mt-1 text-[12px] text-slate-500 dark:text-neutral-400 leading-relaxed">Wajib untuk registrasi mandiri</div>
+        <div class="mt-2 text-[11px] font-mono text-marun-700 dark:text-marun-400">login-verify-email.html</div>
+      </a>
+      <a href="webauthn-register.html" class="block p-4 rounded-2xl border-[1.5px] border-slate-200 dark:border-neutral-700 bg-white dark:bg-neutral-900 hover:border-marun-700 hover:-translate-y-0.5 transition no-underline">
+        <div class="text-sm font-bold text-slate-800 dark:text-neutral-100">Daftar passkey</div>
+        <div class="mt-1 text-[12px] text-slate-500 dark:text-neutral-400 leading-relaxed">Opsional — ada tombol "Nanti saja", tidak dipaksakan</div>
+        <div class="mt-2 text-[11px] font-mono text-marun-700 dark:text-marun-400">webauthn-register.html</div>
+      </a>
+      <a href="login-page-expired.html" class="block p-4 rounded-2xl border-[1.5px] border-slate-200 dark:border-neutral-700 bg-white dark:bg-neutral-900 hover:border-marun-700 hover:-translate-y-0.5 transition no-underline">
+        <div class="text-sm font-bold text-slate-800 dark:text-neutral-100">Sesi berakhir</div>
+        <div class="mt-1 text-[12px] text-slate-500 dark:text-neutral-400 leading-relaxed">Pesan jelas, bukan "An error occurred"</div>
+        <div class="mt-2 text-[11px] font-mono text-marun-700 dark:text-marun-400">login-page-expired.html</div>
+      </a>
+      <a href="error.html" class="block p-4 rounded-2xl border-[1.5px] border-slate-200 dark:border-neutral-700 bg-white dark:bg-neutral-900 hover:border-marun-700 hover:-translate-y-0.5 transition no-underline">
+        <div class="text-sm font-bold text-slate-800 dark:text-neutral-100">Galat</div>
+        <div class="mt-1 text-[12px] text-slate-500 dark:text-neutral-400 leading-relaxed">Menjelaskan jalan keluar, bukan kode teknis</div>
+        <div class="mt-2 text-[11px] font-mono text-marun-700 dark:text-marun-400">error.html</div>
+      </a></div>
+    <p class="mt-8 text-[11px] text-slate-400 dark:text-neutral-500 leading-relaxed">
+      Palet: marun <code class="font-mono">#7A1F1F</code> · emas <code class="font-mono">#F5C518</code> —
+      docs/teknis/12-design-system.md. Ikon Lucide inline, tanpa emoji. Seluruh teks Bahasa Indonesia.
+    </p>
+  </div>
+</body>
+</html>
