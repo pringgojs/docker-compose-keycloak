@@ -4,13 +4,16 @@ const path = require("path");
 // Config theme pramana-citizen — halaman masuk & daftar WARGA (realm
 // ponorogo-citizen), TERPISAH dari asn-v2 yang melayani pegawai.
 //
-// darkMode "media" mengikuti pola agustusan-2026: ikut preferensi sistem,
-// tanpa tombol toggle. Warga tidak akan mencari tombol tema di halaman login.
+// ACUAN DESAIN: ponorogo-super-apps/mockup/src/screens/Login.jsx dan kawan-
+// kawannya. Palet disalin dari mockup/src/index.css supaya nilainya persis
+// sama — bukan diketik ulang dari tabel dokumen.
 //
 // Memindai .ftl, theme.properties (utility hidup di kc*Class), dan preview
 // HTML. Path di-anchor ke __dirname supaya build benar dari CWD mana pun.
 module.exports = {
-  darkMode: "media",
+  // TANPA dark mode. Mockup PRAMANA hanya punya mode terang, dan layar masuk
+  // sudah berlatar marun gelap dengan sendirinya. Menambahkan varian dark:
+  // berarti mengarang tampilan yang belum pernah dirancang.
   content: [
     path.join(__dirname, "login/**/*.ftl"),
     path.join(__dirname, "login/theme.properties"),

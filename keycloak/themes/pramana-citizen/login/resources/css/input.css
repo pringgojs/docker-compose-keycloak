@@ -10,7 +10,8 @@
    theme.properties. Di sini HANYA yang tidak praktis jadi utility: pola hero,
    ikon dalam field, dan ikon mask untuk halaman base yang tidak di-override.
 
-   Dark mode = "media" (ikut sistem) — lihat tailwind.config.js.
+   TANPA dark mode: mockup PRAMANA hanya punya mode terang, dan layar masuk
+   sudah berlatar marun gelap dengan sendirinya.
 
    CATATAN: halaman ini SATU-SATUNYA halaman web yang dilihat warga pada Fase 1
    (tidak ada portal web). Karena itu ia harus terasa milik Pemkab, dan harus
@@ -56,94 +57,11 @@
 ----------------------------------------------------------------------------- */
 
 @layer components {
-  /* --- Hero: pola bintik halus di atas gradien marun --------------------- */
-  .hero-pattern::before {
-    content: "";
-    position: absolute;
-    inset: 0;
-    background-image: radial-gradient(rgba(255, 255, 255, 0.12) 1.5px, transparent 1.5px);
-    background-size: 18px 18px;
-    opacity: 0.5;
-  }
-
-  /* --- Kipas dadak merak, disederhanakan -------------------------------- *
-     Bentuk pengingat Reog di hero, digambar murni CSS: tanpa gambar, tanpa
-     JavaScript. Sengaja samar (opacity rendah) — ini latar, bukan logo.     */
-  .kipas-merak {
-    position: absolute;
-    left: 50%;
-    top: -38px;
-    width: 220px;
-    height: 220px;
-    transform: translateX(-50%);
-    pointer-events: none;
-    opacity: 0.18;
-    background: conic-gradient(
-      from 200deg at 50% 100%,
-      transparent 0deg,
-      #f5c518 8deg,
-      transparent 16deg,
-      transparent 22deg,
-      #f5c518 30deg,
-      transparent 38deg,
-      transparent 44deg,
-      #f5c518 52deg,
-      transparent 60deg,
-      transparent 66deg,
-      #f5c518 74deg,
-      transparent 82deg,
-      transparent 88deg,
-      #f5c518 96deg,
-      transparent 104deg,
-      transparent 110deg,
-      #f5c518 118deg,
-      transparent 126deg,
-      transparent 140deg
-    );
-    -webkit-mask-image: radial-gradient(circle at 50% 100%, transparent 34%, #000 36%, #000 78%, transparent 80%);
-    mask-image: radial-gradient(circle at 50% 100%, transparent 34%, #000 36%, #000 78%, transparent 80%);
-  }
-
-  /* --- Field dengan ikon di kiri ---------------------------------------- */
-  .field-wrap {
-    position: relative;
-  }
-  .field-wrap .field-ikon {
-    position: absolute;
-    left: 13px;
-    top: 50%;
-    transform: translateY(-50%);
-    color: #cbd5e1;
-    pointer-events: none;
-    transition: color 0.15s ease;
-  }
+  /* --- Kolom isian dengan ikon kiri -------------------------------------- *
+     Pola mockup (VerifikasiNik.jsx): kotak putih ber-ring zinc-200, ikon abu
+     di kiri, ring menebal jadi marun saat fokus.                             */
   .field-wrap:focus-within .field-ikon {
     color: #a32c2c;
-  }
-  @media (prefers-color-scheme: dark) {
-    .field-wrap .field-ikon {
-      color: #525252;
-    }
-    .field-wrap:focus-within .field-ikon {
-      color: #e57e7e;
-    }
-  }
-
-  /* --- Tombol utama: kilau sapu saat hover ------------------------------ */
-  .btn-sapu {
-    position: relative;
-    overflow: hidden;
-  }
-  .btn-sapu::after {
-    content: "";
-    position: absolute;
-    inset: 0;
-    background: linear-gradient(120deg, transparent 30%, rgba(255, 255, 255, 0.28) 50%, transparent 70%);
-    transform: translateX(-100%);
-    transition: transform 0.6s ease;
-  }
-  .btn-sapu:hover::after {
-    transform: translateX(100%);
   }
 
   /* --- Ikon mask untuk halaman BASE yang tidak di-override --------------- *
