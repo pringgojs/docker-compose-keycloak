@@ -37,7 +37,7 @@
       <div>
         <p class="text-[11px] font-bold text-sky-900">Mengikuti mockup PRAMANA</p>
         <p class="mt-1 text-[10px] leading-relaxed text-sky-800">
-          Layar masuk memakai latar marun penuh sesuai <code class="font-mono">mockup/src/screens/Login.jsx</code>;
+          Layar berlatar marun mengikuti <code class="font-mono">mockup/src/screens/Login.jsx</code>;
           layar lanjutan memakai pola putih + header seperti <code class="font-mono">VerifikasiOtp.jsx</code>.
           Logo memakai path SVG asli dari <code class="font-mono">components/Logo.jsx</code>.
           Replika visual statis — belum ada yang ter-deploy ke Keycloak.
@@ -45,10 +45,28 @@
       </div>
     </div>
 
+    <div class="mt-2.5 flex gap-2.5 rounded-xl bg-amber-50 p-3.5 ring-1 ring-amber-100">
+      <span class="mt-0.5 shrink-0 text-amber-600"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3"/><path d="M12 9v4"/><path d="M12 17h.01"/></svg></span>
+      <div>
+        <p class="text-[11px] font-bold text-amber-900">Kartu pertama BUKAN halaman Keycloak</p>
+        <p class="mt-1 text-[10px] leading-relaxed text-amber-800">
+          <b>Layar sambutan aplikasi</b> adalah layar Flutter yang tampil <b>sebelum</b> alur masuk dimulai —
+          di sanalah <b>"Lanjut tanpa masuk"</b> hidup. Pilihan itu tidak mungkin ada di halaman Keycloak:
+          begitu alur OAuth berjalan, satu-satunya cara membatalkan adalah <code class="font-mono">error=access_denied</code>.
+          Kartu itu disertakan sebagai acuan tim Flutter, bukan bagian dari theme.
+        </p>
+      </div>
+    </div>
+
     <div class="mt-6 grid gap-3 sm:grid-cols-2">
+      <a href="app-welcome.html" class="block rounded-2xl bg-white p-4 ring-1 ring-zinc-200 transition hover:-translate-y-0.5 hover:ring-marun-600">
+        <div class="text-sm font-bold text-zinc-900">Layar sambutan aplikasi</div>
+        <div class="mt-1 text-[12px] leading-relaxed text-zinc-500">⚠️ BUKAN halaman Keycloak — acuan tim Flutter. Di sinilah "Lanjut tanpa masuk" hidup</div>
+        <div class="mt-2 font-mono text-[11px] text-marun-700">app-welcome.html</div>
+      </a>
       <a href="login.html" class="block rounded-2xl bg-white p-4 ring-1 ring-zinc-200 transition hover:-translate-y-0.5 hover:ring-marun-600">
-        <div class="text-sm font-bold text-zinc-900">Masuk</div>
-        <div class="mt-1 text-[12px] leading-relaxed text-zinc-500">Latar marun penuh mengikuti mockup Login.jsx — Google, passkey, email</div>
+        <div class="text-sm font-bold text-zinc-900">Masuk (Keycloak)</div>
+        <div class="mt-1 text-[12px] leading-relaxed text-zinc-500">Halaman Keycloak sungguhan — tampil di Custom Tabs, tanpa "Lanjut tanpa masuk"</div>
         <div class="mt-2 font-mono text-[11px] text-marun-700">login.html</div>
       </a>
       <a href="login-email.html" class="block rounded-2xl bg-white p-4 ring-1 ring-zinc-200 transition hover:-translate-y-0.5 hover:ring-marun-600">

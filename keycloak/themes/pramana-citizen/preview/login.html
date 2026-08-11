@@ -3,87 +3,105 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Masuk · PRAMANA</title>
+<title>Masuk (Keycloak) · PRAMANA</title>
 <link rel="stylesheet" href="../login/resources/css/styles.css">
 </head>
 <body class="min-h-screen bg-zinc-100 py-8 px-4 font-sans">
   <div class="mx-auto" style="max-width:390px">
     <div class="overflow-hidden rounded-[28px] bg-white shadow-2xl ring-1 ring-zinc-900/10" style="min-height:780px">
       <div class="flex min-h-full flex-col bg-gradient-to-b from-marun-900 via-marun-800 to-marun-900" style="min-height:780px">
-        <div class="flex flex-1 flex-col px-6 pb-8 pt-20">
-          <div class="flex flex-1 flex-col items-center justify-center text-center">
-            <div class="flex h-20 w-20 items-center justify-center rounded-3xl bg-white/10 ring-1 ring-white/20">
-              <svg width="54" height="54" viewBox="0 0 64 64" role="img" aria-label="Logo Pramana">
+        <div class="flex flex-1 flex-col px-6 pb-8 pt-16">
+          <div class="flex flex-col items-center text-center">
+            <div class="flex h-16 w-16 items-center justify-center rounded-3xl bg-white/10 ring-1 ring-white/20">
+              <svg width="42" height="42" viewBox="0 0 64 64" role="img" aria-label="Logo Pramana">
   <defs>
-    <linearGradient id="pg-54-emas" x1="0" y1="0" x2="0" y2="1">
+    <linearGradient id="pg-42-emas" x1="0" y1="0" x2="0" y2="1">
       <stop offset="0%" stop-color="#f9d947"/><stop offset="100%" stop-color="#c68407"/>
     </linearGradient>
-    <linearGradient id="pg-54-marun" x1="0" y1="0" x2="1" y2="1">
+    <linearGradient id="pg-42-marun" x1="0" y1="0" x2="1" y2="1">
       <stop offset="0%" stop-color="#a32c2c"/><stop offset="100%" stop-color="#7a1f1f"/>
     </linearGradient>
   </defs>
-  <path d="M32 6C20 6 10 16 8 30c0 0 6-4 10-4s7 3 7 3-2-9 2-14 5-9 5-9z" fill="url(#pg-54-emas)" opacity=".55"/>
-  <path d="M32 6c12 0 22 10 24 24 0 0-6-4-10-4s-7 3-7 3 2-9-2-14-5-9-5-9z" fill="url(#pg-54-emas)" opacity=".55"/>
-  <path d="M32 8c-8 0-15 8-16 20 0 0 4-3 7-3s5 2 5 2-1-8 1-12 3-7 3-7z" fill="url(#pg-54-emas)" opacity=".8"/>
-  <path d="M32 8c8 0 15 8 16 20 0 0-4-3-7-3s-5 2-5 2 1-8-1-12-3-7-3-7z" fill="url(#pg-54-emas)" opacity=".8"/>
-  <path d="M32 7c-3 0-5 6-5 14s2 12 5 12 5-4 5-12-2-14-5-14z" fill="url(#pg-54-emas)"/>
-  <path d="M14 34c0 12 8 22 18 24 10-2 18-12 18-24 0 0-7 5-18 5s-18-5-18-5z" fill="url(#pg-54-marun)"/>
+  <path d="M32 6C20 6 10 16 8 30c0 0 6-4 10-4s7 3 7 3-2-9 2-14 5-9 5-9z" fill="url(#pg-42-emas)" opacity=".55"/>
+  <path d="M32 6c12 0 22 10 24 24 0 0-6-4-10-4s-7 3-7 3 2-9-2-14-5-9-5-9z" fill="url(#pg-42-emas)" opacity=".55"/>
+  <path d="M32 8c-8 0-15 8-16 20 0 0 4-3 7-3s5 2 5 2-1-8 1-12 3-7 3-7z" fill="url(#pg-42-emas)" opacity=".8"/>
+  <path d="M32 8c8 0 15 8 16 20 0 0-4-3-7-3s-5 2-5 2 1-8-1-12-3-7-3-7z" fill="url(#pg-42-emas)" opacity=".8"/>
+  <path d="M32 7c-3 0-5 6-5 14s2 12 5 12 5-4 5-12-2-14-5-14z" fill="url(#pg-42-emas)"/>
+  <path d="M14 34c0 12 8 22 18 24 10-2 18-12 18-24 0 0-7 5-18 5s-18-5-18-5z" fill="url(#pg-42-marun)"/>
   <circle cx="32" cy="43" r="5" fill="#f9d947"/><circle cx="32" cy="43" r="2.2" fill="#7a1f1f"/>
 </svg>
             </div>
-            <h1 class="mt-5 text-2xl font-extrabold tracking-tight text-white">PRAMANA</h1>
-            <p class="mt-1 text-[11px] font-semibold text-emas-300">Ponorogo Berdaya</p>
-            <p class="mt-5 max-w-60 text-[11px] leading-relaxed text-marun-200">
-              Satu aplikasi untuk semua layanan Pemerintah Kabupaten Ponorogo
+            <h1 class="mt-4 text-xl font-extrabold tracking-tight text-white">Masuk ke PRAMANA</h1>
+            <p class="mt-1.5 text-[11px] leading-relaxed text-marun-200">
+              Layanan Pemerintah Kabupaten Ponorogo
             </p>
           </div>
 
-          <div class="space-y-2.5">
-            <button class="flex w-full items-center justify-center gap-2.5 rounded-xl bg-white py-3.5 shadow-lg">
-              <svg width="18" height="18" viewBox="0 0 48 48" aria-hidden="true">
-  <path fill="#EA4335" d="M24 9.5c3.54 0 6.71 1.22 9.21 3.6l6.85-6.85C35.9 2.38 30.47 0 24 0 14.62 0 6.51 5.38 2.56 13.22l7.98 6.19C12.43 13.72 17.74 9.5 24 9.5z"/>
-  <path fill="#4285F4" d="M46.98 24.55c0-1.57-.15-3.09-.38-4.55H24v9.02h12.94c-.58 2.96-2.26 5.48-4.78 7.18l7.73 6c4.51-4.18 7.09-10.36 7.09-17.65z"/>
-  <path fill="#FBBC05" d="M10.53 28.59c-.48-1.45-.76-2.99-.76-4.59s.27-3.14.76-4.59l-7.98-6.19C.92 16.46 0 20.12 0 24c0 3.88.92 7.54 2.56 10.78l7.97-6.19z"/>
-  <path fill="#34A853" d="M24 48c6.48 0 11.93-2.13 15.89-5.81l-7.73-6c-2.15 1.45-4.92 2.3-8.16 2.3-6.26 0-11.57-4.22-13.47-9.91l-7.98 6.19C6.51 42.62 14.62 48 24 48z"/>
-</svg>
-              <span class="text-[13px] font-bold text-zinc-800">Masuk dengan Google</span>
+          <div class="mt-8 flex-1">
+            <label class="text-[11px] font-bold text-marun-100">Email</label>
+            <div class="mt-2 flex items-center gap-2.5 rounded-xl bg-white/95 px-3 py-3 ring-1 ring-white/20">
+              <span class="shrink-0 text-zinc-400"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg></span>
+              <span class="flex-1 text-[13px] text-zinc-300">nama@email.com</span>
+            </div>
+
+            <label class="mt-4 block text-[11px] font-bold text-marun-100">Kata Sandi</label>
+            <div class="mt-2 flex items-center gap-2.5 rounded-xl bg-white/95 px-3 py-3 ring-1 ring-white/20">
+              <span class="shrink-0 text-zinc-400"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="11" width="16" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg></span>
+              <span class="flex-1 text-[13px] text-zinc-300">Kata sandi Sedulur</span>
+              <span class="shrink-0 text-zinc-400"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2.062 12.348a1 1 0 0 1 0-.696 10.75 10.75 0 0 1 19.876 0 1 1 0 0 1 0 .696 10.75 10.75 0 0 1-19.876 0"/><circle cx="12" cy="12" r="3"/></svg></span>
+            </div>
+
+            <div class="mt-3.5 flex items-center justify-between">
+              <label class="flex items-center gap-2 text-[11px] text-marun-200">
+                <span class="grid h-4 w-4 place-items-center rounded bg-white/15 ring-1 ring-white/25"></span>
+                Ingat saya
+              </label>
+              <span class="text-[11px] font-bold text-emas-300 underline">Lupa kata sandi?</span>
+            </div>
+
+            <button class="mt-5 flex w-full items-center justify-center rounded-xl bg-white py-3.5 shadow-lg">
+              <span class="text-[13px] font-bold text-marun-800">Masuk</span>
             </button>
 
-            <button class="flex w-full items-center justify-center gap-2.5 rounded-xl bg-white/10 py-3.5 ring-1 ring-white/25 backdrop-blur">
-              <span class="text-white"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 10a2 2 0 0 0-2 2c0 1.02-.1 2.51-.26 4"/><path d="M14 13.12c0 2.38 0 6.38-1 8.88"/><path d="M17.29 21.02c.12-.6.43-2.3.5-3.02"/><path d="M2 12a10 10 0 0 1 18-6"/><path d="M2 16h.01"/><path d="M21.8 16c.2-2 .131-5.354 0-6"/><path d="M5 19.5C5.5 18 6 15 6 12a6 6 0 0 1 .34-2"/><path d="M8.65 22c.21-.66.45-1.32.57-2"/><path d="M9 6.8a6 6 0 0 1 9 5.2v2"/></svg></span>
-              <span class="text-[13px] font-bold text-white">Masuk dengan Sidik Jari</span>
-            </button>
-
-            <div class="flex items-center gap-3 py-1.5">
+            <div class="flex items-center gap-3 py-4">
               <span class="h-px flex-1 bg-white/15"></span>
               <span class="text-[9.5px] font-semibold text-marun-300">atau</span>
               <span class="h-px flex-1 bg-white/15"></span>
             </div>
 
-            <button class="flex w-full items-center justify-center gap-2.5 rounded-xl bg-white/10 py-3.5 ring-1 ring-white/25 backdrop-blur">
-              <span class="text-white"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg></span>
-              <span class="text-[13px] font-bold text-white">Masuk dengan Email</span>
-            </button>
+            <div class="space-y-2.5">
+              <button class="flex w-full items-center justify-center gap-2.5 rounded-xl bg-white/10 py-3 ring-1 ring-white/25 backdrop-blur">
+                <svg width="17" height="17" viewBox="0 0 48 48" aria-hidden="true">
+  <path fill="#EA4335" d="M24 9.5c3.54 0 6.71 1.22 9.21 3.6l6.85-6.85C35.9 2.38 30.47 0 24 0 14.62 0 6.51 5.38 2.56 13.22l7.98 6.19C12.43 13.72 17.74 9.5 24 9.5z"/>
+  <path fill="#4285F4" d="M46.98 24.55c0-1.57-.15-3.09-.38-4.55H24v9.02h12.94c-.58 2.96-2.26 5.48-4.78 7.18l7.73 6c4.51-4.18 7.09-10.36 7.09-17.65z"/>
+  <path fill="#FBBC05" d="M10.53 28.59c-.48-1.45-.76-2.99-.76-4.59s.27-3.14.76-4.59l-7.98-6.19C.92 16.46 0 20.12 0 24c0 3.88.92 7.54 2.56 10.78l7.97-6.19z"/>
+  <path fill="#34A853" d="M24 48c6.48 0 11.93-2.13 15.89-5.81l-7.73-6c-2.15 1.45-4.92 2.3-8.16 2.3-6.26 0-11.57-4.22-13.47-9.91l-7.98 6.19C6.51 42.62 14.62 48 24 48z"/>
+</svg>
+                <span class="text-[12.5px] font-bold text-white">Masuk dengan Google</span>
+              </button>
+              <button class="flex w-full items-center justify-center gap-2.5 rounded-xl bg-white/10 py-3 ring-1 ring-white/25 backdrop-blur">
+                <span class="text-white"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 10a2 2 0 0 0-2 2c0 1.02-.1 2.51-.26 4"/><path d="M14 13.12c0 2.38 0 6.38-1 8.88"/><path d="M17.29 21.02c.12-.6.43-2.3.5-3.02"/><path d="M2 12a10 10 0 0 1 18-6"/><path d="M2 16h.01"/><path d="M21.8 16c.2-2 .131-5.354 0-6"/><path d="M5 19.5C5.5 18 6 15 6 12a6 6 0 0 1 .34-2"/><path d="M8.65 22c.21-.66.45-1.32.57-2"/><path d="M9 6.8a6 6 0 0 1 9 5.2v2"/></svg></span>
+                <span class="text-[12.5px] font-bold text-white">Masuk dengan Sidik Jari</span>
+              </button>
+            </div>
 
-            <button class="flex w-full items-center justify-center gap-1.5 py-2">
-              <span class="text-[11.5px] font-bold text-emas-300">Belum punya akun? Daftar</span>
-              <span class="text-emas-300"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 18 6-6-6-6"/></svg></span>
-            </button>
+            <p class="mt-5 text-center text-[11px] text-marun-200">
+              Belum punya akun?
+              <span class="font-bold text-emas-300 underline">Daftar sekarang</span>
+            </p>
           </div>
 
           <div class="mt-6 flex gap-2 rounded-xl bg-white/8 p-3 ring-1 ring-white/12">
             <span class="mt-0.5 shrink-0 text-emas-300"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"/><path d="m9 12 2 2 4-4"/></svg></span>
             <p class="text-[9px] leading-relaxed text-marun-200">
               Data Sedulur dilindungi sesuai <b class="text-white">UU No. 27 Tahun 2022</b> tentang
-              Pelindungan Data Pribadi. Dengan masuk, Sedulur menyetujui
-              <span class="underline">Ketentuan Layanan</span> dan
-              <span class="underline">Kebijakan Privasi</span>.
+              Pelindungan Data Pribadi.
             </p>
           </div>
         </div>
       </div>
     </div>
-    <p class="mt-3 text-center text-[11px] text-zinc-400">Masuk</p>
+    <p class="mt-3 text-center text-[11px] text-zinc-400">Masuk (Keycloak)</p>
   </div>
 </body>
 </html>

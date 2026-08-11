@@ -16,11 +16,25 @@
  * ACUAN DESAIN: MOCKUP PRAMANA, bukan tafsir bebas design system.
  * -----------------------------------------------------------------------------
  * Markup di bawah mengikuti ponorogo-super-apps/mockup/src/screens/*.jsx.
- * Ada DUA pola layar yang dipakai bergantian:
  *
- *   1. LAYAR MASUK (Login.jsx)  — latar MARUN PENUH bergradien, logo besar di
- *      tengah, tombol putih menonjol di bawah, catatan privasi UU 27/2022.
- *      TIDAK memakai kartu putih; latar marun itu sendiri yang jadi kanvas.
+ * ⚠️ DUA LAYAR BERBEDA YANG MUDAH TERTUKAR:
+ *
+ *   mockup Login.jsx  = LAYAR APLIKASI FLUTTER, bukan halaman Keycloak.
+ *   Ia muncul SEBELUM alur OAuth dimulai, dan memuat "Lanjut tanpa masuk" —
+ *   pilihan yang TIDAK MUNGKIN ada di halaman Keycloak, karena pada saat
+ *   halaman itu tampil alur OAuth sudah berjalan dan satu-satunya jalan
+ *   membatalkannya adalah error=access_denied.
+ *
+ *   Halaman Keycloak baru tampil SETELAH warga memilih cara masuk, di dalam
+ *   Custom Tabs. Ia mengurus kredensial saja.
+ *
+ *   Preview app-welcome.html merekam layar aplikasi itu sebagai ACUAN TIM
+ *   FLUTTER — bukan bagian dari theme ini. Sisanya halaman Keycloak sungguhan.
+ *
+ * Dua pola visual yang dipakai:
+ *
+ *   1. LAYAR BERLATAR MARUN (app-welcome, login) — gradien marun penuh, logo
+ *      besar di tengah, tombol putih menonjol. TIDAK memakai kartu putih.
  *
  *   2. LAYAR LANJUTAN (VerifikasiOtp.jsx) — latar PUTIH, header ramping dengan
  *      tombol kembali, kotak keterangan berwarna, tombol marun di bawah.
@@ -199,12 +213,16 @@ const privasiTerang = `        <div class="mt-6 flex gap-2 rounded-xl bg-zinc-50
 const dibuat = [];
 
 // =============================================================================
-// 1. MASUK — mengikuti mockup Login.jsx (latar marun penuh)
+// 0. LAYAR SAMBUTAN APLIKASI — mockup Login.jsx apa adanya
+//
+// BUKAN halaman Keycloak. Direkam di sini sebagai acuan tim Flutter, karena
+// "Lanjut tanpa masuk" hanya mungkin ada di sisi aplikasi: begitu alur OAuth
+// dimulai, Keycloak tidak lagi punya konsep "batal, lanjut sebagai tamu".
 // =============================================================================
 dibuat.push([
   halaman(
-    "login.html",
-    "Masuk",
+    "app-welcome.html",
+    "Layar sambutan aplikasi",
     `        <div class="flex flex-1 flex-col px-6 pb-8 pt-20">
           <div class="flex flex-1 flex-col items-center justify-center text-center">
             <div class="flex h-20 w-20 items-center justify-center rounded-3xl bg-white/10 ring-1 ring-white/20">
@@ -228,21 +246,26 @@ dibuat.push([
               <span class="text-[13px] font-bold text-white">Masuk dengan Sidik Jari</span>
             </button>
 
+            <button class="flex w-full items-center justify-center gap-2.5 rounded-xl bg-white/10 py-3.5 ring-1 ring-white/25 backdrop-blur">
+              <span class="text-white">${ICON.mail(17)}</span>
+              <span class="text-[13px] font-bold text-white">Masuk dengan Email</span>
+            </button>
+
             <div class="flex items-center gap-3 py-1.5">
               <span class="h-px flex-1 bg-white/15"></span>
               <span class="text-[9.5px] font-semibold text-marun-300">atau</span>
               <span class="h-px flex-1 bg-white/15"></span>
             </div>
 
-            <button class="flex w-full items-center justify-center gap-2.5 rounded-xl bg-white/10 py-3.5 ring-1 ring-white/25 backdrop-blur">
-              <span class="text-white">${ICON.mail(17)}</span>
-              <span class="text-[13px] font-bold text-white">Masuk dengan Email</span>
-            </button>
-
             <button class="flex w-full items-center justify-center gap-1.5 py-2">
-              <span class="text-[11.5px] font-bold text-emas-300">Belum punya akun? Daftar</span>
+              <span class="text-[11.5px] font-bold text-emas-300">Lanjut tanpa masuk</span>
               <span class="text-emas-300">${ICON.chevronRight(13)}</span>
             </button>
+            <p class="text-center text-[9.5px] leading-relaxed text-marun-300">
+              Sedulur tetap bisa melihat berita, CCTV, WiFi, dan lowongan kerja.
+              <br />
+              Untuk membuat laporan &amp; cek pajak, perlu masuk.
+            </p>
           </div>
 
           <div class="mt-6 flex gap-2 rounded-xl bg-white/8 p-3 ring-1 ring-white/12">
@@ -257,8 +280,95 @@ dibuat.push([
         </div>`,
     { latar: "bg-gradient-to-b from-marun-900 via-marun-800 to-marun-900" }
   ),
-  "Masuk",
-  "Latar marun penuh mengikuti mockup Login.jsx — Google, passkey, email",
+  "Layar sambutan aplikasi",
+  '⚠️ BUKAN halaman Keycloak — acuan tim Flutter. Di sinilah "Lanjut tanpa masuk" hidup',
+]);
+
+// =============================================================================
+// 1. MASUK (Keycloak) — tampil di Custom Tabs setelah warga memilih cara masuk
+//
+// Tanpa "Lanjut tanpa masuk": pada titik ini alur OAuth sudah berjalan.
+// Tanpa tombol Google/passkey berukuran besar juga — keduanya dipanggil native
+// dari aplikasi, jadi warga yang sampai ke halaman ini memang memilih email.
+// Tombol Google tetap disediakan sebagai jaring pengaman bila warga membuka
+// tautan masuk langsung dari peramban.
+// =============================================================================
+dibuat.push([
+  halaman(
+    "login.html",
+    "Masuk (Keycloak)",
+    `        <div class="flex flex-1 flex-col px-6 pb-8 pt-16">
+          <div class="flex flex-col items-center text-center">
+            <div class="flex h-16 w-16 items-center justify-center rounded-3xl bg-white/10 ring-1 ring-white/20">
+              ${logoMark(42)}
+            </div>
+            <h1 class="mt-4 text-xl font-extrabold tracking-tight text-white">Masuk ke PRAMANA</h1>
+            <p class="mt-1.5 text-[11px] leading-relaxed text-marun-200">
+              Layanan Pemerintah Kabupaten Ponorogo
+            </p>
+          </div>
+
+          <div class="mt-8 flex-1">
+            <label class="text-[11px] font-bold text-marun-100">Email</label>
+            <div class="mt-2 flex items-center gap-2.5 rounded-xl bg-white/95 px-3 py-3 ring-1 ring-white/20">
+              <span class="shrink-0 text-zinc-400">${ICON.mail(16)}</span>
+              <span class="flex-1 text-[13px] text-zinc-300">nama@email.com</span>
+            </div>
+
+            <label class="mt-4 block text-[11px] font-bold text-marun-100">Kata Sandi</label>
+            <div class="mt-2 flex items-center gap-2.5 rounded-xl bg-white/95 px-3 py-3 ring-1 ring-white/20">
+              <span class="shrink-0 text-zinc-400">${ICON.lock(16)}</span>
+              <span class="flex-1 text-[13px] text-zinc-300">Kata sandi Sedulur</span>
+              <span class="shrink-0 text-zinc-400">${ICON.eye(16)}</span>
+            </div>
+
+            <div class="mt-3.5 flex items-center justify-between">
+              <label class="flex items-center gap-2 text-[11px] text-marun-200">
+                <span class="grid h-4 w-4 place-items-center rounded bg-white/15 ring-1 ring-white/25"></span>
+                Ingat saya
+              </label>
+              <span class="text-[11px] font-bold text-emas-300 underline">Lupa kata sandi?</span>
+            </div>
+
+            <button class="mt-5 flex w-full items-center justify-center rounded-xl bg-white py-3.5 shadow-lg">
+              <span class="text-[13px] font-bold text-marun-800">Masuk</span>
+            </button>
+
+            <div class="flex items-center gap-3 py-4">
+              <span class="h-px flex-1 bg-white/15"></span>
+              <span class="text-[9.5px] font-semibold text-marun-300">atau</span>
+              <span class="h-px flex-1 bg-white/15"></span>
+            </div>
+
+            <div class="space-y-2.5">
+              <button class="flex w-full items-center justify-center gap-2.5 rounded-xl bg-white/10 py-3 ring-1 ring-white/25 backdrop-blur">
+                ${LOGO_GOOGLE(17)}
+                <span class="text-[12.5px] font-bold text-white">Masuk dengan Google</span>
+              </button>
+              <button class="flex w-full items-center justify-center gap-2.5 rounded-xl bg-white/10 py-3 ring-1 ring-white/25 backdrop-blur">
+                <span class="text-white">${ICON.fingerprint(16)}</span>
+                <span class="text-[12.5px] font-bold text-white">Masuk dengan Sidik Jari</span>
+              </button>
+            </div>
+
+            <p class="mt-5 text-center text-[11px] text-marun-200">
+              Belum punya akun?
+              <span class="font-bold text-emas-300 underline">Daftar sekarang</span>
+            </p>
+          </div>
+
+          <div class="mt-6 flex gap-2 rounded-xl bg-white/8 p-3 ring-1 ring-white/12">
+            <span class="mt-0.5 shrink-0 text-emas-300">${ICON.shieldCheck(14)}</span>
+            <p class="text-[9px] leading-relaxed text-marun-200">
+              Data Sedulur dilindungi sesuai <b class="text-white">UU No. 27 Tahun 2022</b> tentang
+              Pelindungan Data Pribadi.
+            </p>
+          </div>
+        </div>`,
+    { latar: "bg-gradient-to-b from-marun-900 via-marun-800 to-marun-900" }
+  ),
+  "Masuk (Keycloak)",
+  "Halaman Keycloak sungguhan — tampil di Custom Tabs, tanpa \"Lanjut tanpa masuk\"",
 ]);
 
 // =============================================================================
@@ -586,10 +696,23 @@ fs.writeFileSync(
       <div>
         <p class="text-[11px] font-bold text-sky-900">Mengikuti mockup PRAMANA</p>
         <p class="mt-1 text-[10px] leading-relaxed text-sky-800">
-          Layar masuk memakai latar marun penuh sesuai <code class="font-mono">mockup/src/screens/Login.jsx</code>;
+          Layar berlatar marun mengikuti <code class="font-mono">mockup/src/screens/Login.jsx</code>;
           layar lanjutan memakai pola putih + header seperti <code class="font-mono">VerifikasiOtp.jsx</code>.
           Logo memakai path SVG asli dari <code class="font-mono">components/Logo.jsx</code>.
           Replika visual statis — belum ada yang ter-deploy ke Keycloak.
+        </p>
+      </div>
+    </div>
+
+    <div class="mt-2.5 flex gap-2.5 rounded-xl bg-amber-50 p-3.5 ring-1 ring-amber-100">
+      <span class="mt-0.5 shrink-0 text-amber-600">${ICON.alert(15)}</span>
+      <div>
+        <p class="text-[11px] font-bold text-amber-900">Kartu pertama BUKAN halaman Keycloak</p>
+        <p class="mt-1 text-[10px] leading-relaxed text-amber-800">
+          <b>Layar sambutan aplikasi</b> adalah layar Flutter yang tampil <b>sebelum</b> alur masuk dimulai —
+          di sanalah <b>"Lanjut tanpa masuk"</b> hidup. Pilihan itu tidak mungkin ada di halaman Keycloak:
+          begitu alur OAuth berjalan, satu-satunya cara membatalkan adalah <code class="font-mono">error=access_denied</code>.
+          Kartu itu disertakan sebagai acuan tim Flutter, bukan bagian dari theme.
         </p>
       </div>
     </div>
