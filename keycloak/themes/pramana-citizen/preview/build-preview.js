@@ -22,9 +22,12 @@
  *      tengah, tombol putih menonjol di bawah, catatan privasi UU 27/2022.
  *      TIDAK memakai kartu putih; latar marun itu sendiri yang jadi kanvas.
  *
- *   2. LAYAR LANJUTAN (VerifikasiOtp.jsx, VerifikasiNik.jsx) — latar putih /
- *      zinc-50, header ramping dengan tombol kembali, kotak keterangan
- *      berwarna, tombol marun di bawah.
+ *   2. LAYAR LANJUTAN (VerifikasiOtp.jsx) — latar PUTIH, header ramping dengan
+ *      tombol kembali, kotak keterangan berwarna, tombol marun di bawah.
+ *
+ *      Latarnya HARUS putih, bukan zinc-50. Kotak catatan privasi di dalamnya
+ *      memakai bg-zinc-50 + ring-zinc-200; kalau latar layarnya ikut zinc-50,
+ *      kotak itu melebur dan tampak seperti kotak putih polos tanpa isi.
  *
  * Logo memakai path SVG asli dari mockup/src/components/Logo.jsx — dadak merak
  * Reog: kipas bulu emas, lengkung pangkal marun membentuk "P" sekaligus tangan
@@ -96,6 +99,8 @@ const ICON = {
     svg(`<path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3"/><path d="M12 9v4"/><path d="M12 17h.01"/>`, s, w, c),
   circleX: (s = 15, w = 2.3, c = "") =>
     svg(`<circle cx="12" cy="12" r="10"/><path d="m15 9-6 6"/><path d="m9 9 6 6"/>`, s, w, c),
+  messageCircle: (s = 17, w = 2.3, c = "") =>
+    svg(`<path d="M7.9 20A9 9 0 1 0 4 16.1L2 22z"/>`, s, w, c),
   mailOpen: (s = 30, w = 1.8, c = "") =>
     svg(`<path d="M21.2 8.4c.5.38.8.97.8 1.6v10a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V10a2 2 0 0 1 .8-1.6l8-6a2 2 0 0 1 2.4 0z"/><path d="m22 10-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 10"/>`, s, w, c),
 };
@@ -180,6 +185,9 @@ function tombolUtama(teks, { ikon = "", nonaktif = false } = {}) {
 }
 
 /** Catatan privasi UU 27/2022 — ada di mockup Login.jsx, jangan dihilangkan. */
+/* Persis mockup VerifikasiOtp.jsx baris 82: bg-zinc-50 + ring-zinc-200 di
+   atas layar PUTIH. Kontras itu yang membuat kotaknya terbaca — kalau latar
+   layarnya ikut zinc-50, kotak ini melebur jadi putih polos. */
 const privasiTerang = `        <div class="mt-6 flex gap-2 rounded-xl bg-zinc-50 p-3 ring-1 ring-zinc-200">
           <span class="mt-0.5 shrink-0 text-zinc-500">${ICON.shieldCheck(13, 2.3)}</span>
           <p class="text-[9.5px] leading-relaxed text-zinc-500">
@@ -283,7 +291,7 @@ dibuat.push([
           </p>
           ${privasiTerang}
         </div>`,
-    { latar: "bg-zinc-50" }
+    { latar: "bg-white" }
   ),
   "Masuk dengan email",
   "Layar putih + header, pola VerifikasiOtp.jsx",
@@ -317,7 +325,7 @@ dibuat.push([
             ${privasiTerang}
           </div>
         </div>`,
-    { latar: "bg-zinc-50" }
+    { latar: "bg-white" }
   ),
   "Daftar",
   "Registrasi mandiri — form dirender Keycloak, bukan aplikasi",
@@ -345,7 +353,7 @@ dibuat.push([
             </p>
           </div>
         </div>`,
-    { latar: "bg-zinc-50" }
+    { latar: "bg-white" }
   ),
   "Masuk gagal",
   'Bahasa Indonesia — bukan "Invalid username or password"',
@@ -369,7 +377,7 @@ dibuat.push([
             </p>
           </div>
         </div>`,
-    { latar: "bg-zinc-50" }
+    { latar: "bg-white" }
   ),
   "Lupa kata sandi",
   "Jalur pemulihan akun",
@@ -400,7 +408,7 @@ dibuat.push([
             </div>
           </div>
         </div>`,
-    { latar: "bg-zinc-50" }
+    { latar: "bg-white" }
   ),
   "Verifikasi email",
   "Wajib untuk registrasi mandiri",
@@ -435,14 +443,72 @@ dibuat.push([
             </p>
           </div>
         </div>`,
-    { latar: "bg-zinc-50" }
+    { latar: "bg-white" }
   ),
   "Daftar passkey",
   'Opsional — ada tombol "Nanti saja", tidak dipaksakan',
 ]);
 
 // =============================================================================
-// 8. SESI BERAKHIR
+// 8. KODE OTP — mengikuti mockup VerifikasiOtp.jsx
+// =============================================================================
+dibuat.push([
+  halaman(
+    "login-otp.html",
+    "Kode verifikasi",
+    `${header("Verifikasi Nomor")}
+        <div class="flex-1 px-6 pt-4">
+          ${kotak("emerald", ICON.messageCircle(17), "Kode dikirim lewat WhatsApp", "Kami mengirim 6 digit kode ke nomor <b>0812-3456-7890</b>")}
+
+          <div class="mt-7">
+            <label class="text-[11px] font-bold text-zinc-700">Masukkan Kode</label>
+            <div class="mt-2.5 flex gap-2">
+              ${["4", "7", "2", "9", "", ""]
+                .map((k, i) => {
+                  const gaya = k
+                    ? "bg-marun-50 text-marun-800 ring-2 ring-marun-600"
+                    : i === 4
+                      ? "bg-white text-zinc-800 ring-2 ring-marun-400"
+                      : "bg-zinc-50 text-zinc-300 ring-zinc-200";
+                  return `<div class="flex flex-1 items-center justify-center rounded-xl text-lg font-extrabold tabular-nums ring-1 ${gaya}" style="height:3.25rem">${k || "·"}</div>`;
+                })
+                .join("")}
+            </div>
+          </div>
+
+          <div class="mt-5 text-center">
+            <p class="text-[11px] text-zinc-500">
+              Belum menerima kode? <span class="font-bold text-zinc-400">Kirim ulang dalam 0:47</span>
+            </p>
+          </div>
+
+          <div class="mt-6">
+            ${tombolUtama("Verifikasi", { nonaktif: true })}
+          </div>
+          <p class="mt-2 text-center text-[10px] text-zinc-400">Tombol aktif setelah 6 digit terisi</p>
+
+          <div class="mt-8 border-t border-zinc-100 pt-5 text-center">
+            <p class="text-[11px] text-zinc-500">
+              Nomor salah? <span class="font-bold text-marun-700 underline">Ubah nomor</span>
+            </p>
+          </div>
+
+          <div class="mt-6 flex gap-2 rounded-xl bg-zinc-50 p-3 ring-1 ring-zinc-200">
+            <span class="mt-0.5 shrink-0 text-zinc-500">${ICON.shieldCheck(13, 2.3)}</span>
+            <p class="text-[9.5px] leading-relaxed text-zinc-500">
+              Nomor Sedulur hanya dipakai untuk masuk dan mengirim pemberitahuan status laporan.
+              Tidak dibagikan kepada pihak lain.
+            </p>
+          </div>
+        </div>`,
+    { latar: "bg-white" }
+  ),
+  "Kode OTP",
+  "Mengikuti VerifikasiOtp.jsx — kotak 6 digit, hitung mundur kirim ulang",
+]);
+
+// =============================================================================
+// 9. SESI BERAKHIR
 // =============================================================================
 dibuat.push([
   halaman(
@@ -455,14 +521,14 @@ dibuat.push([
             ${tombolUtama("Masuk Kembali")}
           </div>
         </div>`,
-    { latar: "bg-zinc-50" }
+    { latar: "bg-white" }
   ),
   "Sesi berakhir",
   'Pesan jelas, bukan "An error occurred"',
 ]);
 
 // =============================================================================
-// 9. GALAT UMUM
+// 10. GALAT UMUM
 // =============================================================================
 dibuat.push([
   halaman(
@@ -475,7 +541,7 @@ dibuat.push([
             <button class="w-full rounded-xl bg-white py-3.5 text-[13px] font-bold text-marun-700 ring-1 ring-zinc-200">Kembali ke Halaman Masuk</button>
           </div>
         </div>`,
-    { latar: "bg-zinc-50" }
+    { latar: "bg-white" }
   ),
   "Galat",
   "Menjelaskan jalan keluar, bukan kode teknis",
