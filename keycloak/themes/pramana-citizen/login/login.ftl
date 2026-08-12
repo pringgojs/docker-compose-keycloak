@@ -119,6 +119,11 @@
         </button>
         <@passkeys.conditionalUIData />
       </div>
+
+      <#-- Script HARUS di dalam blok section. registrationLayout memanggil
+           <#nested> empat kali (header, form, socialProviders, info), jadi apa
+           pun yang ditaruh di luar <#if section> ikut tercetak empat kali. -->
+      <script type="module" src="${url.resourcesPath}/js/passwordVisibility.js"></script>
     </#if>
 
   <#elseif section = "socialProviders">
@@ -155,5 +160,4 @@
       </span>
     </#if>
   </#if>
-  <script type="module" src="${url.resourcesPath}/js/passwordVisibility.js"></script>
 </@layout.registrationLayout>
