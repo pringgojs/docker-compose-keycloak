@@ -29,9 +29,13 @@
 <#import "user-profile-commons.ftl" as userProfileCommons>
 <#import "register-commons.ftl" as registerCommons>
 
-<#-- displayInfo=true wajib: tanpa itu blok "info" (tautan kembali ke halaman
+<#-- Latar PUTIH, bukan marun. Formulir daftar paling panjang di antara semua
+     halaman; di atas marun ia terasa berat dan kaku. Mockup pun memakai pola
+     layar putih untuk langkah lanjutan.
+
+     displayInfo=true wajib: tanpa itu blok "info" (tautan kembali ke halaman
      masuk) tidak dirender template sama sekali. -->
-<@layout.registrationLayout bodyClass="pramana-marun" displayMessage=messagesPerField.exists('global') displayRequiredFields=true displayInfo=true; section>
+<@layout.registrationLayout displayMessage=messagesPerField.exists('global') displayRequiredFields=true displayInfo=true; section>
   <#if section = "header">
     ${msg("registerTitle")}
 
@@ -42,11 +46,23 @@
         <#if callback = "afterField">
           <#-- Kata sandi disisipkan tepat di bawah username/email — mengikuti
                base, supaya urutannya tidak melompat. -->
-          <#if passwordRequired?? && (attribute.name == 'username' || (attribute.name == 'email' && realm.registrationEmailAsUsername))>
+          <#-- Base menyaring dengan passwordRequired??, TETAPI variabel itu
+               tidak pernah di-set pada Keycloak 26.7 — dibuktikan dengan
+               menyisipkan penanda: seluruh field melaporkan pwreq=UNSET,
+               sehingga blok kata sandi tak pernah dirender sama sekali.
+
+               Dipicu dari nama field saja. Realm ini memakai UUID sebagai
+               username dan registrationEmailAsUsername=false, jadi penanda
+               yang dipakai adalah 'username'.
+
+               Bila kelak Password Validation dimatikan di registration flow,
+               kolom ini harus ikut dihapus dari sini — tidak ada lagi variabel
+               yang menyembunyikannya otomatis. -->
+          <#if attribute.name == 'username' || (attribute.name == 'email' && realm.registrationEmailAsUsername)>
 
             <div class="${properties.kcFormGroupClass!}">
               <label for="password" class="${properties.kcLabelClass!}">
-                ${msg("password")} <span class="text-emas-300">*</span>
+                ${msg("password")} <span class="required">*</span>
               </label>
               <div class="${properties.kcInputGroup!}" dir="ltr">
                 <input type="password" id="password" name="password" autocomplete="new-password"
@@ -69,7 +85,7 @@
 
             <div class="${properties.kcFormGroupClass!}">
               <label for="password-confirm" class="${properties.kcLabelClass!}">
-                ${msg("passwordConfirm")} <span class="text-emas-300">*</span>
+                ${msg("passwordConfirm")} <span class="required">*</span>
               </label>
               <div class="${properties.kcInputGroup!}" dir="ltr">
                 <input type="password" id="password-confirm" name="password-confirm" autocomplete="new-password"
@@ -113,12 +129,12 @@
             }
           </script>
           <button type="submit" data-sitekey="${recaptchaSiteKey}" data-callback="onSubmitRecaptcha" data-action="${recaptchaAction}"
-                  class="g-recaptcha flex w-full items-center justify-center rounded-xl bg-white py-3.5 text-[13px] font-bold text-marun-800 shadow-lg transition hover:bg-marun-50">
+                  class="g-recaptcha flex w-full items-center justify-center rounded-xl bg-marun-700 py-3.5 text-[13px] font-bold text-white shadow-lg shadow-marun-700/20 transition hover:bg-marun-800">
             ${msg("doRegister")}
           </button>
         <#else>
           <button type="submit"
-                  class="flex w-full items-center justify-center rounded-xl bg-white py-3.5 text-[13px] font-bold text-marun-800 shadow-lg transition hover:bg-marun-50">
+                  class="flex w-full items-center justify-center rounded-xl bg-marun-700 py-3.5 text-[13px] font-bold text-white shadow-lg shadow-marun-700/20 transition hover:bg-marun-800">
             ${msg("doRegister")}
           </button>
         </#if>
@@ -127,9 +143,9 @@
     <script type="module" src="${url.resourcesPath}/js/passwordVisibility.js"></script>
 
   <#elseif section = "info">
-    <span class="text-[11px] text-marun-200">
+    <span class="text-[11px] text-zinc-500">
       ${msg("alreadyHaveAccount")}
-      <a href="${url.loginUrl}" class="font-bold text-emas-300 underline">${msg("doLogIn")}</a>
+      <a href="${url.loginUrl}" class="font-bold text-marun-700 underline">${msg("doLogIn")}</a>
     </span>
   </#if>
 </@layout.registrationLayout>

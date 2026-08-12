@@ -64,6 +64,19 @@
     color: #a32c2c;
   }
 
+  /* --- Tanda wajib (*) --------------------------------------------------- *
+     Base merender <span class="required">*</span> sebagai SAUDARA dari
+     <label>, bukan anaknya. Selama kcLabelClass memuat `block`, span itu
+     terdorong ke baris sendiri — terlihat seperti bullet nyasar di bawah
+     label. Label kini inline dan wrapper-nya flex; di sini tinggal warnanya. */
+  .required {
+    color: #e11d48; /* rose-600 */
+    font-weight: 700;
+  }
+  .pramana-marun .required {
+    color: #f9d947; /* emas-300 — rose-600 tenggelam di atas marun */
+  }
+
   /* ===========================================================================
      HALAMAN BERLATAR MARUN (masuk & daftar)
 
