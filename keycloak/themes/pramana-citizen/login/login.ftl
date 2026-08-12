@@ -28,7 +28,10 @@
 -->
 <#import "template.ftl" as layout>
 <#import "passkeys.ftl" as passkeys>
-<@layout.registrationLayout bodyClass="pramana-marun" displayMessage=!messagesPerField.existsError('username','password') displayInfo=false; section>
+<#-- displayInfo=true wajib: tanpa itu blok "info" — tautan "Daftar sekarang" —
+     tidak pernah dirender template, dan warga baru tidak punya jalan masuk ke
+     halaman daftar dari sini. -->
+<@layout.registrationLayout bodyClass="pramana-marun" displayMessage=!messagesPerField.existsError('username','password') displayInfo=true; section>
   <#if section = "header">
     ${msg("loginAccountTitle")}
 
@@ -140,7 +143,7 @@
     <#if realm.password && realm.registrationAllowed && !registrationDisabled??>
       <span class="text-[11px] text-marun-200">
         ${msg("noAccount")}
-        <a tabindex="8" href="${url.registrationUrl}" class="font-bold text-emas-300 underline">${msg("doRegister")}</a>
+        <a tabindex="8" href="${url.registrationUrl}" class="font-bold text-emas-300 underline">${msg("pramanaDoRegisterLink")}</a>
       </span>
     </#if>
   </#if>
