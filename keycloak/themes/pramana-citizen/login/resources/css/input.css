@@ -65,6 +65,47 @@
   }
 
   /* ===========================================================================
+     HALAMAN BERLATAR MARUN (masuk & daftar)
+
+     Field pada halaman daftar dirender base Keycloak lewat User Profile, jadi
+     class-nya datang dari kcLabelClass / kcInputClass di theme.properties —
+     nilai yang disetel untuk latar PUTIH. Di atas latar marun, label
+     zinc-700 nyaris tak terbaca.
+
+     Diperbaiki di sini, bukan dengan mengubah theme.properties, karena
+     properti yang sama dipakai halaman lain yang memang berlatar putih.
+     .pramana-marun dipasang template.ftl lewat bodyClass.
+     =========================================================================== */
+  .pramana-marun label {
+    color: #fbe5e5; /* marun-100 */
+  }
+  .pramana-marun .required,
+  .pramana-marun label .required {
+    color: #f9d947; /* emas-300 */
+  }
+
+  /* Input tetap putih (kontras tinggi, mudah dibaca warga lanjut usia),
+     hanya ring-nya yang disesuaikan agar terlihat di atas marun. */
+  .pramana-marun input[type="text"],
+  .pramana-marun input[type="email"],
+  .pramana-marun input[type="password"],
+  .pramana-marun input[type="tel"],
+  .pramana-marun select,
+  .pramana-marun textarea {
+    box-shadow: inset 0 0 0 1px rgb(255 255 255 / 0.2);
+  }
+  .pramana-marun input:focus,
+  .pramana-marun select:focus,
+  .pramana-marun textarea:focus {
+    box-shadow: inset 0 0 0 2px #f5c518; /* emas-400 */
+  }
+
+  /* Pesan galat per-field: rose-600 hilang di atas marun. */
+  .pramana-marun [id^="input-error"] {
+    color: #fecdd3; /* rose-200 */
+  }
+
+  /* ===========================================================================
      TOMBOL PASSKEY di halaman masuk
 
      Macro passkeys.conditionalUIData merender, berurutan: <form id="webauth">,

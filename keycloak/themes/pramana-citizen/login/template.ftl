@@ -79,7 +79,11 @@
     </#if>
   </head>
 
-  <body class="<#if marunPage>min-h-screen font-sans bg-gradient-to-b from-marun-900 via-marun-800 to-marun-900 text-white<#else>${properties.kcBodyClass!}</#if>">
+  <#-- Kelas `pramana-marun` sengaja ikut dipasang ke <body>: input.css memakainya
+       untuk menyesuaikan label & ring field yang dirender base Keycloak (User
+       Profile) agar terbaca di atas latar marun. Menghapusnya membuat label
+       halaman daftar nyaris tak terlihat. -->
+  <body class="<#if marunPage>pramana-marun min-h-screen font-sans bg-gradient-to-b from-marun-900 via-marun-800 to-marun-900 text-white<#else>${properties.kcBodyClass!}</#if>">
     <div class="${properties.kcLoginClass!}">
       <div class="<#if marunPage>flex min-h-screen w-full flex-col<#else>${properties.kcFormCardClass!}</#if>">
 
