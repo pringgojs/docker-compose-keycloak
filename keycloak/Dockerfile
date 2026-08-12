@@ -26,5 +26,15 @@ COPY themes/asn-v2 /opt/keycloak/themes/asn-v2
 # sumbernya login/resources/css/input.css, hasil build styles.css ikut
 # di-commit. Regenerasi: npm run build:agustusan.
 COPY themes/agustusan-2026 /opt/keycloak/themes/agustusan-2026
+# pramana-citizen: theme halaman masuk & daftar WARGA (realm ponorogo-citizen),
+# terpisah dari asn-v2 yang melayani pegawai. Realm warga memakai flow BAWAAN
+# Keycloak — simashebat-authenticator tidak dipasang di sana, jadi jalur masuk
+# warga tidak membawa satu pun komponen custom.
+#
+# Membawa mekanik KC26 yang sama (importmap rfc4648 + authChecker
+# startSessionPolling) supaya passkey berfungsi. Styling Tailwind: sumbernya
+# login/resources/css/input.css, hasil build styles.css ikut di-commit.
+# Regenerasi: npm run build:pramana.
+COPY themes/pramana-citizen /opt/keycloak/themes/pramana-citizen
 
 RUN /opt/keycloak/bin/kc.sh build
