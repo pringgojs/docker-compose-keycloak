@@ -70,9 +70,17 @@
                  placeholder="${msg('password')}"
                  aria-invalid="<#if messagesPerField.existsError('username','password')>true</#if>"
                  class="flex-1 border-0 bg-transparent p-0 text-[13px] text-zinc-800 placeholder-zinc-300 focus:outline-none focus:ring-0" />
-          <button class="${properties.kcFormPasswordVisibilityButtonClass!}" type="button" aria-label="${msg('showPassword')}"
+          <#-- Class-nya TIDAK memakai kcFormPasswordVisibilityButtonClass.
+               Properti itu bernilai "absolute right-3 top-1/2 …" untuk field
+               base yang pembungkusnya relative. Di sini pembungkusnya flex
+               tanpa relative, sehingga absolute merujuk ke leluhur lain dan
+               tombolnya melayang sampai ke samping tombol "Masuk".
+
+               Karena field ini sudah flex, tombol cukup jadi anak flex biasa. -->
+          <button class="shrink-0 text-zinc-400 transition hover:text-marun-700" type="button" aria-label="${msg('showPassword')}"
                   aria-controls="password" data-password-toggle tabindex="3"
-                  data-icon-show="${properties.kcFormPasswordVisibilityIconShow!}" data-icon-hide="${properties.kcFormPasswordVisibilityIconHide!}">
+                  data-icon-show="${properties.kcFormPasswordVisibilityIconShow!}" data-icon-hide="${properties.kcFormPasswordVisibilityIconHide!}"
+                  data-label-show="${msg('showPassword')}" data-label-hide="${msg('hidePassword')}">
             <i class="${properties.kcFormPasswordVisibilityIconShow!}" aria-hidden="true"></i>
           </button>
         </div>
