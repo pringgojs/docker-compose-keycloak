@@ -113,6 +113,8 @@ const ICON = {
     svg(`<path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3"/><path d="M12 9v4"/><path d="M12 17h.01"/>`, s, w, c),
   circleX: (s = 15, w = 2.3, c = "") =>
     svg(`<circle cx="12" cy="12" r="10"/><path d="m15 9-6 6"/><path d="m9 9 6 6"/>`, s, w, c),
+  userPlus: (s = 16, w = 2.3, c = "") =>
+    svg(`<path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><line x1="19" x2="19" y1="8" y2="14"/><line x1="22" x2="16" y1="11" y2="11"/>`, s, w, c),
   messageCircle: (s = 17, w = 2.3, c = "") =>
     svg(`<path d="M7.9 20A9 9 0 1 0 4 16.1L2 22z"/>`, s, w, c),
   mailOpen: (s = 30, w = 1.8, c = "") =>
@@ -257,6 +259,11 @@ dibuat.push([
               <span class="h-px flex-1 bg-white/15"></span>
             </div>
 
+            <button class="flex w-full items-center justify-center gap-2 rounded-xl py-3 ring-1 ring-emas-400/40">
+              <span class="text-emas-300">${ICON.userPlus(16)}</span>
+              <span class="text-[12.5px] font-bold text-emas-300">Daftar Akun Baru</span>
+            </button>
+
             <button class="flex w-full items-center justify-center gap-1.5 py-2">
               <span class="text-[11.5px] font-bold text-emas-300">Lanjut tanpa masuk</span>
               <span class="text-emas-300">${ICON.chevronRight(13)}</span>
@@ -281,7 +288,7 @@ dibuat.push([
     { latar: "bg-gradient-to-b from-marun-900 via-marun-800 to-marun-900" }
   ),
   "Layar sambutan aplikasi",
-  '⚠️ BUKAN halaman Keycloak — acuan tim Flutter. Di sinilah "Lanjut tanpa masuk" hidup',
+  '⚠️ BUKAN halaman Keycloak — acuan tim Flutter. Memuat "Daftar Akun Baru" &amp; "Lanjut tanpa masuk"',
 ]);
 
 // =============================================================================
@@ -719,7 +726,38 @@ fs.writeFileSync(
 
     <div class="mt-6 grid gap-3 sm:grid-cols-2">${kartu}</div>
 
-    <p class="mt-8 text-[10.5px] leading-relaxed text-zinc-400">
+    <div class="mt-8 rounded-2xl bg-white p-4 ring-1 ring-zinc-200">
+      <p class="text-[11px] font-bold text-zinc-900">Untuk tim Flutter — dua URL yang dipakai</p>
+      <p class="mt-1.5 text-[10px] leading-relaxed text-zinc-500">
+        Keduanya dibuka lewat <b>Custom Tabs</b> (Android) / <b>ASWebAuthenticationSession</b> (iOS),
+        bukan WebView. Sudah diuji ke Keycloak produksi.
+      </p>
+      <div class="mt-3 space-y-2.5">
+        <div>
+          <p class="text-[10px] font-bold text-zinc-700">Tombol "Masuk dengan Email"</p>
+          <code class="mt-1 block overflow-x-auto rounded-lg bg-zinc-50 p-2 font-mono text-[9.5px] leading-relaxed text-marun-800 ring-1 ring-zinc-200">/realms/ponorogo-citizen/protocol/openid-connect/<b>auth</b>?client_id=pramana-mobile&amp;response_type=code&amp;scope=openid&amp;redirect_uri=id.go.ponorogo.pramana://auth&amp;code_challenge=…&amp;code_challenge_method=S256</code>
+        </div>
+        <div>
+          <p class="text-[10px] font-bold text-zinc-700">Tombol "Daftar Akun Baru"</p>
+          <code class="mt-1 block overflow-x-auto rounded-lg bg-zinc-50 p-2 font-mono text-[9.5px] leading-relaxed text-marun-800 ring-1 ring-zinc-200">/realms/ponorogo-citizen/protocol/openid-connect/<b>registrations</b>?<span class="text-zinc-400">…parameter sama persis…</span></code>
+          <p class="mt-1 text-[9.5px] leading-relaxed text-zinc-500">
+            Hanya beda ruas terakhir: <code class="font-mono">registrations</code>, bukan <code class="font-mono">auth</code>.
+            Warga baru langsung sampai ke halaman daftar tanpa singgah ke halaman masuk.
+          </p>
+        </div>
+      </div>
+      <div class="mt-3 flex gap-2 rounded-lg bg-amber-50 p-2.5 ring-1 ring-amber-100">
+        <span class="mt-px shrink-0 text-amber-600">${ICON.alert(13)}</span>
+        <p class="text-[9.5px] leading-relaxed text-amber-800">
+          <b>Google dan passkey tidak memakai URL ini.</b> Keduanya dipanggil native —
+          Credential Manager untuk passkey, pemilih akun untuk Google — sehingga warga tidak
+          pernah meninggalkan aplikasi. Passkey dari dalam aplikasi juga menuntut
+          <code class="font-mono">assetlinks.json</code> terpasang di domain Keycloak.
+        </p>
+      </div>
+    </div>
+
+    <p class="mt-6 text-[10.5px] leading-relaxed text-zinc-400">
       Palet marun <code class="font-mono">#7A1F1F</code> · emas <code class="font-mono">#F5C518</code>.
       Ikon Lucide inline, tanpa emoji. Seluruh teks Bahasa Indonesia, menyapa "Sedulur".
       Mode gelap sengaja tidak dipakai — mockup PRAMANA hanya punya mode terang.
