@@ -14,6 +14,11 @@ services:
       - internal-net
     restart: unless-stopped
 
+    # Pemakaian nyata 81 MB. Batasnya longgar supaya query berat tetap muat,
+    # tetapi tetap ada — tanpa batas, satu query yang salah dapat menghabiskan
+    # RAM mesin dan menjatuhkan Keycloak bersamanya.
+    mem_limit: 2g
+
   keycloak_web:
     build:
       context: ./keycloak
@@ -57,6 +62,21 @@ services:
       # ini efektif no-op tapi aman untuk fresh start.
       KC_BOOTSTRAP_ADMIN_USERNAME: ${KEYCLOAK_ADMIN}
       KC_BOOTSTRAP_ADMIN_PASSWORD: ${KEYCLOAK_ADMIN_PASSWORD}
+
+      # ⚠️ Heap JVM DIBATASI. Tanpa -Xmx, JVM memakai bawaannya sendiri dan
+      # di LXC ini memilih MaxHeapSize 43,8 GB — LEBIH BESAR dari RAM mesin
+      # (31 GB). Selama beban ringan itu tidak terlihat; begitu beban naik,
+      # JVM berhak mengambil sampai OOM-killer bertindak, dan yang dibunuh
+      # kernel belum tentu Keycloak.
+      #
+      # 4 GB dipilih dari pengukuran, bukan tebakan: heap yang BENAR-BENAR
+      # dipakai stabil di 2,7 GB (jcmd GC.heap_info, tiga kali sepuluh detik),
+      # metaspace 170 MB. 4 GB memberi ruang ~50% di atas itu.
+      #
+      # RSS container sempat 10,4 GB karena G1 mengalokasikan heap besar lalu
+      # tidak pernah mengembalikannya ke sistem. MaxRAMPercentage tidak dipakai
+      # supaya angkanya tidak ikut berubah bila RAM LXC diubah.
+      JAVA_OPTS_APPEND: "-Xms512m -Xmx4g -XX:MaxMetaspaceSize=512m"
     command: start-dev
     depends_on:
       - postgres
@@ -72,6 +92,11 @@ services:
     networks:
       - internal-net
     restart: unless-stopped
+
+    # Pagar terakhir bila heap saja tidak cukup menahan. Diberi ruang di atas
+    # -Xmx 4g karena JVM juga memakai memori di luar heap: metaspace, thread
+    # stack, buffer langsung, dan kode ter-JIT.
+    mem_limit: 6g
 
 volumes:
   postgres_data:
