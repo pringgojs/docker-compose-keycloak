@@ -61,7 +61,14 @@ services:
     depends_on:
       - postgres
     ports:
-      - ${KEYCLOAK_PORT}:${KEYCLOAK_PORT}
+      # ⚠️ Hanya localhost. Satu-satunya yang perlu menjangkau Keycloak adalah
+      # cloudflared di host yang sama (localhost:8080, lewat IPv4 maupun IPv6).
+      # Port yang dipublikasikan Docker MELEWATI UFW, jadi pemetaan tanpa IP
+      # (0.0.0.0) membuat API dan konsol admin Keycloak terbuka langsung lewat
+      # HTTP polos tanpa Cloudflare, dan header X-Forwarded-Proto dapat
+      # dipalsukan (audit keamanan 15 Oktober 2026).
+      - 127.0.0.1:${KEYCLOAK_PORT}:${KEYCLOAK_PORT}
+      - "[::1]:${KEYCLOAK_PORT}:${KEYCLOAK_PORT}"
     networks:
       - internal-net
     restart: unless-stopped
