@@ -8,7 +8,11 @@
 #
 # CATATAN opsi runtime yang berubah di v26 (di-set di docker-compose, bukan di
 # sini): KC_PROXY dihapus/deprecated → pakai KC_PROXY_HEADERS. Hostname v2.
-FROM quay.io/keycloak/keycloak:26.7.0
+# 26.7.2 (28 Okt 2026): menambal CVE-2026-18963 (CVSS 9.1) — alur "Lupa
+# password" dapat dilompati tanpa token email, sehingga siapa pun dapat
+# mengganti password akun mana pun di realm yang mengaktifkan fitur itu
+# (ponorogo-citizen). Juga CVE-2026-15571 (penautan akun lewat klien OIDC).
+FROM quay.io/keycloak/keycloak:26.7.2
 
 RUN rm -rf /opt/keycloak/providers/*
 

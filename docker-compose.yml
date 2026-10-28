@@ -22,7 +22,7 @@ services:
   keycloak_web:
     build:
       context: ./keycloak
-    image: login-ponorogo:26.7.0
+    image: login-ponorogo:26.7.2
     container_name: keycloak_web
     environment:
       KC_DB: postgres
@@ -54,6 +54,8 @@ services:
       KC_LOG_LEVEL: info
       KC_METRICS_ENABLED: false
       KC_HEALTH_ENABLED: true
+      # Satu node: cache lokal, tanpa mencari node lain (mode produksi).
+      KC_CACHE: local
 
       # Keycloak 26: KEYCLOAK_ADMIN/PASSWORD (untuk bootstrap admin awal)
       # di-rename → KC_BOOTSTRAP_ADMIN_USERNAME/PASSWORD. Yang lama masih
@@ -77,7 +79,11 @@ services:
       # tidak pernah mengembalikannya ke sistem. MaxRAMPercentage tidak dipakai
       # supaya angkanya tidak ikut berubah bila RAM LXC diubah.
       JAVA_OPTS_APPEND: "-Xms512m -Xmx4g -XX:MaxMetaspaceSize=512m"
-    command: start-dev
+    # Mode produksi (28 Okt 2026). start-dev mematikan cache tema dan
+    # template, memakai pengaturan bawaan pengembangan, dan tidak dimaksudkan
+    # untuk diakses dari internet. Konfigurasi hostname, proxy, dan HTTP di
+    # atas sudah memenuhi syarat `start`. Mundur: kembalikan ke start-dev.
+    command: start
     depends_on:
       - postgres
     ports:
