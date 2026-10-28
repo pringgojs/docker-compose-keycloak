@@ -40,5 +40,10 @@ COPY themes/agustusan-2026 /opt/keycloak/themes/agustusan-2026
 # login/resources/css/input.css, hasil build styles.css ikut di-commit.
 # Regenerasi: npm run build:pramana.
 COPY themes/pramana-citizen /opt/keycloak/themes/pramana-citizen
+# sumpah-pemuda-2026: theme EVENT 28 Oktober, disalin dari agustusan-2026
+# (mekanik KC26 dan passkey sama). Hero kertas lama + tiga ikrar bergantian.
+# Dipakai sehari, lalu realm dikembalikan ke asn-v2. Regenerasi CSS:
+# npm run build:sumpah-pemuda.
+COPY themes/sumpah-pemuda-2026 /opt/keycloak/themes/sumpah-pemuda-2026
 
 RUN /opt/keycloak/bin/kc.sh build

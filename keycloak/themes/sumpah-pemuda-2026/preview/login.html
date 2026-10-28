@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<!--
+  MOCKUP — theme sumpah-pemuda-2026 · Hari Sumpah Pemuda ke-98 · Kisara SSO
+  Struktur kartu, field, dan tombol Masuk + Passkey sama dengan agustusan-2026,
+  supaya saat dijadikan .ftl mekanik KC26 (passkey, authChecker) tinggal disalin.
+  Yang berbeda hanya hero dan palet: kertas lama + tinta merah, teks ikrar
+  memakai ejaan asli 1928.
+  Dark mode AUTO ikut sistem (darkMode:'media').
+-->
+<html lang="id" class="h-full">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Masuk — mockup sumpah-pemuda-2026</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link href="https://fonts.googleapis.com/css2?family=Special+Elite&family=Playfair+Display:wght@700;800&display=swap" rel="stylesheet" />
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+  tailwind.config = {
+    darkMode: 'media',
+    theme: { extend: {
+      colors: {
+        merah: { DEFAULT:'#b3121f', tua:'#7f0d16', muda:'#d63a45' },
+        kertas: { DEFAULT:'#f3e9d2', tua:'#e6d6b3' },
+        tinta: '#3b2a1a'
+      },
+      fontFamily: { ketik: ['"Special Elite"', 'monospace'], judul: ['"Playfair Display"', 'serif'] }
+    } }
+  };
+</script>
+<style>
+  /* Kertas lama: serat halus + vinyet tepi, murni CSS */
+  .kertas-bg{background:
+      radial-gradient(ellipse at center, rgba(255,255,255,0) 55%, rgba(120,80,30,.18) 100%),
+      repeating-linear-gradient(0deg, rgba(120,80,30,.035) 0 1px, transparent 1px 3px),
+      #f3e9d2}
+  @media (prefers-color-scheme: dark){
+    .kertas-bg{background:
+      radial-gradient(ellipse at center, rgba(0,0,0,0) 50%, rgba(0,0,0,.45) 100%),
+      repeating-linear-gradient(0deg, rgba(255,230,180,.03) 0 1px, transparent 1px 3px),
+      #2a1e14}
+  }
+
+  /* Tiga ikrar bergantian. opacity:0 + fill-mode backwards WAJIB, sama
+     alasannya dengan kembang api agustusan: tanpa itu baris kedua dan ketiga
+     tampil diam bertumpuk selama masa tunggu delay. */
+  .ikrar{position:absolute;inset:0 8px 0 22px;display:flex;flex-direction:column;justify-content:center;opacity:0;animation:ikrar 12s ease-in-out infinite backwards}
+  .ikrar:nth-child(2){animation-delay:4s}
+  .ikrar:nth-child(3){animation-delay:8s}
+  @keyframes ikrar{0%{opacity:0;transform:translateY(6px)}5%,30%{opacity:1;transform:none}35%,100%{opacity:0;transform:translateY(-6px)}}
+  .kursor::after{content:"▍";margin-left:2px;animation:kedip 1s steps(1) infinite;color:#b3121f}
+  @keyframes kedip{50%{opacity:0}}
+
+  /* Cap pos bundar "98" */
+  .cap{border:2px dashed currentColor;outline:2px solid currentColor;outline-offset:3px;transform:rotate(-12deg)}
+
+  @media (prefers-reduced-motion: reduce){
+    .ikrar{animation:none}
+    .ikrar:first-child{opacity:1}
+    .kursor::after{animation:none}
+  }
+
+  .pita{height:10px;background:linear-gradient(180deg,#b3121f 50%,#fff 50%)}
+  .field-ikon{position:absolute;left:14px;top:50%;transform:translateY(-50%);color:rgb(148 163 184);pointer-events:none;transition:color .2s}
+  .field-wrap:focus-within .field-ikon{color:#b3121f}
+</style>
+</head>
+<body class="min-h-screen bg-gradient-to-b from-[#efe4cc] to-stone-100 dark:from-[#1c130c] dark:to-neutral-950 text-slate-800 dark:text-neutral-100 flex items-center justify-center py-8 px-4">
+    <div class="w-full max-w-md bg-white dark:bg-neutral-900 rounded-[22px] shadow-[0_20px_50px_-20px_rgba(127,13,22,.35)] ring-1 ring-stone-200 dark:ring-white/10 overflow-hidden">
+
+      <div class="pita"></div>
+
+      <!-- hero: kertas lama + ikrar bergantian -->
+      <div class="kertas-bg relative px-8 pt-8 pb-12 text-tinta dark:text-[#ead9b8] overflow-hidden">
+
+        <!-- cap pos 98 -->
+        <div class="cap absolute right-7 top-7 w-[62px] h-[62px] rounded-full flex flex-col items-center justify-center text-merah/80 dark:text-merah-muda/80">
+          <span class="font-judul text-[22px] font-extrabold leading-none">98</span>
+          <span class="font-ketik text-[7px] tracking-widest mt-0.5">TAHOEN</span>
+        </div>
+
+        <p class="font-ketik text-[10.5px] tracking-[.2em] text-merah dark:text-merah-muda">28 OKTOBER 1928</p>
+        <h1 class="font-judul text-[26px] font-extrabold leading-tight mt-2 pr-20">Soempah Pemoeda</h1>
+        <p class="text-[11px] opacity-70 mt-1">Kisara SSO · Kabupaten Ponorogo</p>
+
+        <!-- tiga ikrar, ejaan asli -->
+        <div class="relative h-[100px] mt-6 border-l-[3px] border-merah">
+          <div class="ikrar">
+            <span class="font-ketik text-[10px] tracking-widest text-merah dark:text-merah-muda">PERTAMA</span>
+            <p class="font-ketik text-[13px] leading-relaxed mt-1.5 kursor">Kami poetera dan poeteri Indonesia, mengakoe bertoempah darah jang satoe, tanah Indonesia.</p>
+          </div>
+          <div class="ikrar">
+            <span class="font-ketik text-[10px] tracking-widest text-merah dark:text-merah-muda">KEDOEA</span>
+            <p class="font-ketik text-[13px] leading-relaxed mt-1.5 kursor">Kami poetera dan poeteri Indonesia, mengakoe berbangsa jang satoe, bangsa Indonesia.</p>
+          </div>
+          <div class="ikrar">
+            <span class="font-ketik text-[10px] tracking-widest text-merah dark:text-merah-muda">KETIGA</span>
+            <p class="font-ketik text-[13px] leading-relaxed mt-1.5 kursor">Kami poetera dan poeteri Indonesia, mendjoendjoeng bahasa persatoean, bahasa Indonesia.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- body: sama dengan agustusan-2026, hanya warna aksen -->
+      <div class="relative z-20 -mt-4 rounded-t-[20px] bg-white dark:bg-neutral-900 px-8 pt-7 pb-8">
+        <div class="text-[17px] font-bold text-slate-900 dark:text-white">Masuk ke Akun Anda</div>
+        <p class="text-xs text-slate-400 dark:text-neutral-500 mt-0.5 mb-4">Gunakan akun <b>SIMASHEBAT</b> Anda</p>
+
+        <label class="block text-[13px] font-semibold text-slate-700 dark:text-neutral-300 mb-1.5">Nomor Induk Pegawai (NIP)</label>
+        <div class="field-wrap relative mb-4">
+          <input type="text" placeholder="Masukkan NIP Anda" class="w-full py-3 pl-[42px] pr-3.5 text-sm rounded-xl border-[1.5px] border-slate-200 dark:border-neutral-700 bg-slate-50 dark:bg-neutral-950 text-slate-800 dark:text-neutral-100 placeholder-slate-300 dark:placeholder-neutral-600 focus:outline-none focus:border-merah focus:bg-white dark:focus:bg-neutral-900 focus:ring-4 focus:ring-merah/10 transition" />
+          <svg class="field-ikon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="16" rx="2"/><circle cx="9" cy="10" r="2"/><path d="M15 8h3M15 12h3M7 16h10"/></svg>
+        </div>
+
+        <label class="block text-[13px] font-semibold text-slate-700 dark:text-neutral-300 mb-1.5">Kata Sandi</label>
+        <div class="field-wrap relative mb-4">
+          <input type="password" placeholder="Masukkan kata sandi" class="w-full py-3 pl-[42px] pr-11 text-sm rounded-xl border-[1.5px] border-slate-200 dark:border-neutral-700 bg-slate-50 dark:bg-neutral-950 text-slate-800 dark:text-neutral-100 placeholder-slate-300 dark:placeholder-neutral-600 focus:outline-none focus:border-merah focus:bg-white dark:focus:bg-neutral-900 focus:ring-4 focus:ring-merah/10 transition" />
+          <svg class="field-ikon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="11" width="16" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg>
+          <button type="button" aria-label="Tampilkan kata sandi" class="absolute right-3 top-1/2 -translate-y-1/2 text-slate-400 hover:text-merah transition"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2.062 12.348a1 1 0 0 1 0-.696 10.75 10.75 0 0 1 19.876 0 1 1 0 0 1 0 .696 10.75 10.75 0 0 1-19.876 0"/><circle cx="12" cy="12" r="3"/></svg></button>
+        </div>
+
+        <div class="flex items-center justify-between mb-4">
+          <label class="inline-flex items-center gap-2 text-xs text-slate-500 dark:text-neutral-400 cursor-pointer">
+            <input type="checkbox" class="w-[15px] h-[15px] accent-merah" /> Ingat saya
+          </label>
+          <a href="#" class="text-xs font-medium text-slate-400 hover:text-merah transition">Lupa Kata Sandi?</a>
+        </div>
+
+        <div class="flex items-stretch gap-2.5">
+          <button type="button" class="flex-1 inline-flex items-center justify-center gap-2 py-3 rounded-[13px] text-[15px] font-bold text-white bg-gradient-to-r from-merah-tua via-merah to-merah-muda shadow-lg shadow-merah/30 hover:-translate-y-0.5 transition">Masuk
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button>
+          <a href="#" title="Masuk dengan Passkey" aria-label="Masuk dengan Passkey"
+            class="shrink-0 w-[52px] inline-flex items-center justify-center rounded-[13px] text-white bg-gradient-to-r from-merah-tua via-merah to-merah-muda shadow-lg shadow-merah/30 hover:-translate-y-0.5 transition">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 12C2 6.5 6.5 2 12 2a10 10 0 0 1 8 4"/><path d="M5 19.5C5.5 18 6 15 6 12a6 6 0 0 1 .34-2"/><path d="M17.29 21.02c.12-.6.43-2.3.5-3.02"/><path d="M12 10a2 2 0 0 0-2 2c0 1.02-.1 2.51-.26 4"/><path d="M8.65 22c.21-.66.45-1.32.57-2"/><path d="M14 13.12c0 2.38 0 6.38-1 8.88"/><path d="M2 16h.01"/><path d="M21.8 16c.2-2 .131-5.354 0-6"/><path d="M9 6.8a6 6 0 0 1 9 5.2c0 .47 0 1.17-.02 2"/></svg>
+          </a>
+        </div>
+
+        <p class="text-[11px] text-slate-400 dark:text-neutral-500 text-center mt-3.5 leading-relaxed">
+          Kesulitan masuk? <a href="#" class="inline-flex items-center gap-1.5 bg-merah text-white px-2.5 py-1 rounded-full font-semibold no-underline hover:brightness-110"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7.9 20A9 9 0 1 0 4 16.1L2 22z"/></svg> Bantuan RAKACA</a>
+        </p>
+        <p class="font-ketik text-[11px] text-stone-500 dark:text-neutral-500 text-center mt-3">
+          Selamat Hari Sumpah Pemuda ke-98
+        </p>
+      </div>
+
+      <div class="pita"></div>
+    </div>
+</body>
+</html>
