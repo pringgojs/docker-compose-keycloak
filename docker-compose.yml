@@ -22,7 +22,7 @@ services:
   keycloak_web:
     build:
       context: ./keycloak
-    image: login-ponorogo:26.7.2
+    image: login-ponorogo:26.8.1
     container_name: keycloak_web
     environment:
       KC_DB: postgres

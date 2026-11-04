@@ -12,7 +12,13 @@
 # password" dapat dilompati tanpa token email, sehingga siapa pun dapat
 # mengganti password akun mana pun di realm yang mengaktifkan fitur itu
 # (ponorogo-citizen). Juga CVE-2026-15571 (penautan akun lewat klien OIDC).
-FROM quay.io/keycloak/keycloak:26.7.2
+# 26.8.1 (4 Nov 2026): menambal CVE-2026-94000 — admin yang hanya memegang
+# manage-users dapat menjadi realm-admin dengan memasukkan dirinya ke grup
+# yang memetakan peran admin. Seri 26.7 TIDAK mendapat tambalannya (26.7.5
+# pun tidak), jadi jalannya naik minor. Yang berubah di 26.8 dan menyentuh
+# kita: SMTP dengan StartTLS menyala kini gagal alih-alih jatuh ke teks polos,
+# dan skema DB dimigrasi saat start pertama (backup Postgres dulu).
+FROM quay.io/keycloak/keycloak:26.8.1
 
 RUN rm -rf /opt/keycloak/providers/*
 
