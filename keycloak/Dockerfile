@@ -51,5 +51,11 @@ COPY themes/pramana-citizen /opt/keycloak/themes/pramana-citizen
 # Dipakai sehari, lalu realm dikembalikan ke asn-v2. Regenerasi CSS:
 # npm run build:sumpah-pemuda.
 COPY themes/sumpah-pemuda-2026 /opt/keycloak/themes/sumpah-pemuda-2026
+# hari-pahlawan-2026: theme EVENT 10 November, disalin dari sumpah-pemuda-2026
+# (mekanik KC26 dan passkey sama). Hero langit senja + siluet Hotel Yamato yang
+# bendera lajur birunya dirobek + bintang "81" + kutipan bergantian. Dipakai
+# sehari, lalu realm dikembalikan ke asn-v2. Regenerasi CSS:
+# npm run build:hari-pahlawan.
+COPY themes/hari-pahlawan-2026 /opt/keycloak/themes/hari-pahlawan-2026
 
 RUN /opt/keycloak/bin/kc.sh build

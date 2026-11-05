@@ -18,7 +18,8 @@
     "watch:pramana": "tailwindcss -c keycloak/themes/pramana-citizen/tailwind.config.js -i keycloak/themes/pramana-citizen/login/resources/css/input.css -o keycloak/themes/pramana-citizen/login/resources/css/styles.css --watch",
     "preview:pramana": "node keycloak/themes/pramana-citizen/preview/build-preview.js",
     "build:sumpah-pemuda": "tailwindcss -c keycloak/themes/sumpah-pemuda-2026/tailwind.config.js -i keycloak/themes/sumpah-pemuda-2026/login/resources/css/input.css -o keycloak/themes/sumpah-pemuda-2026/login/resources/css/styles.css --minify",
-    "build": "npm run build:asn-v2 && npm run build:agustusan && npm run build:pramana && npm run build:sumpah-pemuda"
+    "build:hari-pahlawan": "tailwindcss -c keycloak/themes/hari-pahlawan-2026/tailwind.config.js -i keycloak/themes/hari-pahlawan-2026/login/resources/css/input.css -o keycloak/themes/hari-pahlawan-2026/login/resources/css/styles.css --minify",
+    "build": "npm run build:asn-v2 && npm run build:agustusan && npm run build:pramana && npm run build:sumpah-pemuda && npm run build:hari-pahlawan"
   },
   "repository": {
     "type": "git",
