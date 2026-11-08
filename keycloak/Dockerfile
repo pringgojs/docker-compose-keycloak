@@ -58,4 +58,13 @@ COPY themes/sumpah-pemuda-2026 /opt/keycloak/themes/sumpah-pemuda-2026
 # npm run build:hari-pahlawan.
 COPY themes/hari-pahlawan-2026 /opt/keycloak/themes/hari-pahlawan-2026
 
+# kisara: theme login DEFAULT ekosistem Kisara (sistem logo v1, 2026-11-08),
+# menggantikan asn-v2 sebagai theme sehari-hari realm asn-productions. Mekanik
+# KC26 sama dengan asn-v2 (importmap rfc4648 + authChecker), tombol passkey
+# sebaris dengan "Masuk" memakai pola agustusan-2026. Tanpa FontAwesome:
+# ikon = SVG sebagai CSS mask. Regenerasi CSS: npm run build:kisara.
+# Theme EVENT berikutnya: setelah dipakai, realm dikembalikan ke kisara
+# (bukan lagi asn-v2).
+COPY themes/kisara /opt/keycloak/themes/kisara
+
 RUN /opt/keycloak/bin/kc.sh build

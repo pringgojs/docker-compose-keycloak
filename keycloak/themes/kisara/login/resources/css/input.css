@@ -1,0 +1,155 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/*
+ * Theme "kisara". SEMUA aturan custom ada DI SINI, bukan ditulis tangan ke
+ * styles.css (pelajaran asn-v2: aturan passkey yang ditulis ke file hasil
+ * build hilang begitu build dijalankan ulang).
+ *
+ * Ikon memakai SVG Lucide sebagai CSS mask — tanpa CDN FontAwesome, jadi
+ * halaman login tetap utuh walau CDN lambat atau diblokir.
+ */
+@layer components {
+  /* Garis empat warna di atas kartu: tanda tangan visual Kisara. */
+  .ks-strip {
+    height: 4px;
+    background: linear-gradient(90deg, #1f6fb2 0 25%, #0f8b8d 25% 50%, #2f9e6b 50% 75%, #e0a82e 75% 100%);
+  }
+
+  .ks-icon {
+    display: inline-block;
+    width: 1.15rem;
+    height: 1.15rem;
+    flex: none;
+    background-color: currentColor;
+    -webkit-mask: var(--ks-icon) center / contain no-repeat;
+    mask: var(--ks-icon) center / contain no-repeat;
+  }
+  .ks-icon-fingerprint {
+    --ks-icon: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23000' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M12 10a2 2 0 0 0-2 2c0 1.02-.1 2.51-.26 4'/%3E%3Cpath d='M14 13.12c0 2.38 0 6.38-1 8.88'/%3E%3Cpath d='M17.29 21.02c.12-.6.43-2.3.5-3.02'/%3E%3Cpath d='M2 12a10 10 0 0 1 18-6'/%3E%3Cpath d='M2 16h.01'/%3E%3Cpath d='M21.8 16c.2-2 .131-5.354 0-6'/%3E%3Cpath d='M5 19.5C5.5 18 6 15 6 12a6 6 0 0 1 .34-2'/%3E%3Cpath d='M8.65 22c.21-.66.45-1.32.57-2'/%3E%3Cpath d='M9 6.8a6 6 0 0 1 9 5.2v2'/%3E%3C/svg%3E");
+  }
+  .ks-icon-eye {
+    --ks-icon: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23000' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M2.06 12.35a1 1 0 0 1 0-.7 10.75 10.75 0 0 1 19.88 0 1 1 0 0 1 0 .7 10.75 10.75 0 0 1-19.88 0'/%3E%3Ccircle cx='12' cy='12' r='3'/%3E%3C/svg%3E");
+  }
+  .ks-icon-eye-off {
+    --ks-icon: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23000' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M10.73 5.08A10.43 10.43 0 0 1 12 5c4.97 0 8.5 4 9.94 6.65a1 1 0 0 1 0 .7 13.16 13.16 0 0 1-1.67 2.68'/%3E%3Cpath d='M6.61 6.61A13.53 13.53 0 0 0 2.06 11.65a1 1 0 0 0 0 .7C3.5 15 7.03 19 12 19a9.74 9.74 0 0 0 5.39-1.61'/%3E%3Cpath d='m2 2 20 20'/%3E%3Cpath d='M14.12 14.12a3 3 0 1 1-4.24-4.24'/%3E%3C/svg%3E");
+  }
+  .ks-icon-alert {
+    --ks-icon: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23000' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Ccircle cx='12' cy='12' r='10'/%3E%3Cpath d='M12 8v4M12 16h.01'/%3E%3C/svg%3E");
+  }
+  .ks-icon-check {
+    --ks-icon: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23000' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Ccircle cx='12' cy='12' r='10'/%3E%3Cpath d='m9 12 2 2 4-4'/%3E%3C/svg%3E");
+  }
+  .ks-icon-back {
+    --ks-icon: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23000' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m12 19-7-7 7-7M19 12H5'/%3E%3C/svg%3E");
+  }
+
+  .ks-icon-warning {
+    --ks-icon: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23000' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3'/%3E%3Cpath d='M12 9v4M12 17h.01'/%3E%3C/svg%3E");
+  }
+  .ks-icon-info {
+    --ks-icon: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23000' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Ccircle cx='12' cy='12' r='10'/%3E%3Cpath d='M12 16v-4M12 8h.01'/%3E%3C/svg%3E");
+  }
+  .ks-icon-rotate {
+    --ks-icon: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23000' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8'/%3E%3Cpath d='M3 3v5h5'/%3E%3C/svg%3E");
+  }
+  .ks-icon-phone {
+    --ks-icon: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23000' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Crect width='14' height='20' x='5' y='2' rx='2'/%3E%3Cpath d='M12 18h.01'/%3E%3C/svg%3E");
+  }
+  .ks-icon-key {
+    --ks-icon: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23000' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Ccircle cx='7.5' cy='15.5' r='5.5'/%3E%3Cpath d='m21 2-9.6 9.6M15.5 7.5l3 3L22 7l-3-3'/%3E%3C/svg%3E");
+  }
+  .ks-icon-lifebuoy {
+    --ks-icon: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23000' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Ccircle cx='12' cy='12' r='10'/%3E%3Ccircle cx='12' cy='12' r='4'/%3E%3Cpath d='m4.93 4.93 4.24 4.24M14.83 9.17l4.24-4.24M14.83 14.83l4.24 4.24M9.17 14.83l-4.24 4.24'/%3E%3C/svg%3E");
+  }
+  .ks-icon-chevron {
+    --ks-icon: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23000' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m9 18 6-6-6-6'/%3E%3C/svg%3E");
+  }
+
+  /*
+   * Tombol passkey. Markup-nya dibuat macro bawaan Keycloak (passkeys.ftl,
+   * #authenticateWebAuthnButton) dengan kelas kcButtonSecondaryClass, jadi
+   * ikon sidik jari HARUS lewat ::before — kita tak memegang isi tombolnya.
+   */
+  .ks-passkey-btn::before {
+    content: "";
+    display: inline-block;
+    width: 1.15rem;
+    height: 1.15rem;
+    background-color: currentColor;
+    -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23000' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M12 10a2 2 0 0 0-2 2c0 1.02-.1 2.51-.26 4'/%3E%3Cpath d='M14 13.12c0 2.38 0 6.38-1 8.88'/%3E%3Cpath d='M17.29 21.02c.12-.6.43-2.3.5-3.02'/%3E%3Cpath d='M2 12a10 10 0 0 1 18-6'/%3E%3Cpath d='M2 16h.01'/%3E%3Cpath d='M21.8 16c.2-2 .131-5.354 0-6'/%3E%3Cpath d='M5 19.5C5.5 18 6 15 6 12a6 6 0 0 1 .34-2'/%3E%3Cpath d='M8.65 22c.21-.66.45-1.32.57-2'/%3E%3Cpath d='M9 6.8a6 6 0 0 1 9 5.2v2'/%3E%3C/svg%3E") center / contain no-repeat;
+    mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23000' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M12 10a2 2 0 0 0-2 2c0 1.02-.1 2.51-.26 4'/%3E%3Cpath d='M14 13.12c0 2.38 0 6.38-1 8.88'/%3E%3Cpath d='M17.29 21.02c.12-.6.43-2.3.5-3.02'/%3E%3Cpath d='M2 12a10 10 0 0 1 18-6'/%3E%3Cpath d='M2 16h.01'/%3E%3Cpath d='M21.8 16c.2-2 .131-5.354 0-6'/%3E%3Cpath d='M5 19.5C5.5 18 6 15 6 12a6 6 0 0 1 .34-2'/%3E%3Cpath d='M8.65 22c.21-.66.45-1.32.57-2'/%3E%3Cpath d='M9 6.8a6 6 0 0 1 9 5.2v2'/%3E%3C/svg%3E") center / contain no-repeat;
+  }
+
+  .ks-otp { display: flex; justify-content: center; gap: .5rem; }
+  .ks-otp-item:has(.ks-otp-radio:checked) { border-color: #0f8b8d; background-color: #e7f5f4; }
+  .dark .ks-otp-item:has(.ks-otp-radio:checked) { background-color: rgb(15 139 141 / .18); }
+
+  /*
+   * Baris aksi halaman masuk: Masuk + tombol passkey ikon-saja.
+   * Anak non-tombol dari macro passkeys (form hidden + script) tidak boleh
+   * ikut jadi item flex, atau muncul kolom kosong di antara tombol.
+   */
+  .ks-actions { display: flex; align-items: stretch; gap: 10px; }
+  .ks-actions > form#webauth,
+  .ks-actions > form#authn_select,
+  .ks-actions > script { display: none; }
+
+  /* #id + .ks-actions mengalahkan w-full/mt-3 dari kcButtonBlockClass dan
+     kcMarginTopClass (dipakai halaman lain, jadi tidak diubah di properties). */
+  .ks-actions #authenticateWebAuthnButton {
+    position: relative;
+    flex: 0 0 auto;
+    width: 48px;
+    min-width: 48px;
+    height: 48px;
+    margin-top: 0;
+    padding: 0;
+    color: #0f8b8d;
+    /* Label bawaan tetap di DOM sebagai nama aksesibel, hanya disembunyikan
+       secara visual (base tak memberi aria-label dan kita tak memakai JS). */
+    overflow: hidden;
+    text-indent: -9999px;
+    white-space: nowrap;
+  }
+  .dark .ks-actions #authenticateWebAuthnButton { color: rgb(94 234 212); }
+  .ks-actions #authenticateWebAuthnButton::before {
+    position: absolute;
+    inset: 0;
+    margin: auto;
+    width: 22px;
+    height: 22px;
+    text-indent: 0;
+  }
+
+  /* OTP enam kotak */
+  /* Flexible: six cells always fit the card, down to 320 px screens. */
+  .ks-otp-cell {
+    flex: 1 1 0;
+    min-width: 0;
+    max-width: 3rem;
+    height: 3.4rem;
+    text-align: center;
+    font-size: 1.35rem;
+    font-weight: 600;
+    border-radius: 0.75rem;
+    border: 1px solid rgb(203 213 225);
+    background: #fff;
+    color: rgb(15 23 42);
+    transition: border-color .15s, box-shadow .15s;
+  }
+  .ks-otp-cell:focus {
+    outline: none;
+    border-color: #0f8b8d;
+    box-shadow: 0 0 0 3px rgb(15 139 141 / .2);
+  }
+  .dark .ks-otp-cell {
+    border-color: rgb(51 65 85);
+    background: rgb(15 23 42);
+    color: rgb(241 245 249);
+  }
+  @media (max-width: 360px) {
+    .ks-otp-cell { height: 3rem; font-size: 1.1rem; }
+  }
+}

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="id" class="h-full">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Periksa email Anda — Kisara SSO (preview)</title>
+  <link rel="icon" href="../login/resources/img/kisara-sso.svg" type="image/svg+xml" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link href="../login/resources/css/styles.css" rel="stylesheet" />
+  <script>if (matchMedia('(prefers-color-scheme: dark)').matches) document.documentElement.classList.add('dark');</script>
+</head>
+<body class="min-h-full bg-slate-100 font-sans text-slate-800 antialiased dark:bg-slate-950 dark:text-slate-200">
+  <button type="button" onclick="document.documentElement.classList.toggle('dark')" class="fixed right-3 top-3 z-10 rounded-full border border-slate-300 bg-white px-3 py-1.5 text-xs font-medium text-slate-600 shadow-sm dark:border-slate-700 dark:bg-slate-900 dark:text-slate-300">Mode gelap (preview)</button>
+  <main class="mx-auto flex min-h-screen w-full max-w-[440px] flex-col justify-center px-4 py-10">
+    <div class="overflow-hidden rounded-[28px] border border-slate-200 bg-white shadow-[0_12px_40px_-16px_rgb(15_23_42/.25)] dark:border-slate-800 dark:bg-slate-900">
+      <div class="ks-strip"></div>
+      <div class="px-7 pb-8 pt-6 sm:px-9">
+
+      <div class="flex items-center gap-3">
+        <img src="../login/resources/img/kisara-sso.svg" alt="" class="h-10 w-10 shrink-0" />
+        <div class="min-w-0 leading-tight">
+          <div class="text-[1.35rem] tracking-tight"><span class="text-slate-500 dark:text-slate-400">Kisara</span> <span class="font-bold text-slate-900 dark:text-white">SSO</span></div>
+          <div class="text-xs text-slate-500 dark:text-slate-400">Pemerintah Kabupaten Ponorogo</div>
+        </div>
+        <img src="../login/resources/img/ponorogo.png" alt="Lambang Kabupaten Ponorogo" class="ml-auto h-10 w-auto shrink-0" />
+      </div>
+        <div class="mt-7">
+          
+          <h1 class="text-2xl font-semibold tracking-tight text-slate-900 dark:text-white">Periksa email Anda</h1>
+          
+        </div>
+
+        <div class="mt-5 flex items-start gap-3 rounded-xl border border-emerald-200 bg-emerald-50 px-4 py-3 text-sm text-emerald-800 dark:border-emerald-900/60 dark:bg-emerald-950/40 dark:text-emerald-300">
+          <span class="ks-icon ks-icon-check mt-0.5"></span>
+          <span>Tautan reset kata sandi sudah dikirim. Tautan berlaku 30 menit.</span>
+        </div>
+        <a href="login.html" class="mt-6 inline-flex h-12 w-full items-center justify-center rounded-full bg-ks-accent text-[15px] font-semibold text-white hover:bg-ks-accent-dark">Kembali ke halaman masuk</a>
+      </div>
+    </div>
+    <footer class="mt-6 flex flex-wrap items-center justify-center gap-x-4 gap-y-1 text-xs text-slate-500 dark:text-slate-400">
+      <span>© 2026 Pemerintah Kabupaten Ponorogo</span>
+      <a href="https://rakaca.ponorogo.go.id/bantuan" class="hover:text-slate-800 hover:underline dark:hover:text-white">Bantuan</a>
+      <span>Diskominfo</span>
+    </footer>
+  </main>
+</body>
+</html>

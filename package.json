@@ -19,7 +19,9 @@
     "preview:pramana": "node keycloak/themes/pramana-citizen/preview/build-preview.js",
     "build:sumpah-pemuda": "tailwindcss -c keycloak/themes/sumpah-pemuda-2026/tailwind.config.js -i keycloak/themes/sumpah-pemuda-2026/login/resources/css/input.css -o keycloak/themes/sumpah-pemuda-2026/login/resources/css/styles.css --minify",
     "build:hari-pahlawan": "tailwindcss -c keycloak/themes/hari-pahlawan-2026/tailwind.config.js -i keycloak/themes/hari-pahlawan-2026/login/resources/css/input.css -o keycloak/themes/hari-pahlawan-2026/login/resources/css/styles.css --minify",
-    "build": "npm run build:asn-v2 && npm run build:agustusan && npm run build:pramana && npm run build:sumpah-pemuda && npm run build:hari-pahlawan"
+    "build": "npm run build:asn-v2 && npm run build:agustusan && npm run build:pramana && npm run build:sumpah-pemuda && npm run build:hari-pahlawan",
+    "build:kisara": "tailwindcss -c keycloak/themes/kisara/tailwind.config.js -i keycloak/themes/kisara/login/resources/css/input.css -o keycloak/themes/kisara/login/resources/css/styles.css --minify",
+    "preview:kisara": "node keycloak/themes/kisara/preview/build-preview.js"
   },
   "repository": {
     "type": "git",
